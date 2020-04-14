@@ -34,7 +34,7 @@
     </div>
     <div class="col-md-4 col-12">
       <h4 class="d-block text-centre">Välkommen till Hotell {{ hotellet.name }}</h4>
-      <h5><i :class="starIcon" v-for="i in 5" :key="i"></i></h5>
+      <h5><i :class="starIcon" v-for="i in hotellet.stars" :key="i"></i></h5>
       <ul class="nav nav-tabs">
         <li class="active border rounded-top mr-2"><a data-toggle="tab" href="#home">Home</a></li>
         <li class="border rounded-top"><a data-toggle="tab" href="#adress">Kontakta oss</a></li>
@@ -60,11 +60,11 @@
           </p>
         </div>
         <div id="adress" class="tab-pane fade text-left">
-          <h5 class="text-center">Kontakt information</h5>
+          <h5 class="text-center">Kontaktinformation</h5>
             <ul>
-              <ol class="my-1">Stad: [{{hotellet.cityId}}]</ol>
+              <ol class="my-1">Stad: {{hotellet.city.name}}</ol>
               <ol class="my-1">Postnummer: {{hotellet.postalCode}}</ol>
-              <ol class="my-1">Adress: {{hotellet.adress}}</ol>
+              <ol class="my-1">Adress: {{hotellet.address}}</ol>
               <ol class="my-1">Telefonnummer: {{hotellet.phone}}</ol>
               <ol class="my-1">E-post: {{hotellet.eMail}}</ol>
             </ul>
@@ -72,7 +72,7 @@
       </div>
     </div>
     <div class="card w-50 mx-auto">
-      <div class="card-body row" v-for="room in roomtype" :key="room.roomTypeId">
+      <div class="card-body row" v-for="(room, index) in roomtype" :key="room.roomTypeId">
         <div class="col-md-3 mx-auto">
           <img
             class="d-flex mx-auto"
@@ -85,13 +85,14 @@
         </div>
         <div class="col-md-3 col-12 mx-auto my-auto">
           <div class="col-12">
-            <label for="antalrum">Antal rum:</label>
+            <label :for="'antalrum' + index">Antal rum:</label>
           </div>
           <div class="col-12">
             <input
-              class="antalrum w-75"
+              :id="'antalrum' + index"
+              class="w-75"
               type="number"
-              value="0"
+              :v-model="'antalrum' + index"
               min="0"
               max="30"
               step="1"
@@ -99,6 +100,7 @@
           </div>
         </div>
       </div>
+    <button class="btn btn-primary">Boka</button>
     </div>
   </div>
 </template>
@@ -111,19 +113,22 @@ export default {
       check: "fas fa-check",
       hotellet: [],
       roomtype: [],
+      antalrum0: 0,
+      antalrum1: 0,
+      antalrum2: 0,
     };
   },
-  mounted() {
+  created() {
     this.getHotel();
   },
   methods: {
     getHotel: async function() {
-      const result = await fetch("https://8e405e37-c9b6-4cd7-ab26-0db07e67fe46.mock.pstmn.io/rest/hotel/1");
+      const result = await fetch("http://localhost:9090/rest/hotels/1");
       this.hotellet = await result.json();
       this.getRoomType();
     },
     getRoomType: async function() {
-      const url = "https://c75bfc7d-ae5b-4fdf-a442-93154d46377b.mock.pstmn.io/rest/hotel/roomtype/" + this.hotellet.hotelId;
+      const url = "https://c75bfc7d-ae5b-4fdf-a442-93154d46377b.mock.pstmn.io/rest/hotel/roomtype/" + this.hotellet.id;
       const result = await fetch(url);
       this.roomtype = await result.json();
     },
