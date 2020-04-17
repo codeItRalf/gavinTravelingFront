@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        name: 'Logins',
+        name: 'logins',
         data() {
             return {
                 input: {
