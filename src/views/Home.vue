@@ -5,50 +5,55 @@
       
   <div id="carousel" class="carousel slide" data-ride="carousel">
     <div class="search_box w-25">        
-      <form>       
+      <form @submit="onSubmit" >       
         <div class="form-group">
           <label for="inputState">Stad</label>
-          <select id="inputState" class="form-control">
-            <option selected>Välj...</option>
+          <select id="inputState" class="form-control" v-model="inputStates">
+            <option selected>Välj</option>
             <option>Stockholm</option>
-            <option>Göteborg</option>
-            <option>Kiruna</option>
             <option>Malmö</option>
-            <option>Helsingborg</option>
           </select>
         </div>
+        <span>Selected: {{ inputStates }}</span>
         <div class="form-group">
         <label >Från:</label>
-        <input type="date" name="bday" max="3000-12-31" 
+        <input type="date" name="sdate" id="sdate" v-model="sdates" max="3000-12-31" 
                 min="2020-01-01" class="form-control">
         </div>
+        <span>Selected: {{ sdates }}</span>
         <div class="form-group">
         <label >Till:</label>
-        <input type="date" name="bday" max="3000-12-31" 
+        <input type="date" name="endate" id="endate" v-model="endates" max="3000-12-31" 
                 min="2020-01-01" class="form-control">
         </div>
+        <span>Selected: {{ endates }}</span>
         <div class="form-group">
           <label for="inputAdult">Vuxna</label>
-          <select id="inputAdult" class="form-control">
-            <option selected>Välj...</option>
+          <select id="inputAdult" class="form-control" v-model="adults">  
+            <option selected>Välj</option>
             <option>1</option>
-            <option>2</option>
+            <option>2</option>  
             <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option>4</option>   
+            <option>5</option>        
           </select>
+
+          
         </div>
+        <span>Selected: {{ adults }}</span>
         <div class="form-group">
           <label for="inputChild">Barn</label>
-          <select id="inputChild" class="form-control">
-            <option selected>Välj...</option>
+          <select id="inputChild" class="form-control" v-model="children">   
+            <option selected>Välj</option>
             <option>1</option>
-            <option>2</option>
+            <option>2</option>  
             <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option>4</option>   
+            <option>5</option>          
           </select>
-        </div>        
+          
+        </div>  
+        <span>Selected: {{ children }}</span>      
           <button type="submit" class="btn btn-primary">Sök</button>
         </form>
       </div>
@@ -67,46 +72,109 @@
     </div>    
   </div>
 </header>
-<div class="container p-5">
-  <h3>Senaste bokningar:</h3>
-  <div class="row">
-    <div class="col-4">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://www2.idrottonline.se/globalassets/uppsala-btk---bordtennis/bilder/uppsala.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Stockholm</h5>
-          <p class="card-text">Hotell Blå</p>
-          <a href="#" class="btn btn-primary">Boka Nu</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://www2.idrottonline.se/globalassets/uppsala-btk---bordtennis/bilder/uppsala.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Stockholm</h5>
-          <p class="card-text">Hotell Marion</p>
-          <a href="#" class="btn btn-primary">Boka Nu</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://www2.idrottonline.se/globalassets/uppsala-btk---bordtennis/bilder/uppsala.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Stockholm</h5>
-          <p class="card-text">Hotell Hilton</p>
-          <a href="#" class="btn btn-primary">Boka Nu</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+  <LatestBookings></LatestBookings>
+  
+
 
     
     
   </div>
 </template>
+
+
+<script>
+import LatestBookings from "../components/LatestBookings.vue";
+export default {
+  props: ["search"],
+  components: {
+    LatestBookings
+  },
+  data() {
+      return {        
+        inputStates: ' ',        
+        sdates: ' ',
+        endates: ' ',
+        adults: ' ',        
+        children: ' ',      
+                
+    }
+  },
+  created() {
+    this.$store.state.search;
+     this.upDateSearch();   
+  },
+  methods: {
+     onSubmit(evt) {
+        evt.preventDefault()
+        
+        this.upDateSearch();          
+      },
+      upDateSearch: function(){
+      this.$store.commit("updateSearchinputState", this.inputStates)
+      this.$store.commit("updateSearchsdate", this.sdates);
+      this.$store.commit("updateSearchendate", this.endates);
+      this.$store.commit("updateSearchadults", this.adults);
+      this.$store.commit("updateSearchchildren", this.children);
+      console.log(this.inputStates);
+    }
+  },
+   
+
+computed: {
+  updateSearchinputState: {
+    get() {
+      return this.$store.state.search.inputStates;
+    },
+    set(value){
+      this.search.inputStates = value;
+      this.$store.commit('updateSearchinputState', value)
+    }
+  },
+  updateSearchsdate: {
+    get() {
+      return this.$store.state.search.sdates;
+    },
+    set(value){
+      this.sdates = value;
+      this.$store.commit('updateSearchsdate', value)
+    }
+  },
+  updateSearchendate: {
+    get() {
+      return this.$store.state.search.endates;
+    },
+    set(value){
+      this.endates = value;
+      this.$store.commit('updateSearchendate', value)
+    }
+  },
+  updateSearchadults: {
+    get() {
+      return this.$store.state.search.adults;
+    },
+    set(value){
+      this.adults = value;
+      this.$store.commit('updateSearchadults', value)
+    }
+  },
+  updateSearchchildren: {
+    get() {
+      return this.$store.state.search.children;
+    },
+    set(value){
+      this.sdates = value;
+      this.$store.commit('updateSearchchildren', value)
+    }
+  }
+}
+
+
+  
+};
+  
+</script>
+
 
 <style scoped>
 .carousel-item {
