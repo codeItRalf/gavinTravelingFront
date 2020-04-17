@@ -49,7 +49,7 @@
       <div class="card-body row">
         <div class="col-md-3 mx-auto">
           <img
-            class="d-flex mx-auto"
+            class="d-flex mx-auto img-fluid"
             src="https://via.placeholder.com/150x125"
           />
         </div>
@@ -76,7 +76,7 @@
       <div class="card-body row">
         <div class="col-md-3 mx-auto">
         <img
-          class="d-flex mx-auto"
+          class="d-flex mx-auto img-fluid"
           src="https://via.placeholder.com/150x125"
         />
         </div>
@@ -104,7 +104,7 @@
       <div class="card-body row">
         <div class="col-md-3 mx-auto">
           <img
-            class="d-flex mx-auto"
+            class="d-flex mx-auto img-fluid"
             src="https://via.placeholder.com/150x125"
           />
         </div>
@@ -140,78 +140,76 @@
 <script>
 export default {
   props: ["booking"],
-  data() {
-    return {
-      starIcon: "far fa-star",
-      check: "fas fa-check",
-      hotellet: [],
-      rooms: [],
-      rum:{
-        antal: [0, 0, 0]
+    data() {
+      return {
+        starIcon: "far fa-star",
+        check: "fas fa-check",
+        hotellet: [],
+        rooms: [],
+        rum:{
+          antal: [0, 0, 0]
+        },
+        party:[2, 3, 4],
+      };
+    },
+    created() {
+      this.$store.state.booking;
+      this.getHotel();
+    },
+    methods: {
+      getHotel: async function() {
+        const result = await fetch("http://localhost:9090/rest/hotels/1");
+        this.hotellet = await result.json();
+        console.log(await this.hotellet)
+        this.getRoomType();
       },
-      party:[2, 3, 4],
-    };
-  },
-  created() {
-    this.$store.state.booking;
-    this.getHotel();
-  },
-  methods: {
-    getHotel: async function() {
-      const result = await fetch("http://localhost:9090/rest/hotels/1");
-      this.hotellet = await result.json();
-      this.getRoomType();
+      getRoomType: async function() {
+        const url = "https://c75bfc7d-ae5b-4fdf-a442-93154d46377b.mock.pstmn.io/rest/hotel/roomtype/" + this.hotellet.id;
+        const result = await fetch(url);
+        this.rooms = await result.json();
+      },
+      goToBooking: function(){
+        this.$store.commit("updateBookingRoomPrice", this.rooms)
+        this.$store.commit("updateBookingHotel", this.hotellet);
+        this.$store.commit("updateBookingParty", this.party);
+      },
+      changeAntalEnkel(e){
+        this.$store.commit("antalEnkel", e.target.value);
+      }
     },
-    getRoomType: async function() {
-      const url = "https://c75bfc7d-ae5b-4fdf-a442-93154d46377b.mock.pstmn.io/rest/hotel/roomtype/" + this.hotellet.id;
-      const result = await fetch(url);
-      this.rooms = await result.json();
-    },
-    goToBooking: function(){
-      this.$store.commit("updateBookingRoomPrice", this.rooms)
-      this.$store.commit("updateBookingHotel", this.hotellet);
-      this.$store.commit("updateBookingParty", this.party);
-    },
-    changeAntalEnkel(e){
-      this.$store.commit("antalEnkel", e.target.value);
+    filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
     }
   },
-  filters: {
-  capitalize: function (value) {
-    if (!value) return ''
-    value = value.toString()
-    return value.charAt(0).toUpperCase() + value.slice(1)
-  }
-},
-computed: {
-  antalEnkelrum: {
-    get() {
-      return this.$store.state.booking.room.enkel.antal;
+  computed: {
+    antalEnkelrum: {
+      get() {
+        return this.$store.state.booking.room.enkel.antal;
+      },
+      set(value){
+        this.$store.commit('antalEnkel', value)
+      }
     },
-    set(value){
-      this.rum.antal[0] = value;
-      this.$store.commit('antalEnkel', value)
+    antalDubbelrum: {
+      get() {
+        return this.$store.state.booking.room.dubbel.antal;
+      },
+      set(value){
+        this.$store.commit('antalDubbel', value)
+      }
+    },
+    antalFamiljerum: {
+      get() {
+        return this.$store.state.booking.room.familje.antal;
+      },
+      set(value){
+        this.$store.commit('antalFamilje', value)
+      }
     }
   },
-  antalDubbelrum: {
-    get() {
-      return this.$store.state.booking.room.dubbel.antal;
-    },
-    set(value){
-      this.rum.antal[1] = value;
-      this.$store.commit('antalDubbel', value)
-    }
-  },
-  antalFamiljerum: {
-    get() {
-      return this.$store.state.booking.room.familje.antal;
-    },
-    set(value){
-      this.rum.antal[2] = value;
-      this.$store.commit('antalFamilje', value)
-    }
-  }
-  }
 };
 </script>
 

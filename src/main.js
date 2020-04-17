@@ -13,7 +13,7 @@ library.add(faUserSecret)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 
 
