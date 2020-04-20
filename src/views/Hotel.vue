@@ -1,9 +1,8 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-md-2 col-1" />
-      <div class="col-md-5 col-10">
-        <img src="https://via.placeholder.com/450x250" alt="Hotel Image"/>
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-12">
+        <img class="img-fluid" src="https://via.placeholder.com/500x300" alt="Hotel Image"/>
       </div>
       <div class="col-md-4 col-12">
         <h5 class="d-block text-centre">Välkommen till Hotell {{ hotellet.name | capitalize}}</h5>
@@ -25,8 +24,8 @@
                 <li v-if="hotellet.restaurant == '1'">Restaurant: <i :class="check"></i></li>  
               </ul>
             </span>
-            <p class="text-centre">Avstånd till:
-              <ul class="text-left">
+            <p class="text-center">Avstånd till:
+              <ul class="text-left">>
                 <li>Centrum: {{hotellet.distanceToCenter}} km</li>
                 <li>Strand: {{hotellet.distanceToBeach}} km</li>
               </ul>
