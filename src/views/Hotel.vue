@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-5 col-12">
-        <img class="img-fluid" src="https://via.placeholder.com/500x250" alt="Hotel Image"/>
+      <div class="col-md-6 col-12">
+        <img class="img-fluid" src="https://via.placeholder.com/500x300" alt="Hotel Image"/>
       </div>
       <div class="col-md-4 col-12">
         <h5 class="d-block text-center">Välkommen till Hotell {{ hotellet.name | capitalize}}</h5>
