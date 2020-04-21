@@ -129,7 +129,7 @@
         </div>
       </div>
       <div class="col-12" v-if="antalEnkelrum > 0 | antalDubbelrum > 0 | antalFamiljerum > 0">
-        <router-link to="/booking">
+        <router-link :to="`/booking/${this.hotel.id}`">
           <button  @click="goToBooking" class="btn btn-primary">Gå till bokning</button>
         </router-link>
       </div>
