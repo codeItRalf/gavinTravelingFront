@@ -184,11 +184,6 @@ export default {
       this.$store.state.booking;
     },
   methods: {
-    /*getRoomType: async function() {
-      const url = "https://c75bfc7d-ae5b-4fdf-a442-93154d46377b.mock.pstmn.io/rest/hotel/roomtype/" + this.hotel.id;
-      const result = await fetch(url);
-      this.rooms = await result.json();
-    },*/
     goToBooking: function(){
       this.$store.commit("updateBookingRoomPrice", this.rooms)
       this.$store.commit("updateBookingHotel", this.hotellet);
