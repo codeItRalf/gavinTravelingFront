@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <router-link to="/bli_kund">Bli Kund</router-link>
+            <router-link to="/register">Bli Kund</router-link>
           </a>
         </li>
         <li class="nav-item">
