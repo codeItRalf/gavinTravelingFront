@@ -5,9 +5,9 @@
         <div class="search_box w-25">
           <form @submit="onSubmit">
             <div class="form-group">
-              <label for="inputCity">Stad</label>
-              <select id="inputCity" class="form-control" name="inputCity" v-model="_inputCity">
-                 <option v-for="city in inputCitys" :key="city.id" >{{city.name}}</option>                
+              <label for="City">Stad</label>
+              <select id="City" class="form-control" name="City" v-model="inputCity">
+                 <option v-for="city in getCitiesArray" :key="city.id" >{{city.name}}</option>                
               </select>
             </div>
             
@@ -15,9 +15,9 @@
               <label>Från:</label>
               <input
                 type="date"
-                name="sdate"
-                id="sdate"
-                v-model="updateSearchsdate"
+                name="startDate"
+                id="startDate"
+                v-model="inputStartDate"
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
@@ -27,9 +27,9 @@
               <label>Till:</label>
               <input
                 type="date"
-                name="endate"
-                id="endate"
-                v-model="updateSearchendate"
+                name="endDate"
+                id="enDate"
+                v-model="inputEndDate"
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
@@ -73,65 +73,65 @@ export default {
   },
   data() {
     return {
-      inputCity: String,
-      sdates: Date,
-      endates: Date
+      //lokalvariabel 
+      City: String,
+      startDate: Date,
+      endDate: Date
     };
   },
   async created() {
     await this.$store.dispatch('getCities');    
-    this.$store.state.search;
+    
     
     
   },
   methods: {
     onSubmit(evt) {
-      evt.preventDefault();
-           
+      this.preventDefault(evt);           
     },
     
     
   },
 
   computed: {
-    _inputCity:{
+    inputCity:{
       get(){
-        return this.inputCity;
+        return this.City;
       },
       set(value){
-        this.inputCity = value;
+        this.City = value;
         
       }
 
     },
-    inputCitys: {
+    getCitiesArray: {
       get() {
         return this.$store.state.search.inputCities;        
       }
       
     },
     searchUrl(){
-        return `/search/${this._inputCity}/${this.updateSearchsdate}/${this.updateSearchendate}` 
+        return `/search/${this.inputCity}/${this.inputStartDate}/${this.inputEndDate}` 
     },
         
     
-    updateSearchsdate: {
+    inputStartDate: {
       get() {
         //return this.$store.state.search.sdates;
-        return this.sdates;
+        return this.startDate;
       },
       set(value) {
-        this.sdates = value;
+        this.startDate = value;
         /* this.$store.commit("updateSearchsdate", value);*/
       }
     },
-    updateSearchendate: {
+    inputEndDate: {
       get() {
-        return this.endates;
+        return this.endDate;
         //return this.$store.state.search.endates;
       },
       set(value) {
-        this.endates = value;
+        this.endDate = value;
         //this.$store.commit("updateSearchendate", value);
       }
     }

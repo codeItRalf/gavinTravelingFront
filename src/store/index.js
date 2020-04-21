@@ -8,9 +8,7 @@ export default new Vuex.Store({
     roomsByHotelId: [],
     authenticated: false,
     search: {
-      inputCities: [],
-      sdates: Date,
-      endates: Date
+      inputCities: [],      
     },
     hotel: [],
     booking: {
@@ -18,8 +16,8 @@ export default new Vuex.Store({
         name: "",
         id: 0
       },
-      startDate: "2020-01-01",
-      endDate: "2020-01-31",
+      startDate: Date,
+      endDate: Date,
       customerId: 0,
       party: {
         adults: 0,
