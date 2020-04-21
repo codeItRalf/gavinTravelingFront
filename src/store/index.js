@@ -8,9 +8,9 @@ export default new Vuex.Store({
     roomsByHotelId: [],
     authenticated: false,
     search: {
-      inputCities: " ",
-      sdates: " ",
-      endates: " "
+      inputCities: [],
+      sdates: Date,
+      endates: Date
     },
     hotel: [],
     booking: {
@@ -52,19 +52,8 @@ export default new Vuex.Store({
     setAuthentication(state, status) {
       state.authenticated = status;
     },
-    updateSearchinputCity(state, value) {
-      state.search.inputCities = value;
-    },
-    updateSearchsdate(state, value) {
-      state.search.sdates = value;
-    },
-    updateSearchendate(state, value) {
-      state.search.endates = value;
-    },
-    updateBookingHotel(state, value) {
-      state.booking.hotel.name = value.name;
-      state.booking.hotel.id = value.id;
-    },
+    
+    
     updateBookingParty(state, value) {
       state.booking.party.adults = value[0];
       state.booking.party.children = value[1];
@@ -95,6 +84,9 @@ export default new Vuex.Store({
     },
     setRooms(state, value) {
       state.roomsByHotelId = value;
+    }, 
+    setCities(state, value){
+      state.search.inputCities = value;
     }
   },
   actions: {
@@ -109,6 +101,13 @@ export default new Vuex.Store({
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setRooms", json);
+    },
+    getCities: async function({ commit }){
+      let url = "http://localhost:9090/rest/cities";
+      const result = await fetch(url);
+      const json = await result.json();console.log(json);
+      commit("setCities", json);
+      
     }
   },
   modules: {}

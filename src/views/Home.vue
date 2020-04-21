@@ -6,40 +6,36 @@
           <form @submit="onSubmit">
             <div class="form-group">
               <label for="inputCity">Stad</label>
-              <select id="inputCity" class="form-control" name="inputCity" v-model="inputCities">
-                <option selected>Välj</option>
-                <option>Stockholm</option>
-                <option>Malmö</option>
+              <select id="inputCity" class="form-control" name="inputCity" v-model="_inputCity">
+                 <option v-for="city in inputCitys" :key="city.id" >{{city.name}}</option>                
               </select>
             </div>
-            <span>Selected: {{ inputCities }}</span>
+            
             <div class="form-group">
               <label>Från:</label>
               <input
                 type="date"
                 name="sdate"
                 id="sdate"
-                v-model="sdates"
+                v-model="updateSearchsdate"
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
               />
-            </div>
-            <span>Selected: {{ sdates }}</span>
+            </div>            
             <div class="form-group">
               <label>Till:</label>
               <input
                 type="date"
                 name="endate"
                 id="endate"
-                v-model="endates"
+                v-model="updateSearchendate"
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
               />
-            </div>
-            <span>Selected: {{ endates }}</span>
-            <button type="submit" class="btn btn-primary">Sök</button>
+            </div>            
+            <router-link :to="searchUrl" class="btn btn-primary">Sök</router-link>
           </form>
         </div>
         <ol class="carousel-indicators">
@@ -71,60 +67,72 @@
 
 <script>
 import LatestBookings from "../components/LatestBookings.vue";
-export default {
-  props: ["search"],
+export default {  
   components: {
     LatestBookings
   },
   data() {
     return {
-      inputCity: " ",
-      sdates: " ",
-      endates: " "
+      inputCity: String,
+      sdates: Date,
+      endates: Date
     };
   },
-  created() {
+  async created() {
+    await this.$store.dispatch('getCities');    
     this.$store.state.search;
-    this.upDateSearch();
+    
+    
   },
   methods: {
-    onSubmit() {
-      this.upDateSearch();
+    onSubmit(evt) {
+      evt.preventDefault();
+           
     },
-    upDateSearch: function() {
-      this.$store.commit("updateSearchinputCity", this.inputCities);
-      this.$store.commit("updateSearchsdate", this.sdates);
-      this.$store.commit("updateSearchendate", this.endates);
-      console.log(this.inputCities);
-    }
+    
+    
   },
 
   computed: {
-    updateSearchinputCity: {
-      get() {
-        return this.$store.state.search.inputCities;
+    _inputCity:{
+      get(){
+        return this.inputCity;
       },
-      set(value) {
-        this.search.inputCities = value;
-        this.$store.commit("updateSearchinputCity", value);
+      set(value){
+        this.inputCity = value;
+        
       }
+
     },
+    inputCitys: {
+      get() {
+        return this.$store.state.search.inputCities;        
+      }
+      
+    },
+    searchUrl(){
+        return `/search/${this._inputCity}/${this.updateSearchsdate}/${this.updateSearchendate}` 
+    },
+        
+    
     updateSearchsdate: {
       get() {
-        return this.$store.state.search.sdates;
+        //return this.$store.state.search.sdates;
+        return this.sdates;
       },
       set(value) {
         this.sdates = value;
-        this.$store.commit("updateSearchsdate", value);
+        /* this.$store.commit("updateSearchsdate", value);*/
       }
     },
     updateSearchendate: {
       get() {
-        return this.$store.state.search.endates;
+        return this.endates;
+        //return this.$store.state.search.endates;
       },
       set(value) {
         this.endates = value;
-        this.$store.commit("updateSearchendate", value);
+        //this.$store.commit("updateSearchendate", value);
       }
     }
   }
