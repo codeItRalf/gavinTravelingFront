@@ -203,8 +203,8 @@ export default {
       get(){
         return this.$store.state.roomTypesByHotelId;
       },
-    },
-  },
+    }
+  }
 };
 </script>
 

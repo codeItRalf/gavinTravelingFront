@@ -1,8 +1,20 @@
 <template>
-  <div>
-    <h2
-      v-bind:hotel_name="$store.state.booking.hotel.name"
-    >Hotell: {{$store.state.booking.hotel.name | capitalize}}</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-8 mx-auto">
+        <h2
+          v-bind:hotel_name="$store.state.booking.hotel.name"
+        >Hotell {{$store.state.booking.hotel.name | capitalize}}</h2>
+      </div>
+      <div class="col-8 mx-auto card">
+        <ul>
+          <li v-if="enkelRum > 0" class="list-group-item">
+            <p>Antal {{rooms[1].roomType | capitalize}}: {{enkelRum}}</p>
+            <p>Pris: {{enkelRum * rooms[1].price}}kr</p>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     <p v-bind:hotel_id="$store.state.booking.hotel.id">Hotel_id:{{$store.state.booking.hotel.id}}</p>
 
@@ -27,10 +39,6 @@
     <p
       v-bind:small_children="$store.state.booking.party.small_children"
     >Antal småbarn: {{$store.state.booking.party.small_children}}</p>
-
-    <p
-      v-bind:enkel_antal="$store.state.booking.room.enkel.antal"
-    >Antal enkelrum: {{$store.state.booking.room.enkel.antal}}</p>
 
     <p
       v-bind:enkel_extra="$store.state.booking.room.enkel.extraBed"
@@ -73,6 +81,18 @@ export default {
       if (!value) return "";
       value = value.toString();
       return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },
+  computed: {
+    enkelRum: {
+      get() {
+        return this.$store.state.booking.room.enkel.antal;
+      }
+    },
+    rooms: {
+      get() {
+        return this.$store.state.roomTypesByHotelId;
+      }
     }
   }
 };
