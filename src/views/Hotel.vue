@@ -147,6 +147,7 @@ export default {
       };
     },
     async created() {
+      //CHANGE this when hotel is saved on searchpage...
       await this.$store.dispatch('getHotel', this.$route.params.id);
       await this.$store.dispatch('getRooms', this.$route.params.id);
       this.$store.state.booking;
