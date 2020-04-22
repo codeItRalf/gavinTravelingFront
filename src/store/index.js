@@ -55,10 +55,10 @@ export default new Vuex.Store({
       state.search.globalCity = value;      
     },
     setGlobalStartDate(state, value) {
-      state.search.globalStartDate = value;      
+      state.booking.globalStartDate = value;      
     },
     setGlobalEndDate(state, value) {
-      state.search.globalEndDate = value;      
+      state.booking.globalEndDate = value;      
     },    
     updateBookingParty(state, value) {
       state.booking.party.adults = value[0];
@@ -113,7 +113,10 @@ export default new Vuex.Store({
       const result = await fetch(url);
       const json = await result.json();console.log(json);
       commit("setCities", json);      
-    }
+    },
+    globalSearchUrl(){
+      return `/search/${this.setGlobalCity}/${this.setGlobalStartDate}/${this.SetGlobalEndDate}` }
+  
   },
   modules: {}
 });

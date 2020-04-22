@@ -67,7 +67,8 @@
 
 <script>
 import LatestBookings from "../components/LatestBookings.vue";
-export default {  
+export default { 
+  props: ["booking", "search"], 
   components: {
     LatestBookings
   },
@@ -81,6 +82,7 @@ export default {
   },
   async created() {
     await this.$store.dispatch('getCities');  
+    await this.$store.dispatch('globalSearchUrl'); 
   },
   methods: {
     onSubmit(evt) {
@@ -90,7 +92,7 @@ export default {
       this.$store.commit("setGlobalCity", this.City)
       this.$store.commit("setGlobalStartDate", this.startDate);
       this.$store.commit("setGlobalEndDate", this.endDate);
-    },    
+    }   
   },
   computed: {
     inputCity:{
@@ -107,10 +109,10 @@ export default {
         return this.$store.state.search.inputCities;        
       }
       
-    },
+    },    
     searchUrl(){
-        return `/search/${this.inputCity}/${this.inputStartDate}/${this.inputEndDate}` 
-    },     
+      return `/search/${this.inputCity}/${this.inputStartDate}/${this.inputEndDate}`
+    },    
     inputStartDate: {
       get() {
         //return this.$store.state.search.sdates;
