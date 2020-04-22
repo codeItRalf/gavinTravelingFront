@@ -8,7 +8,8 @@ export default new Vuex.Store({
     roomsByHotelId: [],
     authenticated: false,
     search: {
-      inputCities: [],      
+      inputCities: [],
+      City: String      
     },
     hotel: [],
     booking: {
@@ -16,8 +17,8 @@ export default new Vuex.Store({
         name: "",
         id: 0
       },
-      startDate: Date,
-      endDate: Date,
+      globalStartDate: Date,
+      globalendDate: Date,
       customerId: 0,
       party: {
         adults: 0,
@@ -49,8 +50,7 @@ export default new Vuex.Store({
   mutations: {
     setAuthentication(state, status) {
       state.authenticated = status;
-    },
-    
+    }, 
     
     updateBookingParty(state, value) {
       state.booking.party.adults = value[0];
@@ -104,8 +104,7 @@ export default new Vuex.Store({
       let url = "http://localhost:9090/rest/cities";
       const result = await fetch(url);
       const json = await result.json();console.log(json);
-      commit("setCities", json);
-      
+      commit("setCities", json);      
     }
   },
   modules: {}

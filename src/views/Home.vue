@@ -80,27 +80,20 @@ export default {
     };
   },
   async created() {
-    await this.$store.dispatch('getCities');    
-    
-    
-    
+    await this.$store.dispatch('getCities');  
   },
   methods: {
     onSubmit(evt) {
       this.preventDefault(evt);           
-    },
-    
-    
+    },       
   },
-
   computed: {
     inputCity:{
       get(){
         return this.City;
       },
       set(value){
-        this.City = value;
-        
+        this.City = value;        
       }
 
     },
@@ -112,9 +105,7 @@ export default {
     },
     searchUrl(){
         return `/search/${this.inputCity}/${this.inputStartDate}/${this.inputEndDate}` 
-    },
-        
-    
+    },     
     inputStartDate: {
       get() {
         //return this.$store.state.search.sdates;
