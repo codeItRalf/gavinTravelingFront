@@ -20,14 +20,28 @@
             }
         },
         methods: {
-            login() {
-        if(this.input.username == "admin" && this.input.password == "pass") {
-            this.$store.commit("setAuthentication", true);
-            this.$router.replace({ name: "user" });
-        } else {
-            console.log("The username and / or password is incorrect");
+          async  login() {
+
+
+             const credentials = 'username=' +
+    encodeURIComponent(this.input.username)
+    + '&password=' +
+    encodeURIComponent(this.input.password)
+
+  let response = await fetch("http://localhost:9090/login", {
+    method: "POST",
+    redirect: "manual",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: credentials
+  });
+
+     if(response.url.includes('error')) {
+    console.log('Wrong username/password');
+          }
+          else{
+              console.log("Login sucessful!")
+          }
         }
-            }
-        }
+     }
     }
 </script>
