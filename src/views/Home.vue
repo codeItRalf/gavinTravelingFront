@@ -35,7 +35,7 @@
                 class="form-control"
               />
             </div>            
-            <router-link :to="searchUrl" class="btn btn-primary">Sök</router-link>
+            <router-link :to="searchUrl"  @click="globalSubmit" class="btn btn-primary">Sök</router-link>
           </form>
         </div>
         <ol class="carousel-indicators">
@@ -85,7 +85,12 @@ export default {
   methods: {
     onSubmit(evt) {
       this.preventDefault(evt);           
-    },       
+    },   
+    globalSubmit: function(){
+      this.$store.commit("setGlobalCity", this.City)
+      this.$store.commit("setGlobalStartDate", this.startDate);
+      this.$store.commit("setGlobalEndDate", this.endDate);
+    },    
   },
   computed: {
     inputCity:{

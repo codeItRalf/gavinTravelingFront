@@ -9,7 +9,7 @@ export default new Vuex.Store({
     authenticated: false,
     search: {
       inputCities: [],
-      City: String      
+      globalCity: String      
     },
     hotel: [],
     booking: {
@@ -18,7 +18,7 @@ export default new Vuex.Store({
         id: 0
       },
       globalStartDate: Date,
-      globalendDate: Date,
+      globalEndDate: Date,
       customerId: 0,
       party: {
         adults: 0,
@@ -51,7 +51,15 @@ export default new Vuex.Store({
     setAuthentication(state, status) {
       state.authenticated = status;
     }, 
-    
+    setGlobalCity(state, value) {
+      state.search.globalCity = value;      
+    },
+    setGlobalStartDate(state, value) {
+      state.search.globalStartDate = value;      
+    },
+    setGlobalEndDate(state, value) {
+      state.search.globalEndDate = value;      
+    },    
     updateBookingParty(state, value) {
       state.booking.party.adults = value[0];
       state.booking.party.children = value[1];
