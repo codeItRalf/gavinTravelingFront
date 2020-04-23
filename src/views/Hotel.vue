@@ -155,7 +155,9 @@ export default {
   methods: {
     goToBooking: function(){
       this.$store.commit("updateBookingRoomPrice", this.rooms)
-      this.$store.commit("updateBookingHotel", this.hotel);
+      this.$store.commit("setExtraBedEnkel", 0);
+      this.$store.commit("setExtraBedDubbel", 0);
+      this.$store.commit("setExtraBedFamilje", 0);
     },
     changeAntalEnkel(e){
       this.$store.commit("antalEnkel", e.target.value);

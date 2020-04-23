@@ -1,20 +1,21 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-8 mx-auto">
-        <h2
-          v-bind:hotel_name="$store.state.booking.hotel.name"
-        >Hotell {{$store.state.booking.hotel.name | capitalize}}</h2>
+      <div class="col-md-8 mx-auto">
+        <h2>Hotell {{ hotel.name | capitalize}}</h2>
       </div>
-      <div class="col-8 mx-auto card">
+      <div class="col-md-8 mx-auto card borderless">
         <ul>
+          <li class="list-group-item w-75 text-left">
+            <h5 class="text-left">Rum</h5>
+          </li>
           <li v-if="enkelRum > 0" class="list-group-item w-75 text-left">
             <div class="row">
-              <div class="col-6">
+              <div class="col-md-6">
                 <p>Antal {{rooms[1].roomType | capitalize}}: {{enkelRum}}</p>
                 <p>Pris: {{enkelRumPris}}kr</p>
               </div>
-              <div class="col-6">
+              <div class="col-md-6">
                 <p>Antal extrasängar:</p>
                 <input
                   type="number"
@@ -28,11 +29,11 @@
           </li>
           <li v-if="dubbelRum > 0" class="list-group-item w-75 text-left">
             <div class="row">
-              <div class="col-6">
+              <div class="col-md-6">
                 <p>Antal {{rooms[0].roomType | capitalize}}: {{dubbelRum}}</p>
                 <p>Pris: {{dubbelRumPris}}kr</p>
               </div>
-              <div class="col-6">
+              <div class="col-md-6">
                 <p>Antal extrasängar:</p>
                 <input
                   type="number"
@@ -46,11 +47,11 @@
           </li>
           <li v-if="familjeRum > 0" class="list-group-item w-75 text-left">
             <div class="row">
-              <div class="col-6">
+              <div class="col-md-6">
                 <p>Antal {{rooms[2].roomType | capitalize}}: {{familjeRum}}</p>
                 <p>Pris: {{familjeRumPris}}kr</p>
               </div>
-              <div class="col-6">
+              <div class="col-md-6">
                 <p>Antal extrasängar:</p>
                 <input
                   type="number"
@@ -63,8 +64,9 @@
             </div>
           </li>
           <li class="list-group-item w-75 text-left">
-            <h6>Från datum: {{startDate}}</h6>
-            <h6>Till datum: {{endDate}}</h6>
+            <h5>Datum</h5>
+            <h6>Från: {{startDate}}</h6>
+            <h6>Till: {{endDate}}</h6>
           </li>
         </ul>
       </div>
@@ -204,6 +206,11 @@ export default {
       get() {
         return this.$store.state.booking.globalEndDate;
       }
+    },
+    hotel: {
+      get() {
+        return this.$store.state.hotel;
+      }
     }
   }
 };
@@ -224,5 +231,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.borderless {
+  border: 0 none !important;
 }
 </style>
