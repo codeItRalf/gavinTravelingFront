@@ -45,7 +45,8 @@
             </div>
           </li>
           <li class="list-group-item w-75 text-left">
-            <h6>Startdatum: {{startDate}}</h6>
+            <h6>Från datum: {{startDate}}</h6>
+            <h6>Till datum: {{endDate}}</h6>
           </li>
         </ul>
       </div>
@@ -184,7 +185,12 @@ export default {
     },
     startDate: {
       get() {
-        return this.$store.state.booking;
+        return this.$store.state.booking.globalStartDate;
+      }
+    },
+    endDate: {
+      get() {
+        return this.$store.state.booking.globalEndDate;
       }
     }
   }
