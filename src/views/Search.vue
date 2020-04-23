@@ -11,8 +11,9 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputState">Stad</label>
-          <select id="City" class="form-control" name="City" >
-                               
+         
+              <select id="City" class="form-control" @input="cityBtn"  name="City" v-model="inputCity" v-bind:value="City">                  
+                 <option v-for="city in getCitiesArray" :key="city.id" >{{city.name}}</option>                
               </select>
     </div>
     <div class="form-group col-md-4">
@@ -21,7 +22,7 @@
                 type="date"
                 name="startDate"
                 id="startDate"
-                v-model="startDate"
+                v-model="inputStartDate"
                  @input="testThisShit" 
                 class="form-control"
               />
@@ -153,19 +154,43 @@ export default {
   props: ["booking", "search", "hotel"], 
   data() {
     return {
-      startDate: this.$store.state.booking.globalStartDate,      
-      
+      startDate: this.$store.state.booking.globalStartDate, 
+      City: this.$store.state.search.globalCity,      
+      endDate: this.$store.state.booking.globalEndDate        
     };
   },
-  
+  async created() {
+    await this.$store.dispatch('getCities');  
+   
+  },
     
   methods: {    
     testThisShit: function(startDate){
       this.$store.commit("setGlobalStartDate", startDate);
       console.log(this.inputStartDate)
-    }   
+    },
+    cityBtn: function(City){
+       this.$store.commit("setGlobalCity", City)      
+    }     
   },
   computed: {
+
+    inputCity:{
+      get(){
+        
+        return this.City;
+      },
+      set(value){
+        console.log(this.City),
+        this.City = value;        
+      }
+
+    },
+    getCitiesArray: {
+      get() {
+        return this.$store.state.search.inputCities;        
+      }
+    },
 
     inputStartDate: {
       get(){
