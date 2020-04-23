@@ -111,11 +111,11 @@ export default new Vuex.Store({
     getCities: async function({ commit }){
       let url = "http://localhost:9090/rest/cities";
       const result = await fetch(url);
-      const json = await result.json();console.log(json);
+      const json = await result.json();
       commit("setCities", json);      
     },
-    globalSearchUrl(){
-      return `/search/${this.setGlobalCity}/${this.setGlobalStartDate}/${this.SetGlobalEndDate}` }
+   /* globalSearchUrl(){
+      return `/search/${this.setGlobalCity}/${this.setGlobalStartDate}/${this.SetGlobalEndDate}` }*/
   
   },
   modules: {}

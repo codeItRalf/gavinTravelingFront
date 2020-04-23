@@ -23,7 +23,7 @@ const routes = [
   },
 
   {
-    path: "/user",
+    path: "/user/:id",
     name: "user",
     component: user,
     beforeEnter: (to, from, next) => {
