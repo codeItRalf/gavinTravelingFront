@@ -16,7 +16,13 @@
               </div>
               <div class="col-6">
                 <p>Antal extrasängar:</p>
-                <input type="number" v-model="enkelRumExtraBed" class="w-75" min />
+                <input
+                  type="number"
+                  v-model="enkelRumExtraBed"
+                  class="w-75"
+                  min="0"
+                  :max="enkelRum"
+                />
               </div>
             </div>
           </li>
@@ -28,7 +34,13 @@
               </div>
               <div class="col-6">
                 <p>Antal extrasängar:</p>
-                <input type="number" v-model="dubbelRumExtraBed" class="w-75" min />
+                <input
+                  type="number"
+                  v-model="dubbelRumExtraBed"
+                  class="w-75"
+                  min="0"
+                  :max="dubbelRum"
+                />
               </div>
             </div>
           </li>
@@ -40,7 +52,13 @@
               </div>
               <div class="col-6">
                 <p>Antal extrasängar:</p>
-                <input type="number" v-model="familjeRumExtraBed" class="w-75" min />
+                <input
+                  type="number"
+                  v-model="familjeRumExtraBed"
+                  class="w-75"
+                  min="0"
+                  :max="familjeRum"
+                />
               </div>
             </div>
           </li>
@@ -53,12 +71,6 @@
     </div>
 
     <p v-bind:hotel_id="$store.state.booking.hotel.id">Hotel_id:{{$store.state.booking.hotel.id}}</p>
-
-    <p
-      v-bind:start_date="$store.state.booking.startDate"
-    >Startdatum: {{$store.state.booking.startDate}}</p>
-
-    <p v-bind:end_date="$store.state.booking.endDate">Slutdatum: {{$store.state.booking.endDate}}</p>
 
     <p
       v-bind:customerId="$store.state.booking.customerId"
