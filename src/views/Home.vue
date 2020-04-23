@@ -18,6 +18,7 @@
                 name="startDate"
                 id="startDate"
                 v-model="inputStartDate"
+                @input="testThisShit" 
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
@@ -88,6 +89,10 @@ export default {
     onSubmit(evt) {
       this.preventDefault(evt);           
     },   
+     testThisShit: function(){
+       this.$store.commit("setGlobalStartDate", this.startDate);
+      console.log(this.inputStartDate)
+    } ,  
     globalSubmit: function(){
       this.$store.commit("setGlobalCity", this.City)
       this.$store.commit("setGlobalStartDate", this.startDate);

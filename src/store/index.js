@@ -116,7 +116,7 @@ export default new Vuex.Store({
     },
    /* globalSearchUrl(){
       return `/search/${this.setGlobalCity}/${this.setGlobalStartDate}/${this.SetGlobalEndDate}` }*/
-  
+    
   },
   modules: {}
 });

@@ -7,12 +7,12 @@
 
         <div class="s_box jumbotron"> 
           
-          <form>
+         
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputState">Stad</label>
-          <select id="City" class="form-control" name="City" v-model="inputCity">
-                 <option v-for="city in getCitiesArray" :key="city.id" >{{city.name}}</option>                
+          <select id="City" class="form-control" name="City" >
+                               
               </select>
     </div>
     <div class="form-group col-md-4">
@@ -21,29 +21,29 @@
                 type="date"
                 name="startDate"
                 id="startDate"
-                v-model="inputStartDate"
-                max="3000-12-31"
-                min="2020-01-01"
+                v-model="startDate"
+                 @input="testThisShit" 
                 class="form-control"
               />
-    </div>
+    </div>    
     <div class="form-group col-md-4">
       <label >Till:</label>
         <input
                 type="date"
                 name="endDate"
                 id="enDate"
-                v-model="inputEndDate"
+                
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
               /> 
     </div>
   </div>  
+  
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="inputAdult">Vuxna</label>
-          <select id="inputAdult" class="form-control" v-model="inputAdult">
+          <select id="inputAdult" class="form-control" >
             <option selected>Välj...</option>
             <option>1</option>
             <option>2</option>
@@ -54,7 +54,7 @@
     </div>
     <div class="form-group col-md-3">
       <label for="inputChild">Barn</label>
-          <select id="inputChild" class="form-control" v-model="inputChild">
+          <select id="inputChild" class="form-control">
             <option selected>Välj...</option>
             <option>1</option>
             <option>2</option>
@@ -65,7 +65,7 @@
     </div>
     <div class="form-group col-md-3">
       <label for="inputBaby">Små Barn</label>
-          <select id="inputBaby" class="form-control" v-model="inputBaby">
+          <select id="inputBaby" class="form-control" >
             <option selected>Välj...</option>
             <option>1</option>
             <option>2</option>
@@ -76,7 +76,7 @@
     </div>
     <div class="form-group col-md-3">
       <label for="inputRoom">Rum</label>
-          <select id="inputRoom" class="form-control" v-model="inputRoom">
+          <select id="inputRoom" class="form-control" >
             <option selected>Välj...</option>
             <option>1</option>
             <option>2</option>
@@ -129,8 +129,7 @@
     
     
   </div>
-  <button type="submit" class="btn btn-primary">Sök</button>
-</form>
+  
           
             
         </div>
@@ -154,42 +153,29 @@ export default {
   props: ["booking", "search", "hotel"], 
   data() {
     return {
+      startDate: this.$store.state.booking.globalStartDate,      
       
     };
   },
-  async created() {
-    await this.$store.dispatch('getCities');      
-  },
-  methods: {
-    onSubmit(evt) {
-      this.preventDefault(evt);           
-    },   
-    globalSubmit: function(){
-      this.$store.commit("setGlobalCity", this.City)
-      this.$store.commit("setGlobalStartDate", this.startDate);
-      this.$store.commit("setGlobalEndDate", this.endDate);
+  
+    
+  methods: {    
+    testThisShit: function(startDate){
+      this.$store.commit("setGlobalStartDate", startDate);
+      console.log(this.inputStartDate)
     }   
   },
   computed: {
-    inputCity:{
-      
 
-    },
-    getCitiesArray: {
-      get() {
-        return this.$store.state.search.inputCities;        
-      }
-      
-    },    
-    searchUrl(){
-      return `/search/${this.inputCity}/${this.inputStartDate}/${this.inputEndDate}`
-    },    
     inputStartDate: {
-      
-    },
-    inputEndDate: {
-      
+      get(){
+        return this.startDate;
+      },
+      set(value){
+        this.startDate = value;      
+      }
     }
+    
   }
 };
 
