@@ -1,5 +1,5 @@
 <template>
-  <div class="bli_kund">
+  <div class="register">
     <div class="container">
       <br />
       <br />

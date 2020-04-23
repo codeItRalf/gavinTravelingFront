@@ -11,28 +11,39 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputState">Stad</label>
-          <select id="inputState" class="form-control">
-            <option selected>Välj...</option>
-            <option>Stockholm</option>
-            <option>Göteborg</option>
-            <option>Kiruna</option>
-            <option>Malmö</option>
-            <option>Helsingborg</option>
-          </select>
+          <select id="City" class="form-control" name="City" v-model="inputCity">
+                 <option v-for="city in getCitiesArray" :key="city.id" >{{city.name}}</option>                
+              </select>
     </div>
     <div class="form-group col-md-4">
       <label >Från:</label>
-        <input type="date" name="bday" max="3000-12-31" min="2020-01-01" class="form-control">
+        <input
+                type="date"
+                name="startDate"
+                id="startDate"
+                v-model="inputStartDate"
+                max="3000-12-31"
+                min="2020-01-01"
+                class="form-control"
+              />
     </div>
     <div class="form-group col-md-4">
       <label >Till:</label>
-        <input type="date" name="bday" max="3000-12-31" min="2020-01-01" class="form-control">
+        <input
+                type="date"
+                name="endDate"
+                id="enDate"
+                v-model="inputEndDate"
+                max="3000-12-31"
+                min="2020-01-01"
+                class="form-control"
+              /> 
     </div>
   </div>  
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="inputAdult">Vuxna</label>
-          <select id="inputAdult" class="form-control">
+          <select id="inputAdult" class="form-control" v-model="inputAdult">
             <option selected>Välj...</option>
             <option>1</option>
             <option>2</option>
@@ -43,7 +54,7 @@
     </div>
     <div class="form-group col-md-3">
       <label for="inputChild">Barn</label>
-          <select id="inputChild" class="form-control">
+          <select id="inputChild" class="form-control" v-model="inputChild">
             <option selected>Välj...</option>
             <option>1</option>
             <option>2</option>
@@ -54,7 +65,7 @@
     </div>
     <div class="form-group col-md-3">
       <label for="inputBaby">Små Barn</label>
-          <select id="inputBaby" class="form-control">
+          <select id="inputBaby" class="form-control" v-model="inputBaby">
             <option selected>Välj...</option>
             <option>1</option>
             <option>2</option>
@@ -64,8 +75,8 @@
           </select>
     </div>
     <div class="form-group col-md-3">
-      <label for="inputAdult">Rum</label>
-          <select id="inputAdult" class="form-control">
+      <label for="inputRoom">Rum</label>
+          <select id="inputRoom" class="form-control" v-model="inputRoom">
             <option selected>Välj...</option>
             <option>1</option>
             <option>2</option>
@@ -128,190 +139,7 @@
 
       <div class="search_results">
 
-        <div class="result  mt-2">
-          <div class="card">
-            <div class="row no-gutters">
-              <div class="col-auto">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Centrala_Malm%C3%B6.jpg/256px-Centrala_Malm%C3%B6.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="col p-2">
-                  <div class="card-block px-2">
-                    <div class="row">
-                      <div class="col-8">
-                        <h4>Hotell Marion</h4>
-                      </div>
-                      <div class="col-4">
-                        <h5>750 Kr</h5>
-                      </div>   
-                    </div> 
-                    <div class="row hotel_info">
-                      <div class="omdome col-12">
-                        <div class="icons">
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                        </div>
-                      </div>                                    
-                      <div class="col-12 centrum mt-3">
-                        <span>Centrum:</span>
-                        <span> 0,5 km</span>
-                      </div>
-                      <div class="col-12 strand">
-                        <span>Strand:</span>
-                        <span> 1,0 km</span>
-                      </div> 
-                      <div class=" col-12 extra">
-                        <span><i class="far fa-check-square"></i>Restaurang</span>
-                        <span><i class="far fa-check-square"></i>Barnklubb</span>
-                      </div>  
-                    </div>                       
-                    <a href="#" class="btn btn-primary booking_button">Boka Nu</a>
-                  </div>
-              </div>
-            </div>  
-          </div> 
-        </div>
-
-        <div class="result mt-2">
-          <div class="card">
-            <div class="row no-gutters">
-              <div class="col-auto">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Centrala_Malm%C3%B6.jpg/256px-Centrala_Malm%C3%B6.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="col p-2">
-                  <div class="card-block px-2">
-                    <div class="row">
-                      <div class="col-8">
-                        <h4>Hotell Marion</h4>
-                      </div>
-                      <div class="col-4">
-                        <h5>750 Kr</h5>
-                      </div>   
-                    </div> 
-                    <div class="row hotel_info">
-                      <div class="omdome col-12">
-                        <div class="icons">
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                        </div>
-                      </div>                                    
-                      <div class="col-12 centrum mt-3">
-                        <span>Centrum:</span>
-                        <span> 0,5 km</span>
-                      </div>
-                      <div class="col-12 strand">
-                        <span>Strand:</span>
-                        <span> 1,0 km</span>
-                      </div> 
-                      <div class=" col-12 extra">
-                        <span><i class="far fa-check-square"></i>Restaurang</span>
-                        <span><i class="far fa-check-square"></i>Barnklubb</span>
-                      </div>  
-                    </div>                       
-                    <a href="#" class="btn btn-primary booking_button">Boka Nu</a>
-                  </div>
-              </div>
-            </div>  
-          </div> 
-        </div>
-
-        <div class="result mt-2">
-          <div class="card">
-            <div class="row no-gutters">
-              <div class="col-auto">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Centrala_Malm%C3%B6.jpg/256px-Centrala_Malm%C3%B6.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="col p-2">
-                  <div class="card-block px-2">
-                    <div class="row">
-                      <div class="col-8">
-                        <h4>Hotell Marion</h4>
-                      </div>
-                      <div class="col-4">
-                        <h5>750 Kr</h5>
-                      </div>   
-                    </div> 
-                    <div class="row hotel_info">
-                      <div class="omdome col-12">
-                        <div class="icons">
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                        </div>
-                      </div>                                    
-                      <div class="col-12 centrum mt-3">
-                        <span>Centrum:</span>
-                        <span> 0,5 km</span>
-                      </div>
-                      <div class="col-12 strand">
-                        <span>Strand:</span>
-                        <span> 1,0 km</span>
-                      </div> 
-                      <div class=" col-12 extra">
-                        <span><i class="far fa-check-square"></i>Restaurang</span>
-                        <span><i class="far fa-check-square"></i>Barnklubb</span>
-                      </div>  
-                    </div>                       
-                    <a href="#" class="btn btn-primary booking_button">Boka Nu</a>
-                  </div>
-              </div>
-            </div>  
-          </div> 
-        </div>
-
-        <div class="result mt-2">
-          <div class="card">
-            <div class="row no-gutters">
-              <div class="col-auto">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Centrala_Malm%C3%B6.jpg/256px-Centrala_Malm%C3%B6.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="col p-2">
-                  <div class="card-block px-2">
-                    <div class="row">
-                      <div class="col-8">
-                        <h4>Hotell Marion</h4>
-                      </div>
-                      <div class="col-4">
-                        <h5>750 Kr</h5>
-                      </div>   
-                    </div> 
-                    <div class="row hotel_info">
-                      <div class="omdome col-12">
-                        <div class="icons">
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                          <i class="far fa-star"></i>
-                        </div>
-                      </div>                                    
-                      <div class="col-12 centrum mt-3">
-                        <span>Centrum:</span>
-                        <span> 0,5 km</span>
-                      </div>
-                      <div class="col-12 strand">
-                        <span>Strand:</span>
-                        <span> 1,0 km</span>
-                      </div> 
-                      <div class=" col-12 extra">
-                        <span><i class="far fa-check-square"></i>Restaurang</span>
-                        <span><i class="far fa-check-square"></i>Barnklubb</span>
-                      </div>  
-                    </div>                       
-                    <a href="#" class="btn btn-primary booking_button">Boka Nu</a>
-                  </div>
-              </div>
-            </div>  
-          </div> 
-        </div>
-
+       
 
 
       </div>     
@@ -321,6 +149,51 @@
 
   </div>
 </template>
+<script>
+export default {
+  props: ["booking", "search", "hotel"], 
+  data() {
+    return {
+      
+    };
+  },
+  async created() {
+    await this.$store.dispatch('getCities');      
+  },
+  methods: {
+    onSubmit(evt) {
+      this.preventDefault(evt);           
+    },   
+    globalSubmit: function(){
+      this.$store.commit("setGlobalCity", this.City)
+      this.$store.commit("setGlobalStartDate", this.startDate);
+      this.$store.commit("setGlobalEndDate", this.endDate);
+    }   
+  },
+  computed: {
+    inputCity:{
+      
+
+    },
+    getCitiesArray: {
+      get() {
+        return this.$store.state.search.inputCities;        
+      }
+      
+    },    
+    searchUrl(){
+      return `/search/${this.inputCity}/${this.inputStartDate}/${this.inputEndDate}`
+    },    
+    inputStartDate: {
+      
+    },
+    inputEndDate: {
+      
+    }
+  }
+};
+
+</script>
 
 
 

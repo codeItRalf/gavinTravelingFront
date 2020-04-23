@@ -5,41 +5,37 @@
         <div class="search_box w-25">
           <form @submit="onSubmit">
             <div class="form-group">
-              <label for="inputCity">Stad</label>
-              <select id="inputCity" class="form-control" name="inputCity" v-model="inputCities">
-                <option selected>Välj</option>
-                <option>Stockholm</option>
-                <option>Malmö</option>
+              <label for="City">Stad</label>
+              <select id="City" class="form-control" name="City" v-model="inputCity">
+                 <option v-for="city in getCitiesArray" :key="city.id" >{{city.name}}</option>                
               </select>
             </div>
-            <span>Selected: {{ inputCities }}</span>
+            
             <div class="form-group">
               <label>Från:</label>
               <input
                 type="date"
-                name="sdate"
-                id="sdate"
-                v-model="sdates"
+                name="startDate"
+                id="startDate"
+                v-model="inputStartDate"
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
               />
-            </div>
-            <span>Selected: {{ sdates }}</span>
+            </div>            
             <div class="form-group">
               <label>Till:</label>
               <input
                 type="date"
-                name="endate"
-                id="endate"
-                v-model="endates"
+                name="endDate"
+                id="enDate"
+                v-model="inputEndDate"
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
               />
-            </div>
-            <span>Selected: {{ endates }}</span>
-            <button type="submit" class="btn btn-primary">Sök</button>
+            </div>            
+            <router-link :to="searchUrl"  @click="globalSubmit" class="btn btn-primary">Sök</router-link>
           </form>
         </div>
         <ol class="carousel-indicators">
@@ -71,60 +67,70 @@
 
 <script>
 import LatestBookings from "../components/LatestBookings.vue";
-export default {
-  props: ["search"],
+export default { 
+  props: ["booking", "search"], 
   components: {
     LatestBookings
   },
   data() {
     return {
-      inputCity: " ",
-      sdates: " ",
-      endates: " "
+      //lokalvariabel 
+      City: String,
+      startDate: Date,
+      endDate: Date
     };
   },
-  created() {
-    this.$store.state.search;
-    this.upDateSearch();
+  async created() {
+    await this.$store.dispatch('getCities');  
+    await this.$store.dispatch('globalSearchUrl'); 
   },
   methods: {
-    onSubmit() {
-      this.upDateSearch();
-    },
-    upDateSearch: function() {
-      this.$store.commit("updateSearchinputCity", this.inputCities);
-      this.$store.commit("updateSearchsdate", this.sdates);
-      this.$store.commit("updateSearchendate", this.endates);
-      console.log(this.inputCities);
-    }
+    onSubmit(evt) {
+      this.preventDefault(evt);           
+    },   
+    globalSubmit: function(){
+      this.$store.commit("setGlobalCity", this.City)
+      this.$store.commit("setGlobalStartDate", this.startDate);
+      this.$store.commit("setGlobalEndDate", this.endDate);
+    }   
   },
-
   computed: {
-    updateSearchinputCity: {
+    inputCity:{
+      get(){
+        return this.City;
+      },
+      set(value){
+        this.City = value;        
+      }
+
+    },
+    getCitiesArray: {
       get() {
-        return this.$store.state.search.inputCities;
+        return this.$store.state.search.inputCities;        
+      }
+      
+    },    
+    searchUrl(){
+      return `/search/${this.inputCity}/${this.inputStartDate}/${this.inputEndDate}`
+    },    
+    inputStartDate: {
+      get() {
+        //return this.$store.state.search.sdates;
+        return this.startDate;
       },
       set(value) {
-        this.search.inputCities = value;
-        this.$store.commit("updateSearchinputCity", value);
+        this.startDate = value;
+        /* this.$store.commit("updateSearchsdate", value);*/
       }
     },
-    updateSearchsdate: {
+    inputEndDate: {
       get() {
-        return this.$store.state.search.sdates;
+        return this.endDate;
+        //return this.$store.state.search.endates;
       },
       set(value) {
-        this.sdates = value;
-        this.$store.commit("updateSearchsdate", value);
-      }
-    },
-    updateSearchendate: {
-      get() {
-        return this.$store.state.search.endates;
-      },
-      set(value) {
-        this.endates = value;
-        this.$store.commit("updateSearchendate", value);
+        this.endDate = value;
+        //this.$store.commit("updateSearchendate", value);
       }
     }
   }

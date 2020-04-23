@@ -8,9 +8,8 @@ export default new Vuex.Store({
     roomTypesByHotelId: [],
     authenticated: false,
     search: {
-      inputCities: " ",
-      sdates: " ",
-      endates: " ",
+      inputCities: [],
+      globalCity: String,
     },
     hotel: [],
     booking: {
@@ -18,8 +17,8 @@ export default new Vuex.Store({
         name: "",
         id: 0,
       },
-      startDate: "2020-01-01",
-      endDate: "2020-01-31",
+      globalStartDate: Date,
+      globalEndDate: Date,
       customerId: 0,
       party: {
         adults: 0,
@@ -52,18 +51,14 @@ export default new Vuex.Store({
     setAuthentication(state, status) {
       state.authenticated = status;
     },
-    updateSearchinputCity(state, value) {
-      state.search.inputCities = value;
+    setGlobalCity(state, value) {
+      state.search.globalCity = value;
     },
-    updateSearchsdate(state, value) {
-      state.search.sdates = value;
+    setGlobalStartDate(state, value) {
+      state.booking.globalStartDate = value;
     },
-    updateSearchendate(state, value) {
-      state.search.endates = value;
-    },
-    updateBookingHotel(state, value) {
-      state.booking.hotel.name = value.name;
-      state.booking.hotel.id = value.id;
+    setGlobalEndDate(state, value) {
+      state.booking.globalEndDate = value;
     },
     updateBookingParty(state, value) {
       state.booking.party.adults = value[0];
@@ -105,6 +100,9 @@ export default new Vuex.Store({
     setExtraBedFamilje(state, value) {
       state.booking.room.familje.extraBed = value;
     },
+    setCities(state, value) {
+      state.search.inputCities = value;
+    },
   },
   actions: {
     getHotel: async function({ commit }, id) {
@@ -119,6 +117,14 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setRooms", json);
     },
+    getCities: async function({ commit }) {
+      let url = "http://localhost:9090/rest/cities";
+      const result = await fetch(url);
+      const json = await result.json();
+      commit("setCities", json);
+    },
+    /* globalSearchUrl(){
+      return `/search/${this.setGlobalCity}/${this.setGlobalStartDate}/${this.SetGlobalEndDate}` }*/
   },
   modules: {},
 });
