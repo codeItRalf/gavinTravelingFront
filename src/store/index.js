@@ -10,13 +10,13 @@ export default new Vuex.Store({
     search: {
       inputCities: " ",
       sdates: " ",
-      endates: " "
+      endates: " ",
     },
     hotel: [],
     booking: {
       hotel: {
         name: "",
-        id: 0
+        id: 0,
       },
       startDate: "2020-01-01",
       endDate: "2020-01-31",
@@ -24,29 +24,29 @@ export default new Vuex.Store({
       party: {
         adults: 0,
         children: 0,
-        small_children: 0
+        small_children: 0,
       },
       room: {
         enkel: {
           antal: 0,
           extraBed: 0,
-          pricePerRoomPerNight: 0
+          pricePerRoomPerNight: 0,
         },
         dubbel: {
           antal: 0,
           extraBed: 0,
-          pricePerRoomPerNight: 0
+          pricePerRoomPerNight: 0,
         },
         familje: {
           antal: 0,
           extraBed: 0,
-          pricePerRoomPerNight: 0
-        }
+          pricePerRoomPerNight: 0,
+        },
       },
       halfPension: 0,
       fullPension: 0,
-      allInclusive: 0
-    }
+      allInclusive: 0,
+    },
   },
   mutations: {
     setAuthentication(state, status) {
@@ -95,7 +95,16 @@ export default new Vuex.Store({
     },
     setRooms(state, value) {
       state.roomTypesByHotelId = value;
-    }
+    },
+    setExtraBedEnkel(state, value) {
+      state.booking.room.enkel.extraBed = value;
+    },
+    setExtraBedDubbel(state, value) {
+      state.booking.room.dubbel.extraBed = value;
+    },
+    setExtraBedFamilje(state, value) {
+      state.booking.room.familje.extraBed = value;
+    },
   },
   actions: {
     getHotel: async function({ commit }, id) {
@@ -109,7 +118,7 @@ export default new Vuex.Store({
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setRooms", json);
-    }
+    },
   },
-  modules: {}
+  modules: {},
 });

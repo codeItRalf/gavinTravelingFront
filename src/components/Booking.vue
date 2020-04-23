@@ -8,9 +8,44 @@
       </div>
       <div class="col-8 mx-auto card">
         <ul>
-          <li v-if="enkelRum > 0" class="list-group-item">
-            <p>Antal {{rooms[1].roomType | capitalize}}: {{enkelRum}}</p>
-            <p>Pris: {{enkelRum * rooms[1].price}}kr</p>
+          <li v-if="enkelRum > 0" class="list-group-item w-75 text-left">
+            <div class="row">
+              <div class="col-6">
+                <p>Antal {{rooms[1].roomType | capitalize}}: {{enkelRum}}</p>
+                <p>Pris: {{enkelRumPris}}kr</p>
+              </div>
+              <div class="col-6">
+                <p>Antal extrasängar:</p>
+                <input type="number" v-model="enkelRumExtraBed" class="w-75" min />
+              </div>
+            </div>
+          </li>
+          <li v-if="dubbelRum > 0" class="list-group-item w-75 text-left">
+            <div class="row">
+              <div class="col-6">
+                <p>Antal {{rooms[0].roomType | capitalize}}: {{dubbelRum}}</p>
+                <p>Pris: {{dubbelRumPris}}kr</p>
+              </div>
+              <div class="col-6">
+                <p>Antal extrasängar:</p>
+                <input type="number" v-model="dubbelRumExtraBed" class="w-75" min />
+              </div>
+            </div>
+          </li>
+          <li v-if="familjeRum > 0" class="list-group-item w-75 text-left">
+            <div class="row">
+              <div class="col-6">
+                <p>Antal {{rooms[2].roomType | capitalize}}: {{familjeRum}}</p>
+                <p>Pris: {{familjeRumPris}}kr</p>
+              </div>
+              <div class="col-6">
+                <p>Antal extrasängar:</p>
+                <input type="number" v-model="familjeRumExtraBed" class="w-75" min />
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item w-75 text-left">
+            <h6>Startdatum: {{startDate}}</h6>
           </li>
         </ul>
       </div>
@@ -89,9 +124,67 @@ export default {
         return this.$store.state.booking.room.enkel.antal;
       }
     },
+    enkelRumExtraBed: {
+      get() {
+        return this.$store.state.booking.room.enkel.extraBed;
+      },
+      set(value) {
+        this.$store.commit("setExtraBedEnkel", value);
+      }
+    },
+    dubbelRum: {
+      get() {
+        return this.$store.state.booking.room.dubbel.antal;
+      }
+    },
+    dubbelRumExtraBed: {
+      get() {
+        return this.$store.state.booking.room.dubbel.extraBed;
+      },
+      set(value) {
+        this.$store.commit("setExtraBedDubbel", value);
+      }
+    },
+    familjeRum: {
+      get() {
+        return this.$store.state.booking.room.familje.antal;
+      }
+    },
+    familjeRumExtraBed: {
+      get() {
+        return this.$store.state.booking.room.familje.extraBed;
+      },
+      set(value) {
+        this.$store.commit("setExtraBedFamilje", value);
+      }
+    },
     rooms: {
       get() {
         return this.$store.state.roomTypesByHotelId;
+      }
+    },
+    enkelRumPris: {
+      get() {
+        return this.$store.state.booking.room.enkel.antal * this.rooms[1].price;
+      }
+    },
+    dubbelRumPris: {
+      get() {
+        return (
+          this.$store.state.booking.room.dubbel.antal * this.rooms[0].price
+        );
+      }
+    },
+    familjeRumPris: {
+      get() {
+        return (
+          this.$store.state.booking.room.familje.antal * this.rooms[2].price
+        );
+      }
+    },
+    startDate: {
+      get() {
+        return this.$store.state.booking;
       }
     }
   }
