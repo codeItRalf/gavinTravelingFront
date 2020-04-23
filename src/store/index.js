@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    roomsByHotelId: [],
+    roomTypesByHotelId: [],
     authenticated: false,
     search: {
       inputCities: [],
@@ -103,7 +103,7 @@ export default new Vuex.Store({
       commit("setHotel", json);
     },
     getRooms: async function({ commit }, id) {
-      let url = "http://localhost:9090/rest/room-types/by-hotel/";
+      let url = "http://localhost:9090/rest/room-types/by-hotel/types/";
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setRooms", json);
