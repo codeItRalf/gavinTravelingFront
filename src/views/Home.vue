@@ -6,8 +6,8 @@
           <form @submit="onSubmit">
             <div class="form-group">
               <label for="City">Stad</label>
-              <select id="City" class="form-control" name="City" v-model="inputCity">
-                 <option v-for="city in getCitiesArray" :key="city.id" >{{city.name}}</option>                
+              <select id="City" class="form-control"  name="City" v-model="inputCity" >
+                 <option v-for="city in getCitiesArray"  :key="city.id" @click="cityBtn" >{{city.name}}</option>                
               </select>
             </div>
             
@@ -18,6 +18,7 @@
                 name="startDate"
                 id="startDate"
                 v-model="inputStartDate"
+                @input="sdateBtn" 
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
@@ -30,12 +31,13 @@
                 name="endDate"
                 id="enDate"
                 v-model="inputEndDate"
+                @input="endateBtn" 
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
               />
             </div>            
-            <router-link :to="searchUrl"  @click="globalSubmit" class="btn btn-primary">Sök</router-link>
+            <router-link :to="searchUrl"   class="btn btn-primary">Sök</router-link>
           </form>
         </div>
         <ol class="carousel-indicators">
@@ -82,16 +84,23 @@ export default {
   },
   async created() {
     await this.$store.dispatch('getCities');  
-    await this.$store.dispatch('globalSearchUrl'); 
+   
   },
   methods: {
     onSubmit(evt) {
       this.preventDefault(evt);           
     },   
-    globalSubmit: function(){
-      this.$store.commit("setGlobalCity", this.City)
-      this.$store.commit("setGlobalStartDate", this.startDate);
-      this.$store.commit("setGlobalEndDate", this.endDate);
+     sdateBtn: function(){
+       this.$store.commit("setGlobalStartDate", this.startDate);
+      
+    } ,  
+    endateBtn: function(){
+       this.$store.commit("setGlobalEndDate", this.endDate);
+      
+    } , 
+    cityBtn: function(){
+       this.$store.commit("setGlobalCity", this.City)
+      
     }   
   },
   computed: {
