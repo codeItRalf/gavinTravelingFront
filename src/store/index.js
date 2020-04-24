@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    roomTypesByHotelId: [],
+    rooms: [],
     authenticated: false,
     search: {
       inputCities: [],
@@ -21,9 +21,9 @@ export default new Vuex.Store({
       globalEndDate: Date,
       customerId: 0,
       party: {
-        adults: 0,
-        children: 0,
-        small_children: 0,
+        adults: 2,
+        children: 2,
+        small_children: 2,
       },
       room: {
         enkel: {
@@ -89,7 +89,7 @@ export default new Vuex.Store({
       state.hotel = value;
     },
     setRooms(state, value) {
-      state.roomTypesByHotelId = value;
+      state.rooms = value;
     },
     setExtraBedEnkel(state, value) {
       state.booking.room.enkel.extraBed = value;
@@ -102,6 +102,18 @@ export default new Vuex.Store({
     },
     setCities(state, value) {
       state.search.inputCities = value;
+    },
+    setBookedRooms(state, value) {
+      state.bookedRooms = value;
+    },
+    setHalfPension(state, value) {
+      state.booking.halfPension = value;
+    },
+    setFullPension(state, value) {
+      state.booking.fullPension = value;
+    },
+    setAllInclusive(state, value) {
+      state.booking.allInclusive = value;
     },
   },
   actions: {
@@ -123,8 +135,12 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setCities", json);
     },
-    /* globalSearchUrl(){
-      return `/search/${this.setGlobalCity}/${this.setGlobalStartDate}/${this.SetGlobalEndDate}` }*/
+    getBookedRooms: async function({ commit }) {
+      let url = "http://localhost:9090/rest/booked-rooms";
+      const result = await fetch(url);
+      const json = await result.json();
+      commit("setBookedRooms", json);
+    },
   },
   modules: {},
 });
