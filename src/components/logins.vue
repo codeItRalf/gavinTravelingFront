@@ -20,28 +20,32 @@
             }
         },
         methods: {
-          async  login() {
+   async login() {
 
+         let myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
 
-             const credentials = 'username=' +
-    encodeURIComponent(this.input.username)
-    + '&password=' +
-    encodeURIComponent(this.input.password)
+let raw = JSON.stringify({"eMail": this.input.username,"password": this.input.password});
 
-  let response = await fetch("http://localhost:9090/login", {
-    method: "POST",
-    redirect: "manual",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: credentials
-  });
+let requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
 
-     if(response.url.includes('error')) {
-    console.log('Wrong username/password');
-          }
-          else{
-              console.log("Login sucessful!")
-          }
-        }
+};
+
+ let response = await fetch("http://localhost:9090/login", requestOptions)
+
+ if(response.ok){
+   console.log("Response OK!")
+   let result = await response.json()
+   console.log(result)
+ }else{
+   console.log("Response error :/")
+ }
+  
+  }
      }
     }
 </script>
