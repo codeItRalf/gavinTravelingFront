@@ -5,61 +5,61 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    roomTypesByHotelId: [],
+    rooms: [],
     authenticated: false,
     search: {
       inputCities: [],
-      globalCity: String      
+      globalCity: String,
     },
     hotel: [],
     booking: {
       hotel: {
         name: "",
-        id: 0
+        id: 0,
       },
       globalStartDate: Date,
       globalEndDate: Date,
       customerId: 0,
       party: {
-        adults: 0,
-        children: 0,
-        small_children: 0
+        adults: 2,
+        children: 2,
+        small_children: 2,
       },
       room: {
         enkel: {
           antal: 0,
           extraBed: 0,
-          pricePerRoomPerNight: 0
+          pricePerRoomPerNight: 0,
         },
         dubbel: {
           antal: 0,
           extraBed: 0,
-          pricePerRoomPerNight: 0
+          pricePerRoomPerNight: 0,
         },
         familje: {
           antal: 0,
           extraBed: 0,
-          pricePerRoomPerNight: 0
-        }
+          pricePerRoomPerNight: 0,
+        },
       },
       halfPension: 0,
       fullPension: 0,
-      allInclusive: 0
-    }
+      allInclusive: 0,
+    },
   },
   mutations: {
     setAuthentication(state, status) {
       state.authenticated = status;
-    }, 
+    },
     setGlobalCity(state, value) {
-      state.search.globalCity = value;      
+      state.search.globalCity = value;
     },
     setGlobalStartDate(state, value) {
-      state.booking.globalStartDate = value;      
+      state.booking.globalStartDate = value;
     },
     setGlobalEndDate(state, value) {
-      state.booking.globalEndDate = value;      
-    },    
+      state.booking.globalEndDate = value;
+    },
     updateBookingParty(state, value) {
       state.booking.party.adults = value[0];
       state.booking.party.children = value[1];
@@ -89,11 +89,32 @@ export default new Vuex.Store({
       state.hotel = value;
     },
     setRooms(state, value) {
-      state.roomsByHotelId = value;
-    }, 
-    setCities(state, value){
+      state.rooms = value;
+    },
+    setExtraBedEnkel(state, value) {
+      state.booking.room.enkel.extraBed = value;
+    },
+    setExtraBedDubbel(state, value) {
+      state.booking.room.dubbel.extraBed = value;
+    },
+    setExtraBedFamilje(state, value) {
+      state.booking.room.familje.extraBed = value;
+    },
+    setCities(state, value) {
       state.search.inputCities = value;
-    }
+    },
+    setBookedRooms(state, value) {
+      state.bookedRooms = value;
+    },
+    setHalfPension(state, value) {
+      state.booking.halfPension = value;
+    },
+    setFullPension(state, value) {
+      state.booking.fullPension = value;
+    },
+    setAllInclusive(state, value) {
+      state.booking.allInclusive = value;
+    },
   },
   actions: {
     getHotel: async function({ commit }, id) {
@@ -108,15 +129,18 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setRooms", json);
     },
-    getCities: async function({ commit }){
+    getCities: async function({ commit }) {
       let url = "http://localhost:9090/rest/cities";
       const result = await fetch(url);
       const json = await result.json();
-      commit("setCities", json);      
+      commit("setCities", json);
     },
-   /* globalSearchUrl(){
-      return `/search/${this.setGlobalCity}/${this.setGlobalStartDate}/${this.SetGlobalEndDate}` }*/
-    
+    getBookedRooms: async function({ commit }) {
+      let url = "http://localhost:9090/rest/booked-rooms";
+      const result = await fetch(url);
+      const json = await result.json();
+      commit("setBookedRooms", json);
+    },
   },
-  modules: {}
+  modules: {},
 });

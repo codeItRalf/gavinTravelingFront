@@ -1,21 +1,22 @@
 <template>
   <div id="app">
-    <Nav></Nav>    
-    
+    <Nav></Nav>
+
     <router-view></router-view>
   </div>
 </template>
 
 
 <script>
-
 import Nav from "./components/Nav.vue";
-
 
 export default {
   name: "app",
-  components: { Nav},
-    }
+  components: { Nav },
+  created() {
+    //this.$store.dispatch("getBookedRooms");
+  }
+};
 </script>
 
 
