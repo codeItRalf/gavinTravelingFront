@@ -113,11 +113,12 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="Centrum">Avstånd till Centrum</label>
-      <input type="range" class="custom-range" id="Centrum">
+      
+      <input type="range" class="custom-range" id="Centrum" step="1" max="200" min="0" @input="submitcenter" v-model="inputCenter"><span v-text="totalCenter"></span>
     </div>
     <div class="form-group col-md-6">
-       <label for="Strand">Avstånd till Strand</label>
-      <input type="range" class="custom-range" id="Strand">
+       <label for="Strand">Avstånd till Strand</label> 
+      <input type="range" class="custom-range" id="Strand" step="1" max="200" min="0" @input="submitBeach" v-model="inputBeach" ><span v-text="totalBeach"></span>
     </div>
     </div>
   <div class="form-row col-12">
@@ -223,6 +224,7 @@
   </div>
 </template>
 <script>
+
 export default {
   props: ["booking", "search", "hotel"], 
   data() {
@@ -292,6 +294,14 @@ export default {
         this.$store.commit("updateRoomCount", this.roomCount); 
         this.info() 
     },
+     submitCenter: function(){
+        
+        this.info() 
+    },
+    submitBeach: function(){
+        
+        this.info() 
+    },
         
     async info(){
 
@@ -327,6 +337,28 @@ export default {
   },
 
   computed: {
+    totalBeach: function(){
+      return this.distBeach
+    },
+    totalCenter: function(){
+      return this.distCenter
+    },
+    inputCenter:{
+      get(){
+        return this.distCenter;
+      },
+      set(value){
+        this.distCenter = value;
+      }
+    },
+    inputBeach:{
+      get(){
+        return this.distBeach;
+      },
+      set(value){
+        this.distBeach = value;
+      }
+    },
     inputCity:{
       get(){        
         return this.cityName;
