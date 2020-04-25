@@ -33,11 +33,11 @@
 
       <!-- TelefonNumber -->
       <input type="tel" id="RegisterFormTel" class="form-control mb-4"   placeholder="Telefonnummer"  v-bind:value="phoneNumber"
-  v-on:input="phoneNumber = $event.target.value" required />
+  v-on:input="phoneNumber = $event.target.value" pattern="^(([+]46)\s*(7)|07)[02369]\s*(\d{4})\s*(\d{3})$"  required />
 
        <!-- TelefonNumber -->
       <input type="tel" id="RegisterFormPerson" class="form-control mb-4" v-bind:value="personNumber"
-  v-on:input="personNumber = $event.target.value"  placeholder="Personnummer XXXX-XX-XX-XXXX" required />
+  v-on:input="personNumber = $event.target.value"  placeholder="Personnummer XXXX-XX-XX-XXXX" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))-[0-9]{4}"  required />
 
       <!-- Password -->
       <input
