@@ -83,7 +83,8 @@ export default {
       adult: 1,
       child: 0,
       baby: 0,
-      roomCount: 1
+      roomCount: 1,
+     
     };
   }, mounted () {
     this.defaultValue()        
