@@ -66,8 +66,8 @@ export default {
       lastName: " ",
       phoneNumber: " ",
       eMail: " ",
-      personNumber: " ",
-      password: "",
+      personNumber:" ",
+      password: " ",
       myHotels: []
     };
   },   
@@ -78,7 +78,7 @@ export default {
     async sendRegister(){
 
 var myHeaders = new Headers();
-      myHeaders.append("Authorization", "Basic dGVzdEBtYWlsLmNvbTp1c2Vy");
+      
       myHeaders.append("Content-Type", "application/json");
 
      let data = {
@@ -97,7 +97,7 @@ var myHeaders = new Headers();
         redirect: 'follow'
       };
 
-      fetch("http://localhost:9090/rest/register", requestOptions)
+      fetch("http://localhost:9090/rest/customers/sign-up", requestOptions)
               .then(response => response.json())
         .then(json => {this.myHotels = json})
         .catch(error => console.log('error', error));
