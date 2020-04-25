@@ -76,6 +76,7 @@ export default {
       eMail: "",
       personNumber:"",
       password: "",
+      valid: "false",
       errors: []
       
     };
@@ -83,6 +84,8 @@ export default {
   methods: { 
     checkForm: function (e) {
       if (this.firstName && this.lastName && this.phoneNumber && this.eMail && this.personNumber && this.password ) {
+        alert('haloj'),
+        this.sendRegister();
         return true;
       }
 
@@ -114,9 +117,10 @@ export default {
       }
 
       if (!this.errors.length) {
+        alert('haloj'),
+        this.sendRegister();
         return true;
-      }
-
+      }      
       e.preventDefault();
     },
     validEmail: function (eMail) {
@@ -130,10 +134,7 @@ export default {
     validPersonNr: function (personNumber) {
       var re = /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))-[0-9]{4}/;
       return re.test(personNumber);
-    },
-    submitReg: function(){         
-    this.sendRegister() 
-    },
+    },    
     async sendRegister(){
 
 var myHeaders = new Headers();
@@ -159,7 +160,7 @@ var myHeaders = new Headers();
       fetch("http://localhost:9090/rest/customers/sign-up", requestOptions)
               .then(response => response.text())
   .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+  .catch(error => alert('Not good man :( error', error));
           
           },
   }
