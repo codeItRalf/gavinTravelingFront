@@ -79,6 +79,9 @@ export default {
       City: "String",
       startDate: Date,    
       endDate: Date,
+      adult: 0,
+      child: 0,
+      baby: 0,
       roomCount: 1
     };
   }, mounted () {
@@ -133,6 +136,9 @@ export default {
       this.$store.commit("setGlobalStartDate", this.startDate);
       this.$store.commit("setGlobalEndDate", this.endDate); 
       this.$store.commit("updateRoomCount", this.roomCount); 
+      this.$store.commit("updateBookingPartyAdults", this.adult);
+      this.$store.commit("updateBookingPartyAdults", this.child);
+      this.$store.commit("updateBookingPartyAdults", this.baby);
       return `/search/${this.inputCity}/${this.inputStartDate}/${this.inputEndDate}`
     },    
     inputStartDate: {
