@@ -231,8 +231,8 @@ export default {
       cityName: this.$store.state.search.globalCity,      
       endDate: this.$store.state.booking.globalEndDate,
       roomCount: Number,
-      distCenter: Number,
-      distBeach: Number,
+      distCenter: 100,
+      distBeach: 100,
       adult: Number,
       child: Number,
       baby: Number,
@@ -265,26 +265,32 @@ export default {
      //props  from url länk
     },  
     submitStartDate: function(startDate){
-      this.$store.commit("setGlobalStartDate", startDate);     
+      this.$store.commit("setGlobalStartDate", startDate);  
+      this.info()    
     },
     submitEndDate: function(endDate){
-      this.$store.commit("setGlobalEndDate", endDate);      
+      this.$store.commit("setGlobalEndDate", endDate); 
+      this.info()      
     },
     cityBtn: function(City){      
        this.$store.commit("setGlobalCity", City);       
        this.info();                     
     },   
     submitAdult: function(){
-      this.$store.commit("updateBookingPartyAdults", this.adult);       
+      this.$store.commit("updateBookingPartyAdults", this.adult);      
+      this.info()  
     },  
     submitChild: function(){
       this.$store.commit("updateBookingPartyChildren", this.child); 
+      this.info() 
     },   
     submitBaby: function(){
       this.$store.commit("updateBookingPartySmallChildren", this.baby);  
+      this.info() 
     },
     submitRoom: function(){
         this.$store.commit("updateRoomCount", this.roomCount); 
+        this.info() 
     },
         
     async info(){
