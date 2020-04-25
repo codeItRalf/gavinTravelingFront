@@ -13,7 +13,7 @@
       <label for="inputState">Stad</label>
          
               <select id="City" class="form-control" @click="cityBtn"  name="cityName" v-model="inputCity" v-bind:value="cityName">                  
-                 <option v-for="cityName in getCitiesArray" :key="cityName.id" >{{cityName.name}}</option>                
+                 <option v-for="cityName in getCitiesArray" :key="cityName.id" >{{cityName.name| capitalize}}</option>                
               </select>
     </div>
     <div class="form-group col-md-4">
@@ -23,7 +23,7 @@
                 name="startDate"
                 id="startDate"
                 v-model="inputStartDate"
-                 @input="testThisShit" 
+                 @input="submitStartDate" 
                 class="form-control"
               />
     </div>    
@@ -33,7 +33,8 @@
                 type="date"
                 name="endDate"
                 id="enDate"
-                
+                v-model="inputEndDate"
+                @input="submitEndDate" 
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
@@ -44,57 +45,80 @@
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="inputAdult">Vuxna</label>
-          <select id="inputAdult" class="form-control" >
+          <select id="inputAdult" class="form-control" v-model="inputAdult"  >
             <option selected>Välj...</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option value="1" @click="submitAdult">1</option>
+            <option value="2" @click="submitAdult">2</option>
+            <option value="3" @click="submitAdult">3</option>
+            <option value="4" @click="submitAdult">4</option>
+            <option value="5" @click="submitAdult">5</option>
+            <option value="6" @click="submitAdult">6</option>
+            <option value="7" @click="submitAdult">7</option>
+            <option value="8" @click="submitAdult">8</option>
+            <option value="9" @click="submitAdult">9</option>
+            <option value="10" @click="submitAdult">10</option>
           </select>
     </div>
     <div class="form-group col-md-3">
       <label for="inputChild">Barn</label>
-          <select id="inputChild" class="form-control">
+          <select id="inputChild" class="form-control" v-model="inputChild">
             <option selected>Välj...</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+             <option value="0" @click="submitBaby">0</option>
+            <option value="1" @click="submitChild">1</option>
+            <option value="2" @click="submitChild">2</option>
+            <option value="3" @click="submitChild">3</option>
+            <option value="4" @click="submitChild">4</option>
+            <option value="5" @click="submitChild">5</option>
+            <option value="6" @click="submitChild">6</option>
+            <option value="7" @click="submitChild">7</option>
+            <option value="8" @click="submitChild">8</option>
+            <option value="9" @click="submitChild">9</option>
+            <option value="10" @click="submitChild">10</option>
           </select>
     </div>
     <div class="form-group col-md-3">
       <label for="inputBaby">Små Barn</label>
-          <select id="inputBaby" class="form-control" >
+          <select id="inputBaby" class="form-control" v-model="inputBaby">
             <option selected>Välj...</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+             <option value="0" @click="submitBaby">0</option>
+            <option value="1" @click="submitBaby">1</option>
+            <option value="2" @click="submitBaby">2</option>
+            <option value="3" @click="submitBaby">3</option>
+            <option value="4" @click="submitBaby">4</option>
+            <option value="5" @click="submitBaby">5</option>
+            <option value="6" @click="submitBaby">6</option>
+            <option value="7" @click="submitBaby">7</option>
+            <option value="8" @click="submitBaby">8</option>
+            <option value="9" @click="submitBaby">9</option>
+            <option value="10" @click="submitBaby">10</option>
           </select>
     </div>
     <div class="form-group col-md-3">
       <label for="inputRoom">Rum</label>
-          <select id="inputRoom" class="form-control" >
+          <select id="inputRoom" class="form-control" v-model="inputRoom">
             <option selected>Välj...</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option value="1" @click="submitRoom">1</option>
+            <option value="2" @click="submitRoom">2</option>
+            <option value="3" @click="submitRoom">3</option>
+            <option value="4" @click="submitRoom">4</option>
+            <option value="5" @click="submitRoom">5</option>
+            <option value="6" @click="submitRoom">6</option>
+            <option value="7" @click="submitRoom">7</option>
+            <option value="8" @click="submitRoom">8</option>
+            <option value="9" @click="submitRoom">9</option>
+            <option value="10" @click="submitRoom">10</option>
           </select>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="Centrum">Avstånd till Centrum</label>
-      <input type="range" class="custom-range" id="Centrum">
+      
+      <input type="range" class="custom-range" id="Centrum" step="1" max="200" min="0" @input="submitcenter" v-model="inputCenter"><span v-text="totalCenter"></span>
     </div>
     <div class="form-group col-md-6">
-       <label for="Strand">Avstånd till Strand</label>
-      <input type="range" class="custom-range" id="Strand">
+       <label for="Strand">Avstånd till Strand</label> 
+      <input type="range" class="custom-range" id="Strand" step="1" max="200" min="0" @input="submitBeach" v-model="inputBeach" ><span v-text="totalBeach"></span>
     </div>
     </div>
   <div class="form-row col-12">
@@ -136,10 +160,10 @@
         </div>
 
       </div>
+      
 
-      <div class="search_results">
-
-     <div class="result mt-2" v-for="myHotel in myHotels" :key="myHotel.id">
+      <template class="search_results"  v-if="myHotels.length">
+     <div id="result" class="result mt-2" v-for="myHotel in myHotels" :key="myHotel.id">
           <div class="card">
             <div class="row no-gutters">
               <div class="col-auto">
@@ -186,24 +210,34 @@
         </div>
 
 
-      </div>     
+      </template>   
+      <template v-else>
+        <br>
+        <h1>Din sökning gav inget resultat</h1>
+        </template> 
+      
       
 
     </div>  
+    
 
   </div>
 </template>
 <script>
+
 export default {
   props: ["booking", "search", "hotel"], 
   data() {
     return {
-      startDate: "2020-04-01" /*this.$store.state.booking.globalStartDate, */ ,
+      startDate: this.$store.state.booking.globalStartDate,
       cityName: this.$store.state.search.globalCity,      
-      endDate: "2020-04-03"/*this.$store.state.booking.globalEndDate*/,
-      roomCount: 2,
+      endDate: this.$store.state.booking.globalEndDate,
+      roomCount:  this.$store.state.roomCount,
       distCenter: 100,
       distBeach: 100,
+      adult: this.$store.state.booking.party.adults,
+      child: this.$store.state.booking.party.children,
+      baby: this.$store.state.booking.party.small_children,
       havePool: true,
       haveNightEntertain: false,
       haveChildrenClub: false,
@@ -218,73 +252,126 @@ export default {
    
   },
   mounted: function () {
-      this.info()
-      
+      this.defaultValue()  
+      this.info()      
     },
-    
-  methods: {    
-    testThisShit: function(startDate){
-      this.$store.commit("setGlobalStartDate", startDate);
-      console.log(this.inputStartDate)
+    filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  },
+  methods: { 
+     defaultValue: function(){
+     //props  from url länk
+    },  
+    submitStartDate: function(startDate){
+      this.$store.commit("setGlobalStartDate", startDate);  
+      this.info()    
+    },
+    submitEndDate: function(endDate){
+      this.$store.commit("setGlobalEndDate", endDate); 
+      this.info()      
     },
     cityBtn: function(City){      
-       this.$store.commit("setGlobalCity", City) ;
-       
-       this.info();  
-                   
-    },        
+       this.$store.commit("setGlobalCity", City);       
+       this.info();                     
+    },   
+    submitAdult: function(){
+      this.$store.commit("updateBookingPartyAdults", this.adult);      
+      this.info()  
+    },  
+    submitChild: function(){
+      this.$store.commit("updateBookingPartyChildren", this.child); 
+      this.info() 
+    },   
+    submitBaby: function(){
+      this.$store.commit("updateBookingPartySmallChildren", this.baby);  
+      this.info() 
+    },
+    submitRoom: function(){
+        this.$store.commit("updateRoomCount", this.roomCount); 
+        this.info() 
+    },
+     submitCenter: function(){
+        
+        this.info() 
+    },
+    submitBeach: function(){
+        
+        this.info() 
+    },
+        
     async info(){
 
      var myHeaders = new Headers();
-myHeaders.append("Authorization", "Basic dGVzdEBtYWlsLmNvbTp1c2Vy");
-myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+      myHeaders.append("Authorization", "Basic dGVzdEBtYWlsLmNvbTp1c2Vy");
+      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-var urlencoded = new URLSearchParams();
-urlencoded.append("cityName", this.cityName);
-urlencoded.append("startDate", "2020-04-01");
-urlencoded.append("endDate", "2020-04-03");
-urlencoded.append("roomCount", "2");
-urlencoded.append("distCenter", "100");
-urlencoded.append("distBeach", "100");
-urlencoded.append("havePool", "true");
-urlencoded.append("haveNightEntertain", "false");
-urlencoded.append("haveChildrenClub", "false");
-urlencoded.append("haveRestaurant", "false");
+      var urlencoded = new URLSearchParams();
+      urlencoded.append("cityName", this.cityName);
+      urlencoded.append("startDate", this.startDate);
+      urlencoded.append("endDate", this.endDate);
+      urlencoded.append("roomCount", this.roomCount);
+      urlencoded.append("distCenter", this.distCenter);
+      urlencoded.append("distBeach", this.distBeach);
+      urlencoded.append("havePool", this.havePool);
+      urlencoded.append("haveNightEntertain", this.haveNightEntertain);
+      urlencoded.append("haveChildrenClub", this.haveChildrenClub);
+      urlencoded.append("haveRestaurant", this.haveRestaurant);
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: urlencoded,
-  redirect: 'follow'
-};
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+      };
 
-fetch("http://localhost:9090/rest/filterHotel", requestOptions)
-  .then(response => response.json())
-  .then(json => {this.myHotels = json})
-  .catch(error => console.log('error', error));
-    
-    },
+      fetch("http://localhost:9090/rest/filterHotel", requestOptions)
+        .then(response => response.json())
+        .then(json => {this.myHotels = json})
+        .catch(error => console.log('error', error));
+          
+          },
   },
 
   computed: {
-
-    inputCity:{
+    totalBeach: function(){
+      return this.distBeach
+    },
+    totalCenter: function(){
+      return this.distCenter
+    },
+    inputCenter:{
       get(){
-        
-        return this.cityName;
+        return this.distCenter;
       },
       set(value){
-        console.log(this.cityName),
+        this.distCenter = value;
+      }
+    },
+    inputBeach:{
+      get(){
+        return this.distBeach;
+      },
+      set(value){
+        this.distBeach = value;
+      }
+    },
+    inputCity:{
+      get(){        
+        return this.cityName;
+      },
+      set(value){        
         this.cityName = value;        
       }
-
     },
     getCitiesArray: {
       get() {
         return this.$store.state.search.inputCities;        
       }
-    },
-
+    },   
     inputStartDate: {
       get(){
         return this.startDate;
@@ -292,7 +379,47 @@ fetch("http://localhost:9090/rest/filterHotel", requestOptions)
       set(value){
         this.startDate = value;      
       }
-    }
+    },
+     inputEndDate: {
+      get(){
+        return this.endDate;
+      },
+      set(value){
+        this.endtDate = value;      
+      }
+    },
+    inputAdult:{
+      get(){
+          return this.adult;
+      },
+      set(value){
+          this.adult = value;      
+      }
+    },
+    inputChild:{
+      get(){
+          return this.child;
+      },
+      set(value){
+          this.child = value;      
+      }
+    },
+    inputBaby:{
+      get(){
+          return this.baby;
+      },
+      set(value){
+          this.baby = value;      
+      }
+    },
+    inputRoom:{
+      get(){
+          return this.roomCount;
+      },
+      set(value){
+          this.roomCount = value;      
+      }
+    },
     
   }
 };
