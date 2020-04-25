@@ -136,10 +136,10 @@
         </div>
 
       </div>
+      
 
-      <div class="search_results">
-
-     <div class="result mt-2" v-for="myHotel in myHotels" :key="myHotel.id">
+      <template class="search_results"  v-if="myHotels.length">
+     <div id="result" class="result mt-2" v-for="myHotel in myHotels" :key="myHotel.id">
           <div class="card">
             <div class="row no-gutters">
               <div class="col-auto">
@@ -186,10 +186,16 @@
         </div>
 
 
-      </div>     
+      </template>   
+      <template v-else>
+        <br>
+        <h1>Din sökning gav inget resultat</h1>
+        </template> 
+      
       
 
     </div>  
+    
 
   </div>
 </template>

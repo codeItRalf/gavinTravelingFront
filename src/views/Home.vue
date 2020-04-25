@@ -9,9 +9,7 @@
               <select  id="City" class="form-control" name="City" v-model="City">                  
                  <option v-for="city in getCitiesArray" :key="city.id" @click="cityBtn">{{city.name | capitalize}}</option>                
               </select>
-            </div>
-            
-            
+            </div>          
             <div class="form-group">
               <label>Från:</label>
               <input
