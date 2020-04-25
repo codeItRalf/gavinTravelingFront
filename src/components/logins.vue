@@ -8,7 +8,40 @@
     </div>
 </template>
 
+
 <script>
+export default {
+    data () {
+        return {
+            username: '',
+            password: '',
+            submitted: false
+        }
+    },
+    computed: {
+        loggingIn () {
+            return this.$store.state.authentication.status.loggingIn;
+        }
+    },
+    created () {
+        // reset login status
+        this.$store.dispatch('authentication/logout');
+    },
+    methods: {
+        login () {
+            this.submitted = true;
+            const { username, password } = this;
+            const { dispatch } = this.$store;
+            if (username && password) {
+                dispatch('authentication/login', { username, password });
+            }
+        }
+    }
+};
+</script>
+
+
+ /* <script>
     export default {
         name: 'logins',
         data() {
@@ -79,4 +112,4 @@ let requestOptions = {
   }
      }
     }
-</script>
+</script>  */
