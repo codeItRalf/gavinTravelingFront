@@ -6,17 +6,18 @@
           <form @submit="onSubmit">
             <div class="form-group">
               <label for="City">Stad</label>
-              <select id="City" class="form-control"  name="City" v-model="inputCity" >
-                 <option v-for="city in getCitiesArray"  :key="city.id" @click="cityBtn" >{{city.name}}</option>                
+              <select  id="City" class="form-control" name="City" v-model="City">                  
+                 <option v-for="city in getCitiesArray" :key="city.id" @click="cityBtn">{{city.name}}</option>                
               </select>
             </div>
+            
             
             <div class="form-group">
               <label>Från:</label>
               <input
                 type="date"
                 name="startDate"
-                id="startDate"
+                id="startDate"                
                 v-model="inputStartDate"
                 @input="sdateBtn" 
                 max="3000-12-31"
@@ -69,77 +70,74 @@
 
 <script>
 import LatestBookings from "../components/LatestBookings.vue";
-export default { 
-  props: ["booking", "search"], 
+export default {   
   components: {
     LatestBookings
   },
   data() {
     return {
-      //lokalvariabel 
-      City: String,
-      startDate: Date,
+      //lokalvariabel      
+      City: "String",
+      startDate: Date,    
       endDate: Date
     };
-  },
+  }, mounted () {
+    this.defaultValue()        
+  }, 
   async created() {
-    await this.$store.dispatch('getCities');  
-   
+    await this.$store.dispatch('getCities');     
   },
+  
   methods: {
     onSubmit(evt) {
       this.preventDefault(evt);           
     },   
      sdateBtn: function(){
-       this.$store.commit("setGlobalStartDate", this.startDate);
-      
+       this.$store.commit("setGlobalStartDate", this.startDate);      
     } ,  
     endateBtn: function(){
-       this.$store.commit("setGlobalEndDate", this.endDate);
-      
+       this.$store.commit("setGlobalEndDate", this.endDate);      
     } , 
     cityBtn: function(){
-       this.$store.commit("setGlobalCity", this.City)
-      
-    }   
+       this.$store.commit("setGlobalCity", this.City)      
+    } ,
+    defaultValue: function(){
+      this.City = 'gagarin' ,        
+       this.startDate =  new Date().toISOString().substr(0, 10),    
+       this.endDate =  new Date(Date.now()+259200000).toISOString().substring(0,10)  
+    } 
   },
   computed: {
     inputCity:{
-      get(){
+      get(){        
         return this.City;
       },
-      set(value){
+      set(value){        
         this.City = value;        
       }
-
     },
     getCitiesArray: {
       get() {
         return this.$store.state.search.inputCities;        
-      }
-      
+      }      
     },    
     searchUrl(){
       return `/search/${this.inputCity}/${this.inputStartDate}/${this.inputEndDate}`
     },    
     inputStartDate: {
-      get() {
-        //return this.$store.state.search.sdates;
+      get() {       
         return this.startDate;
       },
       set(value) {
-        this.startDate = value;
-        /* this.$store.commit("updateSearchsdate", value);*/
+        this.startDate = value;       
       }
     },
     inputEndDate: {
       get() {
-        return this.endDate;
-        //return this.$store.state.search.endates;
+        return this.endDate;        
       },
       set(value) {
-        this.endDate = value;
-        //this.$store.commit("updateSearchendate", value);
+        this.endDate = value;        
       }
     }
   }
