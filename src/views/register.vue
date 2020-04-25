@@ -62,12 +62,12 @@
 export default {
   data() {
     return {
-      firstName: " ",
-      lastName: " ",
-      phoneNumber: " ",
-      eMail: " ",
-      personNumber:" ",
-      password: " ",
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      eMail: "",
+      personNumber:"",
+      password: "",
       myHotels: []
     };
   },   
