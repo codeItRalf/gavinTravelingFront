@@ -45,46 +45,66 @@
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="inputAdult">Vuxna</label>
-          <select id="inputAdult" class="form-control" >
+          <select id="inputAdult" class="form-control" v-model="inputAdult"  >
             <option selected>Välj...</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option value="1" @click="submitAdult">1</option>
+            <option value="2" @click="submitAdult">2</option>
+            <option value="3" @click="submitAdult">3</option>
+            <option value="4" @click="submitAdult">4</option>
+            <option value="5" @click="submitAdult">5</option>
+            <option value="6" @click="submitAdult">6</option>
+            <option value="7" @click="submitAdult">7</option>
+            <option value="8" @click="submitAdult">8</option>
+            <option value="9" @click="submitAdult">9</option>
+            <option value="10" @click="submitAdult">10</option>
           </select>
     </div>
     <div class="form-group col-md-3">
       <label for="inputChild">Barn</label>
-          <select id="inputChild" class="form-control">
+          <select id="inputChild" class="form-control" v-model="inputChild">
             <option selected>Välj...</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option value="1" @click="submitChild">1</option>
+            <option value="2" @click="submitChild">2</option>
+            <option value="3" @click="submitChild">3</option>
+            <option value="4" @click="submitChild">4</option>
+            <option value="5" @click="submitChild">5</option>
+            <option value="6" @click="submitChild">6</option>
+            <option value="7" @click="submitChild">7</option>
+            <option value="8" @click="submitChild">8</option>
+            <option value="9" @click="submitChild">9</option>
+            <option value="10" @click="submitChild">10</option>
           </select>
     </div>
     <div class="form-group col-md-3">
       <label for="inputBaby">Små Barn</label>
-          <select id="inputBaby" class="form-control" >
+          <select id="inputBaby" class="form-control" v-model="inputBaby">
             <option selected>Välj...</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option value="1" @click="submitBaby">1</option>
+            <option value="2" @click="submitBaby">2</option>
+            <option value="3" @click="submitBaby">3</option>
+            <option value="4" @click="submitBaby">4</option>
+            <option value="5" @click="submitBaby">5</option>
+            <option value="6" @click="submitBaby">6</option>
+            <option value="7" @click="submitBaby">7</option>
+            <option value="8" @click="submitBaby">8</option>
+            <option value="9" @click="submitBaby">9</option>
+            <option value="10" @click="submitBaby">10</option>
           </select>
     </div>
     <div class="form-group col-md-3">
       <label for="inputRoom">Rum</label>
-          <select id="inputRoom" class="form-control" >
+          <select id="inputRoom" class="form-control" v-model="inputRoom">
             <option selected>Välj...</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option value="1" @click="submitRoom">1</option>
+            <option value="2" @click="submitRoom">2</option>
+            <option value="3" @click="submitRoom">3</option>
+            <option value="4" @click="submitRoom">4</option>
+            <option value="5" @click="submitRoom">5</option>
+            <option value="6" @click="submitRoom">6</option>
+            <option value="7" @click="submitRoom">7</option>
+            <option value="8" @click="submitRoom">8</option>
+            <option value="9" @click="submitRoom">9</option>
+            <option value="10" @click="submitRoom">10</option>
           </select>
     </div>
   </div>
@@ -208,9 +228,12 @@ export default {
       startDate: this.$store.state.booking.globalStartDate,
       cityName: this.$store.state.search.globalCity,      
       endDate: this.$store.state.booking.globalEndDate,
-      roomCount: 2,
-      distCenter: 100,
-      distBeach: 100,
+      roomCount: Number,
+      distCenter: Number,
+      distBeach: Number,
+      adult: Number,
+      child: Number,
+      baby: Number,
       havePool: true,
       haveNightEntertain: false,
       haveChildrenClub: false,
@@ -246,11 +269,22 @@ export default {
       this.$store.commit("setGlobalEndDate", endDate);      
     },
     cityBtn: function(City){      
-       this.$store.commit("setGlobalCity", City) ;
-       
-       this.info();  
-                   
-    },        
+       this.$store.commit("setGlobalCity", City);       
+       this.info();                     
+    },   
+    submitAdult: function(adult){
+      this.$store.commit("updateBookingPartyAdults", adult);       
+    },  
+    submitChild: function(child){
+      this.$store.commit("updateBookingPartyChildren", child); 
+    },   
+    submitBaby: function(baby){
+      this.$store.commit("updateBookingPartySmallChildren", baby);  
+    },
+    submitRoom: function(roomCount){
+        this.$store.commit("updateRoomCount", roomCount); 
+    },
+        
     async info(){
 
      var myHeaders = new Headers();
@@ -285,23 +319,19 @@ export default {
   },
 
   computed: {
-
     inputCity:{
       get(){        
         return this.cityName;
       },
-      set(value){
-        console.log(this.cityName),
+      set(value){        
         this.cityName = value;        
       }
-
     },
     getCitiesArray: {
       get() {
         return this.$store.state.search.inputCities;        
       }
-    },
-
+    },   
     inputStartDate: {
       get(){
         return this.startDate;
@@ -310,7 +340,6 @@ export default {
         this.startDate = value;      
       }
     },
-
      inputEndDate: {
       get(){
         return this.endDate;
@@ -318,7 +347,39 @@ export default {
       set(value){
         this.endtDate = value;      
       }
-    }
+    },
+    inputAdult:{
+      get(){
+          return this.adult;
+      },
+      set(value){
+          this.adult = value;      
+      }
+    },
+    inputChild:{
+      get(){
+          return this.child;
+      },
+      set(value){
+          this.child = value;      
+      }
+    },
+    inputBaby:{
+      get(){
+          return this.baby;
+      },
+      set(value){
+          this.baby = value;      
+      }
+    },
+    inputRoom:{
+      get(){
+          return this.roomCount;
+      },
+      set(value){
+          this.roomCount = value;      
+      }
+    },
     
   }
 };

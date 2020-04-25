@@ -23,10 +23,11 @@ export default new Vuex.Store({
       globalEndDate: Date,
       customerId: 0,
       party: {
-        adults: 2,
-        children: 2,
-        small_children: 2,
+        adults: Number,
+        children: Number,
+        small_children: Number,
       },
+      roomCount: Number,
       room: {
         enkel: {
           antal: 0,
@@ -62,10 +63,17 @@ export default new Vuex.Store({
     setGlobalEndDate(state, value) {
       state.booking.globalEndDate = value;
     },
-    updateBookingParty(state, value) {
-      state.booking.party.adults = value[0];
-      state.booking.party.children = value[1];
-      state.booking.party.small_children = value[2];
+    updateBookingPartyAdults(state, value) {
+      state.booking.party.adults = value;      
+    },
+    updateBookingPartyChildren(state, value) {      
+      state.booking.party.children = value;      
+    },
+    updateBookingPartySmallChildren(state, value) {     
+      state.booking.party.small_children = value;
+    },
+    updateRoomCount(state, value) {     
+      state.roomCount = value;
     },
     updateBookingCustomer(state, value) {
       state.booking.customerId = value;
