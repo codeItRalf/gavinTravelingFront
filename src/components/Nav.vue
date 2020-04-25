@@ -12,40 +12,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">Gavins Travelling</a>
+      <a class="navbar-brand">Gavins Travelling</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-          <a class="nav-link" href="#">
-            <router-link to="/">Home</router-link>
-          </a>
+          <router-link class="nav-link" to="/">Home</router-link>
+        </li>        
+        <li class="nav-item">
+          <router-link class="nav-link" to="/hotel/1">Hotel</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <router-link to="/search">Search</router-link>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <router-link to="/hotel/1">Hotel</router-link>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <router-link to="/booking/1">Booking</router-link>
-          </a>
+          <router-link class="nav-link" to="/booking/1">Booking</router-link>
         </li>
       </ul>
 
       <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <router-link to="/register">Bli Kund</router-link>
-          </a>
+          <router-link class="nav-link" to="/register">Bli Kund</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <router-link to="/login">Login</router-link>
-          </a>
+          <router-link class="nav-link" to="/login">Login</router-link>
         </li>
       </ul>
     </div>

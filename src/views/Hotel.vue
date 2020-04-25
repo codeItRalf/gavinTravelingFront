@@ -151,12 +151,15 @@ export default {
       await this.$store.dispatch('getHotel', this.$route.params.id);
       await this.$store.dispatch('getRooms', this.$route.params.id);
       this.$store.state.booking;
+      /*MOVE IT MOVE IT */
+
     },
   methods: {
     goToBooking: function(){
       this.$store.commit("updateBookingRoomPrice", this.rooms)
-      this.$store.commit("updateBookingHotel", this.hotel);
-      //this.$store.commit("updateBookingParty", this.party);
+      this.$store.commit("setExtraBedEnkel", 0);
+      this.$store.commit("setExtraBedDubbel", 0);
+      this.$store.commit("setExtraBedFamilje", 0);
     },
     changeAntalEnkel(e){
       this.$store.commit("antalEnkel", e.target.value);
@@ -201,10 +204,10 @@ export default {
     },
     rooms: {
       get(){
-        return this.$store.state.roomTypesByHotelId;
+        return this.$store.state.rooms;
       },
-    },
-  },
+    }
+  }
 };
 </script>
 
