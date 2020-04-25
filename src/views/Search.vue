@@ -230,7 +230,7 @@ export default {
       startDate: this.$store.state.booking.globalStartDate,
       cityName: this.$store.state.search.globalCity,      
       endDate: this.$store.state.booking.globalEndDate,
-      roomCount: Number,
+      roomCount:  this.$store.state.roomCount,
       distCenter: 100,
       distBeach: 100,
       adult: Number,

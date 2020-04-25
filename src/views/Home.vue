@@ -78,7 +78,8 @@ export default {
       //lokalvariabel      
       City: "String",
       startDate: Date,    
-      endDate: Date
+      endDate: Date,
+      roomCount: 1
     };
   }, mounted () {
     this.defaultValue()        
@@ -131,6 +132,7 @@ export default {
       this.$store.commit("setGlobalCity", this.City)
       this.$store.commit("setGlobalStartDate", this.startDate);
       this.$store.commit("setGlobalEndDate", this.endDate); 
+      this.$store.commit("updateRoomCount", this.roomCount); 
       return `/search/${this.inputCity}/${this.inputStartDate}/${this.inputEndDate}`
     },    
     inputStartDate: {
