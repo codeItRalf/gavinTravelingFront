@@ -23,7 +23,7 @@
                 name="startDate"
                 id="startDate"
                 v-model="inputStartDate"
-                 @input="testThisShit" 
+                 @input="submitStartDate" 
                 class="form-control"
               />
     </div>    
@@ -33,7 +33,8 @@
                 type="date"
                 name="endDate"
                 id="enDate"
-                
+                v-model="inputEndDate"
+                @input="submitEndDate" 
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
@@ -204,9 +205,9 @@ export default {
   props: ["booking", "search", "hotel"], 
   data() {
     return {
-      startDate: "2020-04-01" /*this.$store.state.booking.globalStartDate, */ ,
+      startDate: this.$store.state.booking.globalStartDate,
       cityName: this.$store.state.search.globalCity,      
-      endDate: "2020-04-03"/*this.$store.state.booking.globalEndDate*/,
+      endDate: this.$store.state.booking.globalEndDate,
       roomCount: 2,
       distCenter: 100,
       distBeach: 100,
@@ -224,8 +225,8 @@ export default {
    
   },
   mounted: function () {
-      this.info()
-      
+      this.defaultValue()  
+      this.info()      
     },
     filters: {
     capitalize: function (value) {
@@ -234,10 +235,15 @@ export default {
       return value.charAt(0).toUpperCase() + value.slice(1)
     }
   },
-  methods: {    
-    testThisShit: function(startDate){
-      this.$store.commit("setGlobalStartDate", startDate);
-      console.log(this.inputStartDate)
+  methods: { 
+     defaultValue: function(){
+     //props  from url länk
+    },  
+    submitStartDate: function(startDate){
+      this.$store.commit("setGlobalStartDate", startDate);     
+    },
+    submitEndDate: function(endDate){
+      this.$store.commit("setGlobalEndDate", endDate);      
     },
     cityBtn: function(City){      
        this.$store.commit("setGlobalCity", City) ;
@@ -248,41 +254,40 @@ export default {
     async info(){
 
      var myHeaders = new Headers();
-myHeaders.append("Authorization", "Basic dGVzdEBtYWlsLmNvbTp1c2Vy");
-myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+      myHeaders.append("Authorization", "Basic dGVzdEBtYWlsLmNvbTp1c2Vy");
+      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-var urlencoded = new URLSearchParams();
-urlencoded.append("cityName", this.cityName);
-urlencoded.append("startDate", "2020-04-01");
-urlencoded.append("endDate", "2020-04-03");
-urlencoded.append("roomCount", "2");
-urlencoded.append("distCenter", "100");
-urlencoded.append("distBeach", "100");
-urlencoded.append("havePool", "true");
-urlencoded.append("haveNightEntertain", "false");
-urlencoded.append("haveChildrenClub", "false");
-urlencoded.append("haveRestaurant", "false");
+      var urlencoded = new URLSearchParams();
+      urlencoded.append("cityName", this.cityName);
+      urlencoded.append("startDate", this.startDate);
+      urlencoded.append("endDate", this.endDate);
+      urlencoded.append("roomCount", this.roomCount);
+      urlencoded.append("distCenter", this.distCenter);
+      urlencoded.append("distBeach", this.distBeach);
+      urlencoded.append("havePool", this.havePool);
+      urlencoded.append("haveNightEntertain", this.haveNightEntertain);
+      urlencoded.append("haveChildrenClub", this.haveChildrenClub);
+      urlencoded.append("haveRestaurant", this.haveRestaurant);
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: urlencoded,
-  redirect: 'follow'
-};
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+      };
 
-fetch("http://localhost:9090/rest/filterHotel", requestOptions)
-  .then(response => response.json())
-  .then(json => {this.myHotels = json})
-  .catch(error => console.log('error', error));
-    
-    },
+      fetch("http://localhost:9090/rest/filterHotel", requestOptions)
+        .then(response => response.json())
+        .then(json => {this.myHotels = json})
+        .catch(error => console.log('error', error));
+          
+          },
   },
 
   computed: {
 
     inputCity:{
-      get(){
-        
+      get(){        
         return this.cityName;
       },
       set(value){
@@ -303,6 +308,15 @@ fetch("http://localhost:9090/rest/filterHotel", requestOptions)
       },
       set(value){
         this.startDate = value;      
+      }
+    },
+
+     inputEndDate: {
+      get(){
+        return this.endDate;
+      },
+      set(value){
+        this.endtDate = value;      
       }
     }
     

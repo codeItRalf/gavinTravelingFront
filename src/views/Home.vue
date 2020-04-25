@@ -36,7 +36,7 @@
                 class="form-control"
               />
             </div>            
-            <router-link :to="searchUrl"   class="btn btn-primary">Sök</router-link>
+            <router-link :to="searchUrl" class="btn btn-primary">Sök</router-link>
           </form>
         </div>
         <ol class="carousel-indicators">
@@ -72,6 +72,7 @@ export default {
   components: {
     LatestBookings
   },
+  props: ["booking", "search", "hotel"], 
   data() {
     return {
       //lokalvariabel      
@@ -89,7 +90,7 @@ export default {
   methods: {
     onSubmit(evt) {
       this.preventDefault(evt);           
-    },   
+    },     
      sdateBtn: function(){
        this.$store.commit("setGlobalStartDate", this.startDate);      
     } ,  
@@ -127,6 +128,9 @@ export default {
       }      
     },    
     searchUrl(){
+      this.$store.commit("setGlobalCity", this.City)
+      this.$store.commit("setGlobalStartDate", this.startDate);
+      this.$store.commit("setGlobalEndDate", this.endDate); 
       return `/search/${this.inputCity}/${this.inputStartDate}/${this.inputEndDate}`
     },    
     inputStartDate: {
