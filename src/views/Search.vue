@@ -114,7 +114,7 @@
     <div class="form-group col-md-6">
       <label for="Centrum">Avstånd till Centrum</label>
       
-      <input type="range" class="custom-range" id="Centrum" step="1" max="200" min="0" @input="submitcenter" v-model="inputCenter"><span v-text="totalCenter"></span>
+      <input type="range" class="custom-range" id="Centrum" step="1" max="200" min="0" @input="submitCenter" v-model="inputCenter"><span v-text="totalCenter"></span>
     </div>
     <div class="form-group col-md-6">
        <label for="Strand">Avstånd till Strand</label> 
@@ -124,19 +124,19 @@
   <div class="form-row col-12">
     <div class="form-group col-md-6">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-        <label class="form-check-label" for="inlineCheckbox1">Pool</label>
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" @click="submitPool" unchecked-value="true" v-model="havePool">
+        <label class="form-check-label" for="inlineCheckbox1" >Pool</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" @click="submitEnter" unchecked-value="true"  v-model="haveNightEntertain">
         <label class="form-check-label" for="inlineCheckbox2">Kvällsunderhållning</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3"  @click="submitClub" unchecked-value="true"  v-model="haveChildrenClub">
         <label class="form-check-label" for="inlineCheckbox3">Barnklubb</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" @click="submitRes" v-model="haveRestaurant" unchecked-value="true">
         <label class="form-check-label" for="inlineCheckbox3">Restaurang</label>
       </div> 
       </div>  
@@ -239,9 +239,9 @@ export default {
       child: this.$store.state.booking.party.children,
       baby: this.$store.state.booking.party.small_children,
       havePool: true,
-      haveNightEntertain: false,
-      haveChildrenClub: false,
-      haveRestaurant: false,
+      haveNightEntertain: true,
+      haveChildrenClub: true,
+      haveRestaurant: true,
       myHotels: [ ]
  
       
@@ -298,10 +298,24 @@ export default {
         
         this.info() 
     },
-    submitBeach: function(){
-        
+    submitBeach: function(){        
         this.info() 
     },
+    submitPool: function(){        
+        this.info()         
+    },
+     submitEnter: function(){        
+        this.info()         
+    },
+    submitClub: function(){        
+        this.info() 
+        
+    },
+    submitRes: function(){        
+        this.info() 
+        
+    },
+    
         
     async info(){
 

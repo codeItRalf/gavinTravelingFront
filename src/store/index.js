@@ -11,7 +11,7 @@ export default new Vuex.Store({
     authenticated: false,
     search: {
       inputCities: [],
-      globalCity: String,
+      globalCity: String      
     },
     hotel: [],
     booking: {
