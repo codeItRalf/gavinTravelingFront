@@ -14,20 +14,30 @@
             type="text"
             id="RegisterFormFirstName"
             class="form-control"
-            placeholder="Förstnamn"
+            placeholder="Förstnamn" 
+            v-bind:value="firstName"
+  v-on:input="firstName = $event.target.value"
+            required
           />
         </div>
         <div class="col">
           <!-- Last name -->
-          <input type="text" id="RegisterFormLastName" class="form-control" placeholder="Efternamn" />
+          <input type="text" id="RegisterFormLastName" class="form-control" placeholder="Efternamn"  v-bind:value="lastName"
+  v-on:input="lastName = $event.target.value" required/>
         </div>
       </div>
 
       <!-- E-mail -->
-      <input type="email" id="RegisterFormEmail" class="form-control mb-4" placeholder="E-post" />
+      <input type="email" id="RegisterFormEmail" class="form-control mb-4" placeholder="E-post"  v-bind:value="eMail"
+  v-on:input="eMail = $event.target.value"  required/>
 
       <!-- TelefonNumber -->
-      <input type="text" id="RegisterFormTel" class="form-control mb-4" placeholder="Telefonnummer" />
+      <input type="tel" id="RegisterFormTel" class="form-control mb-4"   placeholder="Telefonnummer"  v-bind:value="phoneNumber"
+  v-on:input="phoneNumber = $event.target.value" required />
+
+       <!-- TelefonNumber -->
+      <input type="tel" id="RegisterFormPerson" class="form-control mb-4" v-bind:value="personNumber"
+  v-on:input="personNumber = $event.target.value"  placeholder="Personnummer XXXX-XX-XX-XXXX" required />
 
       <!-- Password -->
       <input
@@ -36,11 +46,13 @@
         class="form-control mb-4"
         placeholder="Lösenord"
         aria-describedby="RegisterFormPasswordHelpBlock"
+        v-bind:value="password"
+  v-on:input="password = $event.target.value"
       />
       <small id="RegisterFormPasswordHelpBlock" class="form-text text-muted mb-4"></small>
 
       <!-- Sign up button -->
-      <button class="btn btn-info my-4 btn-block" type="submit">Skapa ett konto</button>
+      <button class="btn btn-info my-4 btn-block" @click="submitReg" >Skapa ett konto</button>
 
       <hr />
     </div>
@@ -49,7 +61,55 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      firstName: " ",
+      lastName: " ",
+      phoneNumber: " ",
+      eMail: " ",
+      personNumber: " ",
+      password: "",
+      myHotels: []
+    };
+  },   
+  methods: { 
+    submitReg: function(){         
+    this.sendRegister() 
+    },
+    async sendRegister(){
+
+var myHeaders = new Headers();
+      myHeaders.append("Authorization", "Basic dGVzdEBtYWlsLmNvbTp1c2Vy");
+      myHeaders.append("Content-Type", "application/json");
+
+     let data = {
+       "firstName" : (this.firstName),
+       "lastName" : (this.lastName),
+       "phoneNumber" : (this.phoneNumber),
+       "eMail" : (this.eMail),
+       "personNumber" : (this.phoneNumber),
+       "password" : (this.password)
+      } ;
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(data),
+        redirect: 'follow'
+      };
+
+      fetch("http://localhost:9090/rest/register", requestOptions)
+              .then(response => response.json())
+        .then(json => {this.myHotels = json})
+        .catch(error => console.log('error', error));
+          
+          },
   }
-};
+
+
+
+
+
+  
+    
+  }
 </script>
