@@ -63,6 +63,7 @@
       <label for="inputChild">Barn</label>
           <select id="inputChild" class="form-control" v-model="inputChild">
             <option selected>Välj...</option>
+             <option value="0" @click="submitBaby">0</option>
             <option value="1" @click="submitChild">1</option>
             <option value="2" @click="submitChild">2</option>
             <option value="3" @click="submitChild">3</option>
@@ -79,6 +80,7 @@
       <label for="inputBaby">Små Barn</label>
           <select id="inputBaby" class="form-control" v-model="inputBaby">
             <option selected>Välj...</option>
+             <option value="0" @click="submitBaby">0</option>
             <option value="1" @click="submitBaby">1</option>
             <option value="2" @click="submitBaby">2</option>
             <option value="3" @click="submitBaby">3</option>
@@ -272,17 +274,17 @@ export default {
        this.$store.commit("setGlobalCity", City);       
        this.info();                     
     },   
-    submitAdult: function(adult){
-      this.$store.commit("updateBookingPartyAdults", adult);       
+    submitAdult: function(){
+      this.$store.commit("updateBookingPartyAdults", this.adult);       
     },  
-    submitChild: function(child){
-      this.$store.commit("updateBookingPartyChildren", child); 
+    submitChild: function(){
+      this.$store.commit("updateBookingPartyChildren", this.child); 
     },   
-    submitBaby: function(baby){
-      this.$store.commit("updateBookingPartySmallChildren", baby);  
+    submitBaby: function(){
+      this.$store.commit("updateBookingPartySmallChildren", this.baby);  
     },
-    submitRoom: function(roomCount){
-        this.$store.commit("updateRoomCount", roomCount); 
+    submitRoom: function(){
+        this.$store.commit("updateRoomCount", this.roomCount); 
     },
         
     async info(){
