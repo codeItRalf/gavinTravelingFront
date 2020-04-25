@@ -15,12 +15,10 @@
       </div>
       <div class="col-md-8 mx-auto card borderless bg-transparent">
         <ul>
-          <li class="list-group-item w-75 text-left">
+          <li  class="list-group-item w-75 text-left">
             <h5 class="text-left">Rum</h5>
-          </li>
-          <li v-if="enkelRum > 0" class="list-group-item w-75 text-left">
-            <div class="row">
-              <div class="col-md-6">
+            <div class="row border-bottom" v-if="enkelRum > 0">
+              <div class="col-md-6" >
                 <p>Antal {{rooms[1].roomType | capitalize}}: {{enkelRum}}</p>
                 <p>Pris: {{enkelRumPris}}kr</p>
               </div>
@@ -35,9 +33,7 @@
                 />
               </div>
             </div>
-          </li>
-          <li v-if="dubbelRum > 0" class="list-group-item w-75 text-left">
-            <div class="row">
+            <div class="row border-bottom my-2" v-if="dubbelRum > 0">
               <div class="col-md-6">
                 <p>Antal {{rooms[0].roomType | capitalize}}: {{dubbelRum}}</p>
                 <p>Pris: {{dubbelRumPris}}kr</p>
@@ -53,9 +49,7 @@
                 />
               </div>
             </div>
-          </li>
-          <li v-if="familjeRum > 0" class="list-group-item w-75 text-left">
-            <div class="row">
+            <div class="row my-2" v-if="familjeRum > 0">
               <div class="col-md-6">
                 <p>Antal {{rooms[2].roomType | capitalize}}: {{familjeRum}}</p>
                 <p>Pris: {{familjeRumPris}}kr</p>
@@ -131,7 +125,13 @@
               v-if="$store.state.booking.party.children > 0"
             >Småbarn: {{$store.state.booking.party.children}}</p>
           </li>
-          <li class="list-group-item w-75 text-left">Total pris: {{calculateTotal}}</li>
+          <li class="list-group-item w-75 text-left">
+            <h6 class="my-1">Moms (25%): {{calculateTotal * 0.25}}kr</h6>
+            <h5 class="my-1">Total pris: {{calculateTotal}}kr</h5>
+          </li>
+          <li class="list-group-item w-75">
+            <button class="btn btn-primary">Boka nu för fan!</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -157,9 +157,11 @@ export default {
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
   },
-  created() {
-    this.$store.state.booking;
-  },
+  data() {
+      return {
+        totalPris: 0
+      }
+    },
   computed: {
     enkelRum: {
       get() {
@@ -242,20 +244,20 @@ export default {
     calculateTotal: {
       get() {
         return (
-          this.$store.state.booking.room.enkel.antal * this.rooms[1].price +
-          this.$store.state.booking.room.dubbel.antal * this.rooms[0].price +
-          this.$store.state.booking.room.familje.antal * this.rooms[2].price +
-          this.$store.state.booking.room.enkel.extraBed * 250 +
-          this.$store.state.booking.room.dubbel.extraBed * 250 +
-          this.$store.state.booking.room.familje.extraBed * 250 +
-          this.$store.state.booking.halfPension *
-            this.$store.state.hotel.pensionHalfPrice +
-          this.$store.state.booking.fullPension *
-            this.$store.state.hotel.pensionfullPrice +
-          this.$store.state.booking.halfPension *
-            this.$store.state.hotel.allInclusive
+          (this.$store.state.booking.room.enkel.antal * this.rooms[1].price) +
+          (this.$store.state.booking.room.dubbel.antal * this.rooms[0].price) +
+          (this.$store.state.booking.room.familje.antal * this.rooms[2].price) +
+          (this.$store.state.booking.room.enkel.extraBed * 250) +
+          (this.$store.state.booking.room.dubbel.extraBed * 250) +
+          (this.$store.state.booking.room.familje.extraBed * 250) +
+          (this.$store.state.booking.halfPension *
+            this.$store.state.hotel.pensionHalfPrice) +
+          (this.$store.state.booking.fullPension *
+            this.$store.state.hotel.pensionFullPrice) +
+          (this.$store.state.booking.allInclusive *
+            this.$store.state.hotel.allInclusive)
         );
-      }
+      },
     },
     halvPension: {
       get() {
@@ -283,13 +285,11 @@ export default {
     },
     maxTillvalHalvPension: {
       get() {
-        return (
-          this.$store.state.booking.party.adults +
+        return (this.$store.state.booking.party.adults +
           this.$store.state.booking.party.children +
           this.$store.state.booking.party.small_children -
           this.$store.state.booking.fullPension -
-          this.$store.state.booking.allInclusive
-        );
+          this.$store.state.booking.allInclusive);
       }
     },
     maxTillvalFullPension: {

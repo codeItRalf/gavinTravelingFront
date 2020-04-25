@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import createPersistedState from 'vuex-persistedstate'
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
@@ -23,9 +23,9 @@ export default new Vuex.Store({
       globalEndDate: Date,
       customerId: 0,
       party: {
-        adults: Number,
-        children: Number,
-        small_children: Number,
+        adults: 0,
+        children: 0,
+        small_children: 0,
       },
       roomCount: Number,
       room: {
@@ -64,15 +64,15 @@ export default new Vuex.Store({
       state.booking.globalEndDate = value;
     },
     updateBookingPartyAdults(state, value) {
-      state.booking.party.adults = value;      
+      state.booking.party.adults = parseInt(value);
     },
-    updateBookingPartyChildren(state, value) {      
-      state.booking.party.children = value;      
+    updateBookingPartyChildren(state, value) {
+      state.booking.party.children = parseInt(value);
     },
-    updateBookingPartySmallChildren(state, value) {     
-      state.booking.party.small_children = value;
+    updateBookingPartySmallChildren(state, value) {
+      state.booking.party.small_children = parseInt(value);
     },
-    updateRoomCount(state, value) {     
+    updateRoomCount(state, value) {
       state.roomCount = value;
     },
     updateBookingCustomer(state, value) {
@@ -117,13 +117,13 @@ export default new Vuex.Store({
       state.bookedRooms = value;
     },
     setHalfPension(state, value) {
-      state.booking.halfPension = value;
+      state.booking.halfPension = parseInt(value);
     },
     setFullPension(state, value) {
-      state.booking.fullPension = value;
+      state.booking.fullPension = parseInt(value);
     },
     setAllInclusive(state, value) {
-      state.booking.allInclusive = value;
+      state.booking.allInclusive = parseInt(value); 
     },
   },
   actions: {

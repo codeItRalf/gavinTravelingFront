@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid bgimage">
     <div class="row justify-content-center">
       <div class="col-md-6 col-12 mt-1">
         <img class="img-fluid" src="https://via.placeholder.com/500x300" alt="Hotel Image"/>
@@ -8,10 +8,10 @@
         <h5 class="d-block text-center">Välkommen till Hotell {{ hotel.name | capitalize}}</h5>
         <h6><i :class="starIcon" v-for="i in hotel.stars" :key="i"></i></h6>
         <ul class="nav nav-tabs">
-          <li class="active border rounded-top mr-2"><a data-toggle="tab" href="#home">Home</a></li>
-          <li class="border rounded-top"><a data-toggle="tab" href="#adress">Kontakta oss</a></li>
+          <li class="active border rounded-top mr-2 bg-info"><a class="text-body" data-toggle="tab" href="#home">Home</a></li>
+          <li class="border rounded-top bg-info"><a class="text-body" data-toggle="tab" href="#adress">Kontakta oss</a></li>
         </ul>
-        <div class="tab-content">
+        <div class="tab-content bg-info">
           <div id="home" class="tab-pane in active">
             <span v-if="hotel.pool == '1' || 
               hotel.childrenClub == '1' || 
@@ -45,7 +45,7 @@
       </div>
     </div>
     
-    <div class="card w-75 mx-auto">
+    <div class="card mx-auto">
       <div class="card-body row">
         <div class="col-md-3 mx-auto">
           <img
@@ -211,8 +211,25 @@ export default {
 };
 </script>
 
-<style src="@/style.css">
-.carousel-inner img {
-  margin: auto;
+<style scoped>
+.bgimage {
+  /* The image used */
+  background-image: url("https://img.guidebook-sweden.com/helsingborgs-kommun/kaernan.jpg");
+
+  /* Half height */
+  height: 50%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.card {
+  width: 75% !important;
+}
+@media screen and (min-width: 992px){
+  .card {
+    width: 50% !important;
+  }    
 }
 </style>
