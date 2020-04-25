@@ -7,7 +7,7 @@
             <div class="form-group">
               <label for="City">Stad</label>
               <select  id="City" class="form-control" name="City" v-model="City">                  
-                 <option v-for="city in getCitiesArray" :key="city.id" @click="cityBtn">{{city.name}}</option>                
+                 <option v-for="city in getCitiesArray" :key="city.id" @click="cityBtn">{{city.name | capitalize}}</option>                
               </select>
             </div>
             
@@ -102,10 +102,17 @@ export default {
        this.$store.commit("setGlobalCity", this.City)      
     } ,
     defaultValue: function(){
-      this.City = 'gagarin' ,        
+      this.City = 'Gagarin' ,        
        this.startDate =  new Date().toISOString().substr(0, 10),    
        this.endDate =  new Date(Date.now()+259200000).toISOString().substring(0,10)  
     } 
+  },
+   filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
   },
   computed: {
     inputCity:{

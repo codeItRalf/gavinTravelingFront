@@ -13,7 +13,7 @@
       <label for="inputState">Stad</label>
          
               <select id="City" class="form-control" @click="cityBtn"  name="cityName" v-model="inputCity" v-bind:value="cityName">                  
-                 <option v-for="cityName in getCitiesArray" :key="cityName.id" >{{cityName.name}}</option>                
+                 <option v-for="cityName in getCitiesArray" :key="cityName.id" >{{cityName.name| capitalize}}</option>                
               </select>
     </div>
     <div class="form-group col-md-4">
@@ -221,7 +221,13 @@ export default {
       this.info()
       
     },
-    
+    filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  },
   methods: {    
     testThisShit: function(startDate){
       this.$store.commit("setGlobalStartDate", startDate);
