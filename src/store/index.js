@@ -9,7 +9,6 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     rooms: [],
-    authenticated: false,
     search: {
       inputCities: [],
       globalCity: String,
@@ -155,5 +154,5 @@ export default new Vuex.Store({
   },
   modules: {
     authentication
-  },
+   }
 });

@@ -1,4 +1,4 @@
-import config from '../_helpers/index' 
+import {apiUrl} from '../_helpers/api-config' 
 import { handleResponse } from '../_helpers'
 
 export const userService = {
@@ -13,15 +13,15 @@ function login(eMail, password) {
         body: JSON.stringify({ eMail, password })
     };
 
-    return fetch(`${config.apiUrl}/login`, requestOptions)
+    return fetch(`${apiUrl}/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
+            console.log(user)
             // login successful if there's a jwt token in the response
-            if (user.token) {
+            if (user.tokenId) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
             }
-
             return user;
         });
 }
@@ -29,7 +29,10 @@ function login(eMail, password) {
 function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('user');
+    console.log("Logout called and user removed")
 }
+
+
 
 
 

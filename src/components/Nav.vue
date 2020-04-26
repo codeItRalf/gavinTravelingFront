@@ -30,7 +30,7 @@
           <router-link class="nav-link" to="/register">Bli Kund</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/login">Login</router-link>
+          <router-link disabled="loggingIn" class="nav-link" to="/login">Login</router-link>
         </li>
       </ul>
     </div>
@@ -39,6 +39,11 @@
 
 <script>
 export default {
-  name: "Nav"
+  name: "Nav",
+  computed:{
+   loggingIn() {
+            return this.$store.state.authentication.status.loggingIn
+        }
+  }
 };
 </script>
