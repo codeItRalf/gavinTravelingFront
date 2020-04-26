@@ -8,11 +8,13 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     rooms: [],
+    roomsToBook: [],
     authenticated: false,
     search: {
       inputCities: [],
       globalCity: String,
     },
+    availableRooms: [],
     hotel: [],
     booking: {
       hotel: {
@@ -125,6 +127,9 @@ export default new Vuex.Store({
     setAllInclusive(state, value) {
       state.booking.allInclusive = parseInt(value); 
     },
+    setAvailableRooms(state, value){
+      state.availableRooms = value;
+    }
   },
   actions: {
     getHotel: async function({ commit }, id) {
@@ -145,11 +150,11 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setCities", json);
     },
-    getBookedRooms: async function({ commit }) {
-      let url = "http://localhost:9090/rest/booked-rooms";
+    getAvailableRooms: async function({ commit }, value) {
+      let url = "http://localhost:9090/rest/room-types/" + value[0] + "/" + value[1] + "/" + value[2];      
       const result = await fetch(url);
       const json = await result.json();
-      commit("setBookedRooms", json);
+      commit("setAvailableRooms", json);
     },
   },
   modules: {},

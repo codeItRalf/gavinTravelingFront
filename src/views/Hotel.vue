@@ -55,7 +55,8 @@
         </div>
         <div class="col-md-6 col-12">
           <h6 class="card-title text-left">{{ rooms[1].roomType | capitalize }}</h6>
-          <p class="card-text text-left">Pris: från {{ rooms[1].price }} kr per natt</p>
+          <p class="card-text text-left my-2">Pris: från {{ rooms[1].price }} kr per natt</p>
+          <p class="card-text text-left">Lediga rum av denna typ: {{maxEnkelRum}}</p>
         </div>
         <div class="col-md-3 col-12 mx-auto my-auto">
           <div class="col-12">
@@ -67,7 +68,7 @@
               type="number"
               v-model="antalEnkelrum"
               min="0"
-              max="30"
+              :max="maxEnkelRum"
               step="1"
             />
           </div>
@@ -82,7 +83,8 @@
         </div>
         <div class="col-md-6 col-12">
           <h6 class="card-title text-left">{{ rooms[0].roomType | capitalize }}</h6>
-          <p class="card-text text-left">Pris: från {{ rooms[0].price }} kr per natt</p>
+          <p class="card-text text-left my-2">Pris: från {{ rooms[0].price }} kr per natt</p>
+          <p class="card-text text-left">Lediga rum av denna typ: {{maxDubbelRum}}</p>
         </div>
         <div class="col-md-3 col-12 mx-auto my-auto">
           <div class="col-12">
@@ -94,7 +96,7 @@
               type="number"
               v-model="antalDubbelrum"
               min="0"
-              max="30"
+              :max="maxDubbelRum"
               step="1"
               
             />
@@ -110,7 +112,8 @@
         </div>
         <div class="col-md-6 col-12">
           <h6 class="card-title text-left">{{ rooms[2].roomType | capitalize }}</h6>
-          <p class="card-text text-left">Pris: från {{ rooms[2].price }} kr per natt</p>
+          <p class="card-text text-left my-2">Pris: från {{ rooms[2].price }} kr per natt</p>
+          <p class="card-text text-left">Lediga rum av denna typ: {{maxFamiljeRum}}</p>
         </div>
         <div class="col-md-3 col-12 mx-auto my-auto">
           <div class="col-12">
@@ -122,7 +125,7 @@
               type="number"
               v-model="antalFamiljerum"
               min="0"
-              max="30"
+              :max="maxFamiljeRum"
               step="1"
             />
           </div>
@@ -143,13 +146,18 @@ export default {
     data() {
       return {
         starIcon: "far fa-star",
-        check: "fas fa-check"
+        check: "fas fa-check",
+        hotelInfo: []
       };
     },
     async created() {
       //CHANGE this when hotel is saved on searchpage...
       await this.$store.dispatch('getHotel', this.$route.params.id);
+      this.hotelInfo.push(this.$store.state.booking.globalStartDate)
+      this.hotelInfo.push(this.$store.state.booking.globalEndDate)
+      this.hotelInfo.push(this.$store.state.hotel.id)
       await this.$store.dispatch('getRooms', this.$route.params.id);
+      await this.$store.dispatch('getAvailableRooms', this.hotelInfo)
       this.$store.state.booking;
       /*MOVE IT MOVE IT */
 
@@ -206,6 +214,39 @@ export default {
       get(){
         return this.$store.state.rooms;
       },
+    },
+    maxFamiljeRum:{
+      get(){
+        let maxAntal = 0;
+        for(let i = 0; i < this.$store.state.availableRooms.length; i++) {
+          if(this.$store.state.availableRooms[i].roomType == 'familjerum'){
+            maxAntal = maxAntal + 1; 
+          }
+        }
+        return maxAntal;
+      }
+    },
+    maxEnkelRum:{
+      get(){
+        let maxAntal = 0;
+        for(let i = 0; i < this.$store.state.availableRooms.length; i++) {
+          if(this.$store.state.availableRooms[i].roomType == 'enkelrum'){
+            maxAntal = maxAntal + 1; 
+          }
+        }
+        return maxAntal;
+      }
+    },
+    maxDubbelRum:{
+      get(){
+        let maxAntal = 0;
+        for(let i = 0; i < this.$store.state.availableRooms.length; i++) {
+          if(this.$store.state.availableRooms[i].roomType == 'dubbelrum'){
+            maxAntal = maxAntal + 1; 
+          }
+        }
+        return maxAntal;
+      }
     }
   }
 };

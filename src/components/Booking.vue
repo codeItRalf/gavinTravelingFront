@@ -122,15 +122,18 @@
             >Barn: {{$store.state.booking.party.children}}</p>
             <p
               class="my-1"
-              v-if="$store.state.booking.party.children > 0"
-            >Småbarn: {{$store.state.booking.party.children}}</p>
+              v-if="$store.state.booking.party.small_children > 0"
+            >Småbarn: {{$store.state.booking.party.small_children}}</p>
           </li>
           <li class="list-group-item w-75 text-left">
             <h6 class="my-1">Moms (25%): {{calculateTotal * 0.25}}kr</h6>
             <h5 class="my-1">Total pris: {{calculateTotal}}kr</h5>
           </li>
           <li class="list-group-item w-75">
-            <button class="btn btn-primary">Boka nu för fan!</button>
+            <h6 class="text-danger" v-if="(halvPension + fullPension + allInclusive) < ($store.state.booking.party.adults + $store.state.booking.party.children + $store.state.booking.party.small_children)">
+              OBS! Antal tillval är mindre än antal personer i sällskapet
+            </h6>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#confirmation">Boka nu för fan!</button>
           </li>
         </ul>
       </div>
@@ -142,6 +145,26 @@
         <p>E-post: {{hotel.eMail}}</p>
         <p>Adress: {{hotel.address}}</p>
         <p>{{hotel.postalCode}} {{hotel.city.name | capitalize}}</p>
+      </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="confirmation">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Bokningsbekräftelse</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img class="img-fluid" src="https://i.redd.it/zozo0uauf0v41.jpg" alt="Can't believe you've done this" srcset="">
+            <h4 :class="showHide">Tack för din bokning!</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" @click="confirmBooking">Bekräfta bokning</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -159,9 +182,25 @@ export default {
   },
   data() {
       return {
-        totalPris: 0
+        totalPris: 0,
+        confirmationText: "Tack för din bokning",
+        showHide: "d-none",
+        hideShow: "d-block",
+        extraBedAntal: [this.$store.state.booking.room.enkel.antal, this.$store.state.booking.room.dubbel.antal, this.$store.state.booking.room.familje.antal],
+        createBooking: {
+          personCount: this.$store.state.booking.party.adults,
+          childrenCount: this.$store.state.booking.party.children,
+          smallChildrenCount: this.$store.state.booking.party.small_children,
+          
+        }
       }
     },
+  methods: {
+    confirmBooking: function(){
+      this.showHide = "d-block"
+      this.hideShow = "d-none"
+    }
+  },
   computed: {
     enkelRum: {
       get() {
