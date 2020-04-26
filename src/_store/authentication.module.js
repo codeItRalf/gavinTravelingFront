@@ -10,7 +10,7 @@ export const authentication = {
     namespaced: true,
     state: initialState,
     actions: {
-        login({  commit }, { username, password }) {
+        login({commit }, { username, password }) {
             commit('loginRequest', { username });
 
             userService.login(username, password)
@@ -18,6 +18,10 @@ export const authentication = {
                     user => {
                         commit('loginSuccess', user);
                         router.push('/user');
+                    },
+                    error => {
+                        commit('loginFailure', error);
+                       console.log("Failed to login!")
                     }
                 );
         },
