@@ -2,11 +2,12 @@
     <div id="user">
         <h1>Welcome</h1>
         <p>{{user.firstName}} {{user.lastName}}</p>
-         <router-link to="/login">Logout</router-link>
+         <button @click="logOut()">Logout</button>
     </div>
 </template>
 
 <script>
+
     export default {
         data(){
             return{
@@ -19,6 +20,15 @@
          this.user = JSON.parse(localStorage.getItem('user')); 
           console.log(this.user)
          }
+        },        
+        methods: {
+      logOut(){      
+      this.loggedIn = false;
+      this.logOuTT();
+    },
+    logOuTT: function(){
+       this.$store.commit("setGlobalInlogState", this.loggedIn);  
+    }
         }
         
         

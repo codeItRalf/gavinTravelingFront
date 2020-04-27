@@ -8,6 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
+    loggedin: false,
     rooms: [],
     search: {
       inputCities: [],
@@ -51,6 +52,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setGlobalInlogState(state, value){
+      state.loggedin = value;
+    },
     setAuthentication(state, status) {
       state.authenticated = status;
     },
