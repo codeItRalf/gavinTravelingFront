@@ -3,11 +3,14 @@ import Vuex from "vuex";
 import createPersistedState from 'vuex-persistedstate'
 import { authentication } from '../_store/authentication.module'
 
+
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
+    authenticated: false,
     rooms: [],
     roomsToBook: [],
     authenticated: false,
@@ -53,7 +56,7 @@ export default new Vuex.Store({
       allInclusive: 0,
     },
   },
-  mutations: {
+  mutations: {    
     setAuthentication(state, status) {
       state.authenticated = status;
     },
