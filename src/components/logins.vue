@@ -23,30 +23,30 @@ export default {
             username: '',
             password: '',
             submitted: false,
-            loggedin: false
+            authenticated: this.$store.state.authenticated,
+            
         }
     },
     
     created () {
         // reset login status
-         this.$store.dispatch('authentication/logout')
+         
          
     },
     methods: {
         login () {
-            this.submitted = true;
-            this.loggedin = true;
+            this.submitted = true;    
+            this.authenticated = true,
+            this.$store.commit("setAuthentication", this.authenticated);           
             const { username, password } = this;
             const { dispatch } = this.$store;
+           
             
             if (username && password) {
                 dispatch('authentication/login', { username, password })
             }
-            this.Loggedin();
-        },
-        Loggedin: function(){
-            this.$store.commit("setGlobalInlogState", this.loggedin);  
-        },
+            
+        },        
     }
 }
 </script>

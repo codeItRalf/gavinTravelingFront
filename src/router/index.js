@@ -26,10 +26,10 @@ const routes = [
     path: "/user",
     name: "user",
     component: user,
-    beforeEnter: (to, from, next) => {
-      if (store.state.authentication.status.loggingIn == false) {
+    beforeEnter: (to, from, next) => {      
+      if (store.state.authenticated == false) {               
         next(false);
-      } else {
+      } else {        
         next();
       }
     }

@@ -3,12 +3,14 @@ import Vuex from "vuex";
 import createPersistedState from 'vuex-persistedstate'
 import { authentication } from '../_store/authentication.module'
 
+
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
-    loggedin: false,
+    authenticated: false,
     rooms: [],
     search: {
       inputCities: [],
@@ -51,10 +53,7 @@ export default new Vuex.Store({
       allInclusive: 0,
     },
   },
-  mutations: {
-    setGlobalInlogState(state, value){
-      state.loggedin = value;
-    },
+  mutations: {    
     setAuthentication(state, status) {
       state.authenticated = status;
     },

@@ -25,12 +25,12 @@
         </li>
       </ul>
 
-      <ul v-if="loggedIn" class="nav navbar-nav flex-row justify-content-between ml-auto">
+      <ul v-if="authenticated" class="nav navbar-nav flex-row justify-content-between ml-auto">
         <li class="nav-item">
           <router-link class="nav-link" to="/user">{{user.firstName | capitalize}} {{user.lastName | capitalize}}</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" @click="logOut()">Logga Ut</a>
+          <button  class="nav-link btn btn-primary"  @click="logout()">Logga Ut</button>
         </li>
       </ul> 
       <ul v-else class="nav navbar-nav flex-row justify-content-between ml-auto">
@@ -46,13 +46,12 @@
 </template>
 
 <script>
-import Vue from 'vue';
-Vue.forceUpdate();
+
 export default {
   name: "Nav",
   data() {
     return {
-      loggedIn: this.$store.state.loggedin,
+      authenticated: this.$store.state.authenticated,
       user: {}
     }
   },    
@@ -62,29 +61,20 @@ export default {
       value = value.toString();
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
-  },
-  computed:{
-   loggingIn() {
-          return this.$store.state.authentication.status.loggingIn
-        }, 
-  },
-   methods: {
-      logOut(){      
-      this.loggedIn = false;
-      this.logOuTT();
-    },
-    logOuTT: function(){
-       this.$store.commit("setGlobalInlogState", this.loggedIn);  
-       this.forceUpdate();
-    },
-    ForcesUpdate() {
-     
-      this.$forceUpdate();  
+  }, 
+  methods:{
+    logout: function(){   
+      this.authenticated = false,
+      this.$store.commit("setAuthentication", this.authenticated);      
+      this.$store.dispatch('authentication/logout');      
       
     }
 
-   },
+  },
+  
+ 
   mounted(){
+  
            console.log('App mounted!');
          if (localStorage.getItem('user')) {
          this.user = JSON.parse(localStorage.getItem('user')); 
