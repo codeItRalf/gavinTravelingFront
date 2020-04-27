@@ -191,7 +191,13 @@ export default {
           personCount: this.$store.state.booking.party.adults,
           childrenCount: this.$store.state.booking.party.children,
           smallChildrenCount: this.$store.state.booking.party.small_children,
-          
+          halfPension: this.$store.state.booking.halfPension,
+          fullPension: this.$store.state.booking.fullPension,
+          allInclusive: this.$store.state.booking.allInclusive,
+          tokenId: /**WHAT DO I PUT HERE?!?!?! */"sjjss",
+          startDate: this.$store.state.booking.globalStartDate,
+          endDate: this.$store.state.booking.globalEndDate,
+          roomsToBook: [],
         }
       }
     },
