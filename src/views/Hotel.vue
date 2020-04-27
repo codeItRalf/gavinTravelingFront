@@ -168,6 +168,9 @@ export default {
       this.$store.commit("setExtraBedEnkel", 0);
       this.$store.commit("setExtraBedDubbel", 0);
       this.$store.commit("setExtraBedFamilje", 0);
+      this.$store.commit("setHalfPension", 0);
+      this.$store.commit("setFullPension", 0);
+      this.$store.commit("setAllInclusive", 0);
     },
     changeAntalEnkel(e){
       this.$store.commit("antalEnkel", e.target.value);
@@ -219,7 +222,7 @@ export default {
       get(){
         let maxAntal = 0;
         for(let i = 0; i < this.$store.state.availableRooms.length; i++) {
-          if(this.$store.state.availableRooms[i].roomType == 'familjerum'){
+          if(this.$store.state.availableRooms[i].roomType.roomType == 'familjerum'){
             maxAntal = maxAntal + 1; 
           }
         }
@@ -230,7 +233,7 @@ export default {
       get(){
         let maxAntal = 0;
         for(let i = 0; i < this.$store.state.availableRooms.length; i++) {
-          if(this.$store.state.availableRooms[i].roomType == 'enkelrum'){
+          if(this.$store.state.availableRooms[i].roomType.roomType == 'enkelrum'){
             maxAntal = maxAntal + 1; 
           }
         }
@@ -241,7 +244,7 @@ export default {
       get(){
         let maxAntal = 0;
         for(let i = 0; i < this.$store.state.availableRooms.length; i++) {
-          if(this.$store.state.availableRooms[i].roomType == 'dubbelrum'){
+          if(this.$store.state.availableRooms[i].roomType.roomType == 'dubbelrum'){
             maxAntal = maxAntal + 1; 
           }
         }

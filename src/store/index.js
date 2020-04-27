@@ -152,7 +152,7 @@ export default new Vuex.Store({
       commit("setCities", json);
     },
     getAvailableRooms: async function({ commit }, value) {
-      let url = "http://localhost:9090/rest/room-types/" + value[0] + "/" + value[1] + "/" + value[2];      
+      let url = "http://localhost:9090/rest/rooms/" + value[0] + "/" + value[1] + "/" + value[2];      
       const result = await fetch(url);
       const json = await result.json();
       commit("setAvailableRooms", json);
