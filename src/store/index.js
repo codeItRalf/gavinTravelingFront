@@ -13,7 +13,7 @@ export default new Vuex.Store({
     roomsToBook: [],    
     search: {
       inputCities: [],
-      globalCity: String      
+      globalCity: ''      
     },
     availableRooms: [],
     hotel: [],
