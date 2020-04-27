@@ -3,8 +3,6 @@ import Vuex from "vuex";
 import createPersistedState from 'vuex-persistedstate'
 import { authentication } from '../_store/authentication.module'
 
-
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -12,8 +10,7 @@ export default new Vuex.Store({
   state: {
     authenticated: false,
     rooms: [],
-    roomsToBook: [],
-    authenticated: false,
+    roomsToBook: [],    
     search: {
       inputCities: [],
       globalCity: String      
