@@ -116,8 +116,7 @@ export default {
         this.errors.push('Ange en giltig e-postadress.');
       }
 
-      if (!this.errors.length) {
-        alert('haloj'),
+      if (!this.errors.length) {        
         this.sendRegister();
         return true;
       }      
@@ -158,9 +157,24 @@ var myHeaders = new Headers();
       };
 
       fetch("http://localhost:9090/rest/customers/sign-up", requestOptions)
-              .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => alert('Not good man :( error', error));
+      .then(response => {    
+    if (response.ok == false) {
+       alert('OBS!  E-postadress redan är registrerad')
+       return response.json();                
+    } else {
+      alert('du har skapat ett konto')
+      console.log(response);
+    }
+  })
+  .then(() => {
+   console.log("I dunno, something like fetchen completed ")
+  })
+  .catch(() => { 
+  });
+      //.then(response => JSON.parse(response))
+      //.then(result => console.log(result))
+      //.catch(error => alert('OBs! E-postadressen redan finns!  :( error', error));
+      
           
           },
   }
