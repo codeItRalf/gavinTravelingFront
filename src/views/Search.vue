@@ -6,15 +6,13 @@
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputState">Stad</label>
-
               <select
                 id="City"
                 class="form-control"
                 @click="cityBtn"
                 name="cityName"
                 v-model="inputCity"
-                v-bind:value="cityName"
-              >
+                v-bind:value="cityName">
                 <option
                   v-for="cityName in getCitiesArray"
                   :key="cityName.id"
@@ -154,6 +152,8 @@
                     <option>Omdöme: Fallande</option>            
                   </select>
               </div>   
+              </div>
+        </div>
               <template class="search_results" v-if="myHotels.length">
                 <div id="result" class="result mt-2" v-for="myHotel in myHotels" :key="myHotel.id">
                   <div class="card">
@@ -215,9 +215,7 @@
               <template v-else>
                 <br />
                 <h1>Din sökning gav inget resultat</h1>
-              </template>
-          </div>
-        </div>
+              </template>         
       </div>
     </div>
   </div>
