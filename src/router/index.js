@@ -23,11 +23,11 @@ const routes = [
   },
 
   {
-    path: "/user/:id",
+    path: "/user",
     name: "user",
     component: user,
     beforeEnter: (to, from, next) => {
-      if (store.state.authenticated == false) {
+      if (store.state.authentication.status.loggingIn == false) {
         next(false);
       } else {
         next();

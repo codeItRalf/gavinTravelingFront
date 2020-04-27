@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import createPersistedState from "vuex-persistedstate";
+import createPersistedState from 'vuex-persistedstate'
+import { authentication } from '../_store/authentication.module'
 
 Vue.use(Vuex);
 
@@ -12,7 +13,7 @@ export default new Vuex.Store({
     authenticated: false,
     search: {
       inputCities: [],
-      globalCity: String,
+      globalCity: String      
     },
     availableRooms: [],
     hotel: [],
@@ -157,5 +158,7 @@ export default new Vuex.Store({
       commit("setAvailableRooms", json);
     },
   },
-  modules: {},
+  modules: {
+    authentication
+   }
 });

@@ -43,137 +43,117 @@
                 max="3000-12-31"
                 min="2020-01-01"
                 class="form-control"
-              />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-3">
-              <label for="inputAdult">Vuxna</label>
-              <select id="inputAdult" class="form-control" v-model="inputAdult">
-                <option selected>Välj...</option>
-                <option value="1" @click="submitAdult">1</option>
-                <option value="2" @click="submitAdult">2</option>
-                <option value="3" @click="submitAdult">3</option>
-                <option value="4" @click="submitAdult">4</option>
-                <option value="5" @click="submitAdult">5</option>
-                <option value="6" @click="submitAdult">6</option>
-                <option value="7" @click="submitAdult">7</option>
-                <option value="8" @click="submitAdult">8</option>
-                <option value="9" @click="submitAdult">9</option>
-                <option value="10" @click="submitAdult">10</option>
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <label for="inputChild">Barn</label>
-              <select id="inputChild" class="form-control" v-model="inputChild">
-                <option selected>Välj...</option>
-                <option value="1" @click="submitChild">1</option>
-                <option value="2" @click="submitChild">2</option>
-                <option value="3" @click="submitChild">3</option>
-                <option value="4" @click="submitChild">4</option>
-                <option value="5" @click="submitChild">5</option>
-                <option value="6" @click="submitChild">6</option>
-                <option value="7" @click="submitChild">7</option>
-                <option value="8" @click="submitChild">8</option>
-                <option value="9" @click="submitChild">9</option>
-                <option value="10" @click="submitChild">10</option>
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <label for="inputBaby">Små Barn</label>
-              <select id="inputBaby" class="form-control" v-model="inputBaby">
-                <option selected>Välj...</option>
-                <option value="1" @click="submitBaby">1</option>
-                <option value="2" @click="submitBaby">2</option>
-                <option value="3" @click="submitBaby">3</option>
-                <option value="4" @click="submitBaby">4</option>
-                <option value="5" @click="submitBaby">5</option>
-                <option value="6" @click="submitBaby">6</option>
-                <option value="7" @click="submitBaby">7</option>
-                <option value="8" @click="submitBaby">8</option>
-                <option value="9" @click="submitBaby">9</option>
-                <option value="10" @click="submitBaby">10</option>
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <label for="inputRoom">Rum</label>
-              <select id="inputRoom" class="form-control" v-model="inputRoom">
-                <option selected>Välj...</option>
-                <option value="1" @click="submitRoom">1</option>
-                <option value="2" @click="submitRoom">2</option>
-                <option value="3" @click="submitRoom">3</option>
-                <option value="4" @click="submitRoom">4</option>
-                <option value="5" @click="submitRoom">5</option>
-                <option value="6" @click="submitRoom">6</option>
-                <option value="7" @click="submitRoom">7</option>
-                <option value="8" @click="submitRoom">8</option>
-                <option value="9" @click="submitRoom">9</option>
-                <option value="10" @click="submitRoom">10</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="Centrum">Avstånd till Centrum</label>
-              <input type="range" class="custom-range" id="Centrum" />
-            </div>
-            <div class="form-group col-md-6">
-              <label for="Strand">Avstånd till Strand</label>
-              <input type="range" class="custom-range" id="Strand" />
-            </div>
-          </div>
-          <div class="form-row col-12">
-            <div class="form-group col-md-6">
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="inlineCheckbox1"
-                  value="option1"
-                />
-                <label class="form-check-label" for="inlineCheckbox1">Pool</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="inlineCheckbox2"
-                  value="option2"
-                />
-                <label class="form-check-label" for="inlineCheckbox2">Kvällsunderhållning</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="inlineCheckbox3"
-                  value="option3"
-                />
-                <label class="form-check-label" for="inlineCheckbox3">Barnklubb</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="inlineCheckbox3"
-                  value="option3"
-                />
-                <label class="form-check-label" for="inlineCheckbox3">Restaurang</label>
-              </div>
-            </div>
-            <div class="form-group col-md-6">
-              <select id="inputState" class="form-control">
-                <option selected>Välj...</option>
-                <option>Pris: Stigande</option>
-                <option>Pris: Fallande</option>
-                <option>Omdöme: Stigande</option>
-                <option>Omdöme: Fallande</option>
-              </select>
-            </div>
-          </div>
-        </div>
+              /> 
+    </div>
+  </div>  
+  
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="inputAdult">Vuxna</label>
+          <select id="inputAdult" class="form-control" v-model="inputAdult"  >
+            <option selected>Välj...</option>
+            <option value="1" @click="submitAdult">1</option>
+            <option value="2" @click="submitAdult">2</option>
+            <option value="3" @click="submitAdult">3</option>
+            <option value="4" @click="submitAdult">4</option>
+            <option value="5" @click="submitAdult">5</option>
+            <option value="6" @click="submitAdult">6</option>
+            <option value="7" @click="submitAdult">7</option>
+            <option value="8" @click="submitAdult">8</option>
+            <option value="9" @click="submitAdult">9</option>
+            <option value="10" @click="submitAdult">10</option>
+          </select>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputChild">Barn</label>
+          <select id="inputChild" class="form-control" v-model="inputChild">
+            <option selected>Välj...</option>
+             <option value="0" @click="submitBaby">0</option>
+            <option value="1" @click="submitChild">1</option>
+            <option value="2" @click="submitChild">2</option>
+            <option value="3" @click="submitChild">3</option>
+            <option value="4" @click="submitChild">4</option>
+            <option value="5" @click="submitChild">5</option>
+            <option value="6" @click="submitChild">6</option>
+            <option value="7" @click="submitChild">7</option>
+            <option value="8" @click="submitChild">8</option>
+            <option value="9" @click="submitChild">9</option>
+            <option value="10" @click="submitChild">10</option>
+          </select>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputBaby">Små Barn</label>
+          <select id="inputBaby" class="form-control" v-model="inputBaby">
+            <option selected>Välj...</option>
+             <option value="0" @click="submitBaby">0</option>
+            <option value="1" @click="submitBaby">1</option>
+            <option value="2" @click="submitBaby">2</option>
+            <option value="3" @click="submitBaby">3</option>
+            <option value="4" @click="submitBaby">4</option>
+            <option value="5" @click="submitBaby">5</option>
+            <option value="6" @click="submitBaby">6</option>
+            <option value="7" @click="submitBaby">7</option>
+            <option value="8" @click="submitBaby">8</option>
+            <option value="9" @click="submitBaby">9</option>
+            <option value="10" @click="submitBaby">10</option>
+          </select>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputRoom">Rum</label>
+          <select id="inputRoom" class="form-control" v-model="inputRoom">
+            <option selected>Välj...</option>
+            <option value="1" @click="submitRoom">1</option>
+            <option value="2" @click="submitRoom">2</option>
+            <option value="3" @click="submitRoom">3</option>
+            <option value="4" @click="submitRoom">4</option>
+            <option value="5" @click="submitRoom">5</option>
+            <option value="6" @click="submitRoom">6</option>
+            <option value="7" @click="submitRoom">7</option>
+            <option value="8" @click="submitRoom">8</option>
+            <option value="9" @click="submitRoom">9</option>
+            <option value="10" @click="submitRoom">10</option>
+          </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="Centrum">Avstånd till Centrum</label>
+      
+      <input type="range" class="custom-range" id="Centrum" step="1" max="200" min="0" @input="submitCenter" v-model="inputCenter"><span v-text="totalCenter"></span>
+    </div>
+    <div class="form-group col-md-6">
+       <label for="Strand">Avstånd till Strand</label> 
+      <input type="range" class="custom-range" id="Strand" step="1" max="200" min="0" @input="submitBeach" v-model="inputBeach" ><span v-text="totalBeach"></span>
+    </div>
+    </div>
+  <div class="form-row col-12">
+    <div class="form-group col-md-6">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" @click="submitPool" unchecked-value="true" v-model="havePool">
+        <label class="form-check-label" for="inlineCheckbox1" >Pool</label>
       </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" @click="submitEnter" unchecked-value="true"  v-model="haveNightEntertain">
+        <label class="form-check-label" for="inlineCheckbox2">Kvällsunderhållning</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3"  @click="submitClub" unchecked-value="true"  v-model="haveChildrenClub">
+        <label class="form-check-label" for="inlineCheckbox3">Barnklubb</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" @click="submitRes" v-model="haveRestaurant" unchecked-value="true">
+        <label class="form-check-label" for="inlineCheckbox3">Restaurang</label>
+      </div> 
+      </div>  
+      <div class="form-group col-md-6">        
+          <select id="inputState" class="form-control">
+            <option selected>Välj...</option>
+            <option>Pris: Stigande</option>
+            <option>Pris: Fallande</option>
+            <option>Omdöme: Stigande </option>
+            <option>Omdöme: Fallande</option>            
+          </select>
+      </div>   
 
       <template class="search_results" v-if="myHotels.length">
         <div id="result" class="result mt-2" v-for="myHotel in myHotels" :key="myHotel.id">
@@ -241,6 +221,7 @@
   </div>
 </template>
 <script>
+
 export default {
   props: ["booking", "search", "hotel"],
   data() {
@@ -248,17 +229,19 @@ export default {
       startDate: this.$store.state.booking.globalStartDate,
       cityName: this.$store.state.search.globalCity,
       endDate: this.$store.state.booking.globalEndDate,
-      roomCount: Number,
-      distCenter: Number,
-      distBeach: Number,
-      adult: 0,
-      child: 0,
-      baby: 0,
+      roomCount:  this.$store.state.roomCount,
+      distCenter: 100,
+      distBeach: 100,
+      adult: this.$store.state.booking.party.adults,
+      child: this.$store.state.booking.party.children,
+      baby: this.$store.state.booking.party.small_children,
       havePool: true,
-      haveNightEntertain: false,
-      haveChildrenClub: false,
-      haveRestaurant: false,
-      myHotels: []
+      haveNightEntertain: true,
+      haveChildrenClub: true,
+      haveRestaurant: true,
+      myHotels: [ ]
+ 
+      
     };
   },
   async created() {
@@ -275,31 +258,58 @@ export default {
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
   },
-  methods: {
-    defaultValue: function() {
-      //props  from url länk
+  methods: { 
+     defaultValue: function(){
+     //props  from url länk
+    },  
+    submitStartDate: function(startDate){
+      this.$store.commit("setGlobalStartDate", startDate);  
+      this.info()    
     },
-    submitStartDate: function(startDate) {
-      this.$store.commit("setGlobalStartDate", startDate);
+    submitEndDate: function(endDate){
+      this.$store.commit("setGlobalEndDate", endDate); 
+      this.info()      
     },
-    submitEndDate: function(endDate) {
-      this.$store.commit("setGlobalEndDate", endDate);
+    cityBtn: function(City){      
+       this.$store.commit("setGlobalCity", City);       
+       this.info();                     
+    },   
+    submitAdult: function(){
+      this.$store.commit("updateBookingPartyAdults", this.adult);      
+      this.info()  
+    },  
+    submitChild: function(){
+      this.$store.commit("updateBookingPartyChildren", this.child); 
+      this.info() 
+    },   
+    submitBaby: function(){
+      this.$store.commit("updateBookingPartySmallChildren", this.baby);  
+      this.info() 
     },
-    cityBtn: function(City) {
-      this.$store.commit("setGlobalCity", City);
-      this.info();
+    submitRoom: function(){
+        this.$store.commit("updateRoomCount", this.roomCount); 
+        this.info() 
     },
-    submitAdult: function() {
-      this.$store.commit("updateBookingPartyAdults", this.adult);
+     submitCenter: function(){
+        
+        this.info() 
     },
-    submitChild: function() {
-      this.$store.commit("updateBookingPartyChildren", this.child);
+    submitBeach: function(){        
+        this.info() 
     },
-    submitBaby: function() {
-      this.$store.commit("updateBookingPartySmallChildren", this.baby);
+    submitPool: function(){        
+        this.info()         
     },
-    submitRoom: function() {
-      this.$store.commit("updateRoomCount", this.roomCount);
+     submitEnter: function(){        
+        this.info()         
+    },
+    submitClub: function(){        
+        this.info() 
+        
+    },
+    submitRes: function(){        
+        this.info() 
+        
     },
 
     async info() {
@@ -323,7 +333,7 @@ export default {
         method: "POST",
         headers: myHeaders,
         body: urlencoded,
-        redirect: "follow"
+        redirect: 'follow'
       };
 
       fetch("http://localhost:9090/rest/filterHotel", requestOptions)
@@ -336,8 +346,30 @@ export default {
   },
 
   computed: {
-    inputCity: {
-      get() {
+    totalBeach: function(){
+      return this.distBeach
+    },
+    totalCenter: function(){
+      return this.distCenter
+    },
+    inputCenter:{
+      get(){
+        return this.distCenter;
+      },
+      set(value){
+        this.distCenter = value;
+      }
+    },
+    inputBeach:{
+      get(){
+        return this.distBeach;
+      },
+      set(value){
+        this.distBeach = value;
+      }
+    },
+    inputCity:{
+      get(){        
         return this.cityName;
       },
       set(value) {
@@ -400,10 +432,6 @@ export default {
   }
 };
 </script>
-
-
-
-
 
 <style scoped>
 @import "../style.css";
