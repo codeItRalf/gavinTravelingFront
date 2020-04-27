@@ -55,7 +55,7 @@
         </div>
         <div class="col-md-6 col-12">
           <h6 class="card-title text-left">{{ rooms[1].roomType | capitalize }}</h6>
-          <p class="card-text text-left my-2">Pris: från {{ rooms[1].price }} kr per natt</p>
+          <p class="card-text text-left my-2">Pris: {{ rooms[1].price }} kr per natt</p>
           <p class="card-text text-left">Lediga rum av denna typ: {{maxEnkelRum}}</p>
         </div>
         <div class="col-md-3 col-12 mx-auto my-auto">
@@ -83,7 +83,7 @@
         </div>
         <div class="col-md-6 col-12">
           <h6 class="card-title text-left">{{ rooms[0].roomType | capitalize }}</h6>
-          <p class="card-text text-left my-2">Pris: från {{ rooms[0].price }} kr per natt</p>
+          <p class="card-text text-left my-2">Pris: {{ rooms[0].price }} kr per natt</p>
           <p class="card-text text-left">Lediga rum av denna typ: {{maxDubbelRum}}</p>
         </div>
         <div class="col-md-3 col-12 mx-auto my-auto">
@@ -112,7 +112,7 @@
         </div>
         <div class="col-md-6 col-12">
           <h6 class="card-title text-left">{{ rooms[2].roomType | capitalize }}</h6>
-          <p class="card-text text-left my-2">Pris: från {{ rooms[2].price }} kr per natt</p>
+          <p class="card-text text-left my-2">Pris: {{ rooms[2].price }} kr per natt</p>
           <p class="card-text text-left">Lediga rum av denna typ: {{maxFamiljeRum}}</p>
         </div>
         <div class="col-md-3 col-12 mx-auto my-auto">
@@ -171,9 +171,6 @@ export default {
       this.$store.commit("setHalfPension", 0);
       this.$store.commit("setFullPension", 0);
       this.$store.commit("setAllInclusive", 0);
-    },
-    changeAntalEnkel(e){
-      this.$store.commit("antalEnkel", e.target.value);
     },
   },
   filters: {
