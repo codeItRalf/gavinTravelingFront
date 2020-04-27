@@ -16,13 +16,7 @@
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
           <router-link class="nav-link" to="/">Home</router-link>
-        </li>        
-        <li class="nav-item">
-          <router-link class="nav-link" to="/hotel/1">Hotel</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/booking/1">Booking</router-link>
-        </li>
+        </li>  
       </ul>
 
       <ul v-if="authenticated" class="nav navbar-nav flex-row justify-content-between ml-auto">

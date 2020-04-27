@@ -235,10 +235,10 @@ export default {
       adult: this.$store.state.booking.party.adults,
       child: this.$store.state.booking.party.children,
       baby: this.$store.state.booking.party.small_children,
-      havePool: true,
-      haveNightEntertain: true,
-      haveChildrenClub: true,
-      haveRestaurant: true,
+      havePool: false,
+      haveNightEntertain: false,
+      haveChildrenClub: false,
+      haveRestaurant: false,
       myHotels: [ ]
  
       
@@ -292,23 +292,21 @@ export default {
     },
      submitCenter: function(){
         
-        this.info() 
     },
     submitBeach: function(){        
-        this.info() 
+       
     },
     submitPool: function(){        
-        this.info()         
+               
     },
      submitEnter: function(){        
-        this.info()         
+              
     },
     submitClub: function(){        
-        this.info() 
         
     },
     submitRes: function(){        
-        this.info() 
+        
         
     },
 
@@ -324,10 +322,10 @@ export default {
       urlencoded.append("roomCount", this.roomCount);
       urlencoded.append("distCenter", this.distCenter);
       urlencoded.append("distBeach", this.distBeach);
-      urlencoded.append("havePool", this.havePool);
-      urlencoded.append("haveNightEntertain", this.haveNightEntertain);
-      urlencoded.append("haveChildrenClub", this.haveChildrenClub);
-      urlencoded.append("haveRestaurant", this.haveRestaurant);
+      //urlencoded.append("havePool", this.havePool);
+      //urlencoded.append("haveNightEntertain", this.haveNightEntertain);
+      //urlencoded.append("haveChildrenClub", this.haveChildrenClub);
+      //urlencoded.append("haveRestaurant", this.haveRestaurant);
 
       var requestOptions = {
         method: "POST",
