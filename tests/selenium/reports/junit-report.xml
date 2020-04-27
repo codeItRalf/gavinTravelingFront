@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="&quot;authenticate&quot;;&quot;create-account&quot;" tests="10" failures="1" skipped="1">
+        <properties>
+            <property name="URI" value="C:/Users/insik/Documents/New folder/gavinTravelingFront/tests/selenium/features/Autentisera.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am at the Gavin traveling homepage" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="6.909818399">
+        </testcase>
+        <testcase name="And that there is a register button" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.056107499">
+        </testcase>
+        <testcase name="When i press the register button" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.223926199">
+        </testcase>
+        <testcase name="And i enter my email in the field email" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.035694801">
+        </testcase>
+        <testcase name="And i enter my password in the field password" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.231002001">
+        </testcase>
+        <testcase name="And i enter in my phone number in the phone number field" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.523905301">
+        </testcase>
+        <testcase name="And i enter my name in the name fields" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.0431136">
+        </testcase>
+        <testcase name="And i enter in my security number into the security number field" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.0259896">
+        </testcase>
+        <testcase name="And i press create account" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.039897801">
+            <failure message="ReferenceError: sendKeys is not defined">ReferenceError: sendKeys is not defined
+    at createWorld.&lt;anonymous&gt; (C:\Users\insik\Documents\New folder\gavinTravelingFront\tests\selenium\step-definitions\Autentisera.js:62:9)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+        </testcase>
+        <testcase name="Then i should’ve created an account" classname="&quot;authenticate&quot;;&quot;create-account&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;authenticate&quot;;&quot;login-to-account&quot;" tests="7" failures="1" skipped="5">
+        <properties>
+            <property name="URI" value="C:/Users/insik/Documents/New folder/gavinTravelingFront/tests/selenium/features/Autentisera.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am at the Gavin traveling homepage" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;" time="6.2038668">
+        </testcase>
+        <testcase name="And that there is a login button" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;" time="0.003901601">
+            <failure message="TypeError: Cannot read property &apos;click&apos; of null">TypeError: Cannot read property &apos;click&apos; of null
+    at createWorld.&lt;anonymous&gt; (C:\Users\insik\Documents\New folder\gavinTravelingFront\tests\selenium\step-definitions\Autentisera.js:77:27)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+        </testcase>
+        <testcase name="When i press the login button from start" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And i enter my eMail in the field email" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And i enter my password in the inputfield" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And i press the login button2" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then i should be logged in" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+</testsuites>
