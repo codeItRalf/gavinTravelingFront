@@ -8,3 +8,7 @@ export function authHeader() {
         return {};
     }
 }
+
+export function getTokenId(){
+   return JSON.parse(localStorage.getItem('user')).tokenId || {}
+}
