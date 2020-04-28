@@ -36,13 +36,14 @@ export default {
     methods: {
         login () {
             this.submitted = true;    
-            this.authenticated = true,
-            this.$store.commit("setAuthentication", this.authenticated);           
+                    
             const { username, password } = this;
             const { dispatch } = this.$store;
            
             
             if (username && password) {
+                this.authenticated = true,
+            this.$store.commit("setAuthentication", this.authenticated);   
                 dispatch('authentication/login', { username, password })
             }
             

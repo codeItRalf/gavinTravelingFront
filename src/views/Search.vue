@@ -8,8 +8,7 @@
               <label for="inputState">Stad</label>
               <select
                 id="City"
-                class="form-control"
-                
+                class="form-control"                
                 name="cityName"
                 v-model="inputCity">
                 <option
