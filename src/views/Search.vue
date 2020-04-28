@@ -323,11 +323,7 @@ export default {
       urlencoded.append("endDate", this.endDate);
       urlencoded.append("roomCount", this.roomCount);
       urlencoded.append("distCenter", this.distCenter);
-      urlencoded.append("distBeach", this.distBeach);
-      //urlencoded.append("havePool", this.havePool);
-      //urlencoded.append("haveNightEntertain", this.haveNightEntertain);
-      //urlencoded.append("haveChildrenClub", this.haveChildrenClub);
-      //urlencoded.append("haveRestaurant", this.haveRestaurant);
+      urlencoded.append("distBeach", this.distBeach);     
 
       var requestOptions = {
         method: "POST",
