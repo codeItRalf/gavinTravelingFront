@@ -21,7 +21,7 @@
 
       <ul v-if="authenticated" class="nav navbar-nav flex-row justify-content-between ml-auto">
         <li class="nav-item">
-          <router-link class="nav-link" to="/user">{{user.firstName | capitalize}} {{user.lastName | capitalize}}</router-link>
+          <router-link class="nav-link" v:model="UserWatcher" to="/user">{{user.firstName | capitalize}} {{user.lastName | capitalize}}</router-link>
         </li>
         <li class="nav-item">
           <button  class="nav-link btn btn-primary"  @click="logout()">Logga Ut</button>
@@ -44,8 +44,7 @@
 export default {
   name: "Nav",
   data() {
-    return {
-      authenticated: this.$store.state.authenticated,
+    return {       
       user: {}
     }
   },    
@@ -57,19 +56,25 @@ export default {
     }
   }, 
   methods:{
-    logout: function(){   
-      this.authenticated = false,
-      this.$store.commit("setAuthentication", this.authenticated);      
-      this.$store.dispatch('authentication/logout');      
-      
-    }
+    logout: function(){           
+      this.$store.dispatch('authentication/logout');  
+    },
 
+  },
+  computed: {
+     authenticated: function(){
+      return this.$store.state.authentication.status.loggedIn;
+    },
+    UserWatcher: function(){
+      
+      return this.user.firstName && this.user.lastName
+    }
   },
   
  
   mounted(){
   
-           console.log('App mounted!');
+          console.log('App mounted!');
          if (localStorage.getItem('user')) {
          this.user = JSON.parse(localStorage.getItem('user')); 
           console.log(this.user)

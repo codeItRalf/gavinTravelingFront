@@ -214,12 +214,7 @@ var myHeaders = new Headers();
   .then(() => {
    console.log("I dunno... ")
   })
-  .catch(() => { 
-  });
-      //.then(response => JSON.parse(response))
-      //.then(result => console.log(result))
-      //.catch(error => alert('OBs! E-postadressen redan finns!  :( error', error));
-      
+  
           
           },
   }
