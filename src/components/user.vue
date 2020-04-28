@@ -18,95 +18,98 @@
                 </div>
             </div>
             <div class="activebooking">
-                <div class="accordion" id="accordion">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Booking 1 
-                        </button>
-                    </h2>
+                <div id="accordionOne">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Bokning 1
+                            </button>
+                        </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionOne">
+                        <div class="card-body">
+                        <p>Information</p>
+                        </div>
+                        </div>
                     </div>
-                    <div id="collapse" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                        <p>här kommer information</p>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Bokning 2
+                            </button>
+                        </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                        <div class="card-body">
+                            <p>Information</p>
+                        </div>
+                        </div>
                     </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Bokning 3
+                            </button>
+                        </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionOne">
+                        <div class="card-body">
+                        <p>Information</p>
+                        </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Booking 2 
-                        </button>
-                    </h2>
-                    </div>
-                    <div id="collapse" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
-                        <p>här kommer information</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Booking 3 
-                        </button>
-                    </h2>
-                    </div>
-                    <div id="collapse" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
-                        <p>här kommer information</p>
-                    </div>
-                    </div>
-                </div>
                 </div>
             </div>
+            <br>
             <div class="booking">
-                 <div class="accordion" id="accordion">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Booking 1 
-                        </button>
-                    </h2>
+                <div id="accordionTwo">
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Bokning 1
+                            </button>
+                        </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionTwo">
+                        <div class="card-body">
+                        <p>Information</p>
+                        </div>
+                        </div>
                     </div>
-                    <div id="collapse" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                        <p>här kommer information</p>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Bokning 2
+                            </button>
+                        </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionTwo">
+                        <div class="card-body">
+                            <p>Information</p>
+                        </div>
+                        </div>
                     </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Bokning 3
+                            </button>
+                        </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionTwo">
+                        <div class="card-body">
+                        <p>Information</p>
+                        </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Booking 2 
-                        </button>
-                    </h2>
-                    </div>
-                    <div id="collapse" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
-                        <p>här kommer information</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Booking 3 
-                        </button>
-                    </h2>
-                    </div>
-                    <div id="collapse" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
-                        <p>här kommer information</p>
-                    </div>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>
