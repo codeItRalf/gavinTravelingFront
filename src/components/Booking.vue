@@ -133,7 +133,7 @@
             <h6 class="text-danger" v-if="(halvPension + fullPension + allInclusive) < ($store.state.booking.party.adults + $store.state.booking.party.children + $store.state.booking.party.small_children)">
               OBS! Antal tillval är mindre än antal personer i sällskapet
             </h6>
-            <button class="btn btn-primary" data-toggle="modal" @click="getRoomsToBook" data-target="#confirmation">Boka nu för fan!</button>
+            <button class="btn btn-primary" data-toggle="modal" @click="getRoomsToBook" data-target="#confirm">Boka nu för fan!</button>
           </li>
         </ul>
       </div>
@@ -147,7 +147,7 @@
         <p>{{hotel.postalCode}} {{hotel.city.name | capitalize}}</p>
       </div>
     </div>
-    <div class="modal fade" tabindex="-1" role="dialog" id="confirmation">
+    <div class="modal fade" tabindex="-1" role="dialog" id="confirm">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -157,12 +157,21 @@
             </button>
           </div>
           <div class="modal-body">
-            <img class="img-fluid" src="https://i.redd.it/zozo0uauf0v41.jpg" alt="Can't believe you've done this" srcset="">
-            <h4 :class="showHide">Tack för din bokning!</h4>
+            <div :class="hideShow">
+              <img class="img-fluid" src="https://i.redd.it/zozo0uauf0v41.jpg" alt="Can't believe you've done this" srcset="">
+            </div>
+            <div :class="showHide">
+              <i class="fas fa-check-circle comfirmCheck"></i>
+              <h4>Tack för din bokning!</h4>
+              <h5>Bekräftelse skickat till: {{mail}}</h5>
+            </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" @click="confirmBooking" data-dismiss="modal">Bekräfta bokning</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
+            <button v-if="!sentBooking" type="button" class="btn btn-primary" @click="confirmBooking">Bekräfta bokning</button>
+            <button v-if="!sentBooking" type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
+            <router-link v-if="sentBooking" to="/">
+              <button class="btn btn-primary" data-dismiss="modal">Gå till startsidan</button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -180,12 +189,18 @@ export default {
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
   },
+  created() {
+    let getEMail = JSON.parse(localStorage.getItem('user'));
+    this.mail = getEMail.eEMail;
+  },
   data() {
       return {
+        sentBooking: false,
         totalPris: 0,
         confirmationText: "Tack för din bokning",
         showHide: "d-none",
         hideShow: "d-block",
+        mail: "",
         extraBedAntal: [this.$store.state.booking.room.enkel.antal, this.$store.state.booking.room.dubbel.antal, this.$store.state.booking.room.familje.antal],
         createBooking: {
           personCount: this.$store.state.booking.party.adults,
@@ -203,7 +218,6 @@ export default {
     },
   methods: {
     makeBooking: function(){
-      
       let url = "http://localhost:9090/rest/createBooking"
       let user = JSON.parse(localStorage.getItem('user'));
       console.log(this.createBooking);
@@ -218,8 +232,9 @@ export default {
       })
     },
     confirmBooking: function(){
-      this.showHide = "d-block"
-      this.hideShow = "d-none"
+      this.showHide = "d-block";
+      this.hideShow = "d-none";
+      this.sentBooking = true;
       let user = JSON.parse(localStorage.getItem('user'));      
       this.createBooking.tokenId = user.tokenId;
       this.createBooking.roomsToBook = this.getRoomsToBook();
@@ -486,5 +501,9 @@ a {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.comfirmCheck {
+  font-size: 300%;
+  color: green;
 }
 </style>
