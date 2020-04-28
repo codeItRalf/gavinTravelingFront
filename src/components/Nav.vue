@@ -16,34 +16,64 @@
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
           <router-link class="nav-link" to="/">Home</router-link>
-        </li>        
-        <li class="nav-item">
-          <router-link class="nav-link" to="/hotel/1">Hotel</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/booking/1">Booking</router-link>
-        </li>
+        </li>  
       </ul>
 
-      <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+      <ul v-if="authenticated" class="nav navbar-nav flex-row justify-content-between ml-auto">
+        <li class="nav-item">
+          <router-link class="nav-link" to="/user">{{user.firstName | capitalize}} {{user.lastName | capitalize}}</router-link>
+        </li>
+        <li class="nav-item">
+          <button  class="nav-link btn btn-primary"  @click="logout()">Logga Ut</button>
+        </li>
+      </ul> 
+      <ul v-else class="nav navbar-nav flex-row justify-content-between ml-auto">
         <li class="nav-item">
           <router-link class="nav-link" to="/register">Bli Kund</router-link>
         </li>
         <li class="nav-item">
-          <router-link disabled="loggingIn" class="nav-link" to="/login">Login</router-link>
+          <router-link class="nav-link" to="/login">Login</router-link>
         </li>
-      </ul>
+      </ul> 
     </div>
   </nav>
 </template>
 
 <script>
+
 export default {
   name: "Nav",
-  computed:{
-   loggingIn() {
-            return this.$store.state.authentication.status.loggingIn
+  data() {
+    return {
+      authenticated: this.$store.state.authenticated,
+      user: {}
+    }
+  },    
+  filters: {
+    capitalize: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  }, 
+  methods:{
+    logout: function(){   
+      this.authenticated = false,
+      this.$store.commit("setAuthentication", this.authenticated);      
+      this.$store.dispatch('authentication/logout');      
+      
+    }
+
+  },
+  
+ 
+  mounted(){
+  
+           console.log('App mounted!');
+         if (localStorage.getItem('user')) {
+         this.user = JSON.parse(localStorage.getItem('user')); 
+          console.log(this.user)
+         }
         }
-  }
 };
 </script>

@@ -6,18 +6,14 @@
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputState">Stad</label>
-
               <select
                 id="City"
-                class="form-control"
-                @click="cityBtn"
+                class="form-control"                
                 name="cityName"
-                v-model="inputCity"
-                v-bind:value="cityName"
-              >
+                v-model="inputCity">
                 <option
                   v-for="cityName in getCitiesArray"
-                  :key="cityName.id"
+                  :key="cityName.id" @click="cityBtn"
                 >{{cityName.name| capitalize}}</option>
               </select>
             </div>
@@ -154,6 +150,8 @@
                     <option>Omdöme: Fallande</option>            
                   </select>
               </div>   
+              </div>
+        </div>
               <template class="search_results" v-if="myHotels.length">
                 <div id="result" class="result mt-2" v-for="myHotel in myHotels" :key="myHotel.id">
                   <div class="card">
@@ -178,11 +176,7 @@
                           <div class="row hotel_info">
                             <div class="omdome col-12">
                               <div class="icons">
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
+                                <i :class="starIcon" v-for="i in myHotel.stars" :key="i"></i>
                               </div>
                             </div>
                             <div class="col-12 centrum mt-3">
@@ -194,11 +188,18 @@
                               <span>{{myHotel.distanceToBeach}}</span>
                             </div>
                             <div class="col-12 extra">
-                              <span>
+                              <br>
+                              <span v-show="myHotel.restaurant">
                                 <i class="far fa-check-square"></i>Restaurang
                               </span>
-                              <span>
+                              <span v-show="myHotel.childrenClub">
                                 <i class="far fa-check-square"></i>Barnklubb
+                              </span>
+                              <span v-show="myHotel.nightEntertainment">
+                                <i class="far fa-check-square"></i>Kvällsunderhållning
+                              </span>
+                              <span v-show="myHotel.pool">
+                                <i class="far fa-check-square"></i>Restaurang
                               </span>
                             </div>
                           </div>
@@ -215,9 +216,7 @@
               <template v-else>
                 <br />
                 <h1>Din sökning gav inget resultat</h1>
-              </template>
-          </div>
-        </div>
+              </template>         
       </div>
     </div>
   </div>
@@ -228,6 +227,7 @@ export default {
   props: ["booking", "search", "hotel"],
   data() {
     return {
+      starIcon: "far fa-star",
       startDate: this.$store.state.booking.globalStartDate,
       cityName: this.$store.state.search.globalCity,
       endDate: this.$store.state.booking.globalEndDate,
@@ -237,10 +237,10 @@ export default {
       adult: this.$store.state.booking.party.adults,
       child: this.$store.state.booking.party.children,
       baby: this.$store.state.booking.party.small_children,
-      havePool: true,
-      haveNightEntertain: true,
-      haveChildrenClub: true,
-      haveRestaurant: true,
+      havePool: false,
+      haveNightEntertain: false,
+      haveChildrenClub: false,
+      haveRestaurant: false,
       myHotels: [ ]
  
       
@@ -294,23 +294,21 @@ export default {
     },
      submitCenter: function(){
         
-        this.info() 
     },
     submitBeach: function(){        
-        this.info() 
+       
     },
     submitPool: function(){        
-        this.info()         
+               
     },
      submitEnter: function(){        
-        this.info()         
+              
     },
     submitClub: function(){        
-        this.info() 
         
     },
     submitRes: function(){        
-        this.info() 
+        
         
     },
 
@@ -325,11 +323,7 @@ export default {
       urlencoded.append("endDate", this.endDate);
       urlencoded.append("roomCount", this.roomCount);
       urlencoded.append("distCenter", this.distCenter);
-      urlencoded.append("distBeach", this.distBeach);
-      urlencoded.append("havePool", this.havePool);
-      urlencoded.append("haveNightEntertain", this.haveNightEntertain);
-      urlencoded.append("haveChildrenClub", this.haveChildrenClub);
-      urlencoded.append("haveRestaurant", this.haveRestaurant);
+      urlencoded.append("distBeach", this.distBeach);     
 
       var requestOptions = {
         method: "POST",

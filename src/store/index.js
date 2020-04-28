@@ -9,12 +9,12 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
-    rooms: [],
-    roomsToBook: [],
     authenticated: false,
+    rooms: [],
+    roomsToBook: [],    
     search: {
       inputCities: [],
-      globalCity: String      
+      globalCity: ''      
     },
     availableRooms: [],
     hotel: [],
@@ -54,7 +54,7 @@ export default new Vuex.Store({
       allInclusive: 0,
     },
   },
-  mutations: {
+  mutations: {    
     setAuthentication(state, status) {
       state.authenticated = status;
     },
