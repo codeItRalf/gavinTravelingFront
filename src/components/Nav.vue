@@ -65,8 +65,7 @@ export default {
      authenticated: function(){
       return this.$store.state.authentication.status.loggedIn;
     },
-    UserWatcher: function(){
-      
+    UserWatcher: function(){      
       return this.user.firstName && this.user.lastName
     }
   },

@@ -10,62 +10,39 @@
                         <p>Telefonnummer</p>
                     </div>
                     <div class="col-6">
-                        <p>{{user.firstName}}</p>
-                        <p>{{user.lastName}}</p>
+                        <p>{{user.firstName | capitalize}}</p>
+                        <p>{{user.lastName | capitalize}}</p>
                         <p>{{user.eEMail}}</p>
                         <p>{{user.phoneNumber}}</p>
                     </div>
                 </div>
             </div>
             <div class="activebooking">
-                <div id="accordionOne">
+                <h2  class="text-left">Aktiva bokningar</h2>
+                <template v-if="bookings.items">
+                 <div id="accordionOne" v-for="booking in bookings.items" :key="booking.id.bookingId">
                     <div class="card">
-                        <div class="card-header" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Bokning 1
-                            </button>
-                        </h5>
+                        <div class="card-header text-left" :id="'heading'+booking.id.bookingId" data-toggle="collapse" :data-target="'#collapse'+booking.id.bookingId"  aria-expanded="true" :aria-controls="'collapse'+booking.id.bookingId">
+                        <a class="card-title text-left">
+                            {{booking.room.roomType.hotel.name | capitalize}}
+                            
+                        </a><button class="btn btn-danger float-right ml-2" @click="doThat()">Avboka</button>
+                            <button class="btn btn-primary float-right ml-2" @click="doThis()">Omboka</button>
+                            
                         </div>
-
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionOne">
+                        <div :id="'collapse'+booking.id.bookingId" class="collapse" :aria-labelledby="'heading'+booking.id.bookingId" data-parent="#accordionOne">
                         <div class="card-body">
                         <p>Information</p>
                         </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Bokning 2
-                            </button>
-                        </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionOne">
-                        <div class="card-body">
-                            <p>Information</p>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Bokning 3
-                            </button>
-                        </h5>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionOne">
-                        <div class="card-body">
-                        <p>Information</p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
+                </div>    
+                </template>
+                
             </div>
             <br>
             <div class="booking">
+                <h2 class="text-left">Tidigare bokningar</h2>
                 <div id="accordionTwo">
                     <div class="card">
                         <div class="card-header" id="headingFour">
@@ -76,7 +53,7 @@
                         </h5>
                         </div>
 
-                        <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionFour">
+                        <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionTwo">
                         <div class="card-body">
                         <p>Information</p>
                         </div>
@@ -113,18 +90,24 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+        
 </template>
 
 <script>
     export default {
         data(){
             return{            
-             user: {},
-             activeBookings:[],
-             Bookings: []
+             user: {}           
             }    
         },
+        filters: {
+    capitalize: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },
         mounted(){
            console.log('App mounted!');
          if (localStorage.getItem('user')) {
@@ -132,14 +115,14 @@
          }
         },
       computed: {
-        bookings () {
+        bookings() {
             return this.$store.state.bookings.all
             }
         },
        created (){
            this.$store.dispatch("bookings/getAllBookingsByUser")
        }
-    }
+  }
 </script>
 
 <style scoped></style>
