@@ -46,7 +46,7 @@
             type="text"
             id="RegisterFormFirstName"
             class="form-control"
-            placeholder="Förstnamn" 
+            placeholder="Förnamn" 
             v-bind:value="firstName"
   v-on:input="firstName = $event.target.value"
             required
