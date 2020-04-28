@@ -184,11 +184,11 @@ export default {
   padding: 2%;
   width: 25% !important;
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 768px){
   .search_box {
   background: white;
   position: absolute;
-  left: 50px;
+  left: 70px;
   top: 50px;
   z-index: 500;
   padding: 2%;

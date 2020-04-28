@@ -24,7 +24,7 @@
           <router-link class="nav-link" v-model="UserWatcher" to="/user">{{user.firstName | capitalize}} {{user.lastName | capitalize}}</router-link>
         </li>
         <li class="nav-item">
-          <button  class="nav-link btn btn-primary"  @click="logout()">Logga Ut</button>
+          <button  class="nav-link btn"  @click="logout()"><i class="fas fa-sign-out-alt"></i></button>
         </li>
       </ul> 
       <ul v-else class="nav navbar-nav flex-row justify-content-between ml-auto">
