@@ -1,12 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import createPersistedState from 'vuex-persistedstate'
-import { authentication } from '../_store/authentication.module'
-//import { handleResponse } from "../_helpers";
+import { authentication } from '../_store'
+import { bookings } from '../_store'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  modules: {
+    authentication,
+    bookings
+   },
   plugins: [createPersistedState()],
   state: {
     authenticated: false,
@@ -158,8 +162,5 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setAvailableRooms", json);
     },
-  },
-  modules: {
-    authentication
-   }
+  }
 });
