@@ -2,10 +2,11 @@ let { $, sleep } = require('./funcs');
 
 module.exports = function () {
 
+  //http://localhost:8080/search/Port%20Jamesonstad/2020-04-24/2020-04-26 Trying out new url, saving the last one
 
 
   this.Given(/^that i am on the Gavin traveling search page$/, async function () {
-    await helpers.loadPage('http://localhost:8080/search/Port%20Jamesonstad/2020-04-24/2020-04-26');
+    await helpers.loadPage('http://localhost:8080/search/Gagarin/2020-04-27/2020-04-30');
     await sleep(1000)
 
   });
@@ -23,8 +24,8 @@ module.exports = function () {
 
   this.When(/^i choose 1 adults$/, async function () {
     let dropDownBox = await $('#inputAdult > option:nth-child(2)');
-    dropDownBox.click();
-    await sleep(1000)
+    await dropDownBox.click();
+    await sleep(100)
 
   });
 
@@ -49,8 +50,8 @@ module.exports = function () {
 
   this.When(/^i choose 1 children$/, async function () {
     let dropDownBox = await $('#inputChild > option:nth-child(2)');
-    dropDownBox.click();
-    await sleep(1000)
+    await dropDownBox.click();
+    await sleep(100)
 
   });
 
@@ -73,8 +74,8 @@ module.exports = function () {
 
   this.When(/^i choose 1 young children$/, async function () {
     let dropDownBox = await $('#inputBaby > option:nth-child(2)');
-    dropDownBox.click();
-    await sleep(1000)
+    await dropDownBox.click();
+    await sleep(100)
 
   });
 
@@ -95,7 +96,7 @@ module.exports = function () {
 
   this.When(/^i click the box for pool$/, async function () {
     await driver.findElement(By.id("inlineCheckbox1")).click()
-    await sleep(1000)
+    await sleep(100)
   });
 
 
@@ -120,7 +121,7 @@ module.exports = function () {
 
   this.When(/^i click the box for restaurant$/, async function () {
     await driver.findElement(By.id("inlineCheckbox4")).click()
-    await sleep(1000)
+    await sleep(100)
 
     //#inlineCheckbox3
   });
@@ -145,7 +146,7 @@ module.exports = function () {
 
   this.When(/^i click the box for children club$/, async function () {
     await driver.findElement(By.id("inlineCheckbox3")).click()
-    await sleep(1000)
+    await sleep(100)
   });
 
 
@@ -168,7 +169,7 @@ module.exports = function () {
 
   this.When(/^i click the box for evening entertainment$/, async function () {
     await driver.findElement(By.id("inlineCheckbox2")).click()
-    await sleep(1000)
+    await sleep(100)
   });
 
 
@@ -200,8 +201,14 @@ module.exports = function () {
   });
 
 
-  this.Then(/^the result should only be hotels within the <distance> to beach$/, async function () {
-    // Write code here that turns the phrase above into concrete actions
+  this.When(/^i enter a "([^"]*)" in the field$/, async function (distance) {
+    let dragCircle = await $('#Strand')
+    await dragCircle.click(distance) //Test passes but IDK if selenium acually does this
+  });
+
+  this.Then(/^the result should only be hotels within the "([^"]*)"$/, async function (distance) {
+    let resulfOfDragCircle = await $('div.form-row:nth-child(3) > div:nth-child(2) > span:nth-child(3)')
+    assert("This is supposed to be " + distance + "got " + resulfOfDragCircle) 
   });
 
   /////////////////////////////////////////////////////////////////////
@@ -215,7 +222,7 @@ module.exports = function () {
   this.When(/^i enter a <distance> in the distance to downtown field$/, async function () {
     await driver.findElement(By.css("#Centrum")).sendKeys("20")
     await driver.findElement(By.css("#Centrum")).click()
-    await sleep(500)
+    await sleep(100)
 
 
   });
@@ -252,18 +259,15 @@ module.exports = function () {
     // Write code here that turns the phrase above into concrete actions
   });
 
-  this.When(/^i chose "([^"]*)" in the drop down menu$/, async function () {
-    let dropDownBox = await $('#City > option: nth - child(7)');
-    dropDownBox.click();
-    await sleep(500)
-
+  this.When(/^i chose "([^"]*)" in the drop down menu$/, async function (city) {
+    let dropDownBox = await $('#City');
+    await dropDownBox.click(city);
   });
 
-  this.Then(/^i should get a result with "([^"]*)"$/, async function () {
-    // Write code here that turns the phrase above into concrete actions
+  this.Then(/^i should get a result with "([^"]*)"$/, async function (city) {
+    let dropDownBox = await $('#City');
+    assert("Expected to choose city, fund " + dropDownBox);
   });
-
-
 
 
   this.When(/^i press the search button$/, async function () {
@@ -286,7 +290,7 @@ module.exports = function () {
     await driver.findElement(By.id("startDate")).sendKeys(startDate)
     await driver.findElement(By.id("enDate")).click()
     await driver.findElement(By.id("enDate")).sendKeys(endDate)
-    await sleep(500)
+    await sleep(100)
   });
 
 

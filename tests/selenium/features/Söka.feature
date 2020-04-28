@@ -66,9 +66,9 @@ Feature: "Search page"
     Then i should get a result with <city>
 
     Examples:
-      | city              |
-      | "Connellyborough" |
-      | "gagarin"         |
+      | city     |
+      | "Tubel"  |
+      | "Dallas" |
 
 
   Scenario Outline: filter the available rooms during certain dates

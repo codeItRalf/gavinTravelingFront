@@ -16,19 +16,23 @@ Feature: "Sorting search results"
 
    Scenario: As a user i want to be able to filter my searches with rating
       Given that there is a filter for rating
-      When i select <rating>
+      When i select highest rating
       And press search
       Then i want to get a result based on selected rating
 
 
-   Scenario: As a user i want to search for hotels based on distance to the beach
+   Scenario Outline: As a user i want to search for hotels based on distance to the beach
       Given that there is a field for distance to beach
       When i enter a <distance> in the field
-      And press the search button
       Then the result should only be hotels within the <distance>
+
+      Examples:
+         | distance |
+         | "1"      |
+         | "99"     |
+         | "200"    |
 
    Scenario: As a user i want to search for hotels based on distance to downtown
       Given that there is a field for distance to downtown
       When i enter a <distance> in the field
-      And press the search button
       Then the result should only be hotels within the <distance>

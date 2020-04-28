@@ -13,8 +13,7 @@ Feature: "Booking"
    Scenario:
       When i selected a hotel i want
       And i choose the number of <room>
-      And i get to the next page,
-      And i select <value2>
+      And i select information about my baby
       And i click the booking button
       Then i receive the confirmation of my booking
 

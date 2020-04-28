@@ -10,7 +10,7 @@ Feature: "Authenticate"
   Scenario: "Create account"
     And that there is a register button
     When i press the register button
-    And i enter my email in the field email
+    And i enter my email in the field for create account
     And i enter my password in the field password
     And i enter in my phone number in the phone number field
     And i enter my name in the name fields
@@ -22,7 +22,7 @@ Feature: "Authenticate"
   Scenario: "Login to account"
     And that there is a login button
     When i press the login button from start
-    And i enter my eMail in the field email
+    And i enter my username in login
     And i enter my password in the inputfield 
     And i press the login button2
     Then i should be logged in
