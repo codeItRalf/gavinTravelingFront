@@ -194,7 +194,7 @@ export default {
           halfPension: this.$store.state.booking.halfPension,
           fullPension: this.$store.state.booking.fullPension,
           allInclusive: this.$store.state.booking.allInclusive,
-          tokenId: "asda",
+          tokenId: "",
           startDate: this.$store.state.booking.globalStartDate,
           endDate: this.$store.state.booking.globalEndDate,
           roomsToBook: [],
@@ -202,10 +202,28 @@ export default {
       }
     },
   methods: {
+    makeBooking: function(){
+      
+      let url = "http://localhost:9090/rest/createBooking"
+      let user = JSON.parse(localStorage.getItem('user'));
+      console.log(this.createBooking);
+
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + user.tokenId, 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.createBooking)
+      })
+      .then(booking => {
+        console.log(booking);
+      })
+    },
     confirmBooking: function(){
       this.showHide = "d-block"
       this.hideShow = "d-none"
+      let user = JSON.parse(localStorage.getItem('user'));      
+      this.createBooking.tokenId = user.tokenId;
       this.createBooking.roomsToBook = this.getRoomsToBook();
+      this.makeBooking();
     },
     getRoomsToBook: function() {
       let listRum = [];
