@@ -70,41 +70,41 @@
                     <div class="card">
                         <div class="card-header" id="headingFour">
                         <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseFour">
                             Bokning 1
                             </button>
                         </h5>
                         </div>
 
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionTwo">
+                        <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionFour">
                         <div class="card-body">
                         <p>Information</p>
                         </div>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header" id="headingTwo">
+                        <div class="card-header" id="headingFive">
                         <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                             Bokning 2
                             </button>
                         </h5>
                         </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionTwo">
+                        <div id="collapsefive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionFive">
                         <div class="card-body">
                             <p>Information</p>
                         </div>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header" id="headingThree">
+                        <div class="card-header" id="headingSix">
                         <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                             Bokning 3
                             </button>
                         </h5>
                         </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionTwo">
+                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionSix">
                         <div class="card-body">
                         <p>Information</p>
                         </div>

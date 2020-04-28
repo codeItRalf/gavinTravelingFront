@@ -29,7 +29,7 @@ const routes = [
     name: "user",
     component: user,
     beforeEnter: (to, from, next) => {      
-      if (store.state.authenticated == false) {               
+      if (store.state.authentication.status.loggedIn == false) {               
         next(false);
       } else {        
         next();
