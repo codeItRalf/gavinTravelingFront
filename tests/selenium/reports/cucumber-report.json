@@ -1,0 +1,177 @@
+[
+  {
+    "description": "   Feature Description",
+    "elements": [
+      {
+        "id": "\"booking\";\"booking\"",
+        "keyword": "Scenario",
+        "line": 24,
+        "name": "\"Booking\"",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I am logged in",
+            "result": {
+              "status": "passed",
+              "duration": 712101
+            },
+            "line": 7,
+            "match": {
+              "location": "C:\\Users\\insik\\Documents\\GitHub\\gavinTravelingFront\\tests\\selenium\\step-definitions\\Boka.js:13"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "that I am on the Gavin traveling search page",
+            "result": {
+              "status": "passed",
+              "duration": 5299749100
+            },
+            "line": 8,
+            "match": {
+              "location": "C:\\Users\\insik\\Documents\\GitHub\\gavinTravelingFront\\tests\\selenium\\step-definitions\\Boka.js:6"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "that I’ve entered dates for my booking",
+            "result": {
+              "status": "passed",
+              "duration": 1071727601
+            },
+            "line": 9,
+            "match": {
+              "location": "C:\\Users\\insik\\Documents\\GitHub\\gavinTravelingFront\\tests\\selenium\\step-definitions\\Boka.js:21"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I press the search button",
+            "result": {
+              "status": "passed",
+              "duration": 1224462700
+            },
+            "line": 10,
+            "match": {
+              "location": "C:\\Users\\insik\\Documents\\GitHub\\gavinTravelingFront\\tests\\selenium\\step-definitions\\Boka.js:29"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose 1 room",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 11
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I select 1 children",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 12
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I select 1 small children",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 13
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "i select 2 adult",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 14
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the booking button",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 15
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "i choose number of rooms",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 16
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "i click Gå till bokning",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 17
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "i choose Vafan vill ni ha till",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 25
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "i press Boka nu för fan",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 26
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "I receive the confirmation of my booking",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 27
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 1256401600
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\Users\\insik\\Documents\\GitHub\\gavinTravelingFront\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "\"booking\"",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "\"Booking\"",
+    "tags": [],
+    "uri": "C:/Users/insik/Documents/GitHub/gavinTravelingFront/tests/selenium/features/Boka.feature"
+  }
+]

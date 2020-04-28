@@ -190,8 +190,9 @@ module.exports = function () {
   });
 
   this.When(/^i enter a <distance> in the distance to beach field$/, async function () {
-    await driver.findElement(By.id("Strand")).sendKeys("20")
     await driver.findElement(By.id("Strand")).click()
+    await driver.findElement(By.id("Strand")).sendKeys("20")
+
     await sleep(500)
   });
 
@@ -208,7 +209,7 @@ module.exports = function () {
 
   this.Then(/^the result should only be hotels within the "([^"]*)"$/, async function (distance) {
     let resulfOfDragCircle = await $('div.form-row:nth-child(3) > div:nth-child(2) > span:nth-child(3)')
-    assert("This is supposed to be " + distance + "got " + resulfOfDragCircle) 
+    assert("This is supposed to be " + distance + "got " + resulfOfDragCircle)
   });
 
   /////////////////////////////////////////////////////////////////////

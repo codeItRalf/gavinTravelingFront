@@ -96,9 +96,10 @@ module.exports = function () {
     });
 
     this.When(/^i should be logged in$/, async function () {
-       /* let loggedInConfrim = await $('#user > a:nth-child(3)')
-        assert(loggedInConfrim, "Expected to find confrimation, found " + loggedInConfrim);
-        await sleep(50) */ //login is unavailable atm
+        /* let loggedInConfrim = await $('#user > a:nth-child(3)')
+         assert(loggedInConfrim, "Expected to find confrimation, found " + loggedInConfrim);
+         await sleep(50) */ //login is unavailable atm
+        //#user > a
     });
 }
 

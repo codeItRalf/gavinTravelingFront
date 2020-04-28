@@ -2,13 +2,6 @@ let { $, sleep } = require('./funcs');
 
 module.exports = function () {
 
-  this.Given(/^that I'm at the search page$/, async function () {
-    await helpers.loadPage('http://localhost:8080');
-    await sleep(1000)
-  });
-
-
-
 
   this.Given(/^that I am on the Gavin traveling search page$/, async function () {
     await helpers.loadPage('http://localhost:8080');
@@ -22,20 +15,22 @@ module.exports = function () {
     //We're gonna need backend for this
   });
 
+  // startdate selector searchpage #startDate startpage #startDate
 
 
-  this.Given(/^that i’ve entered dates for my booking$/, async function () {
-    /*let endTime = await $('#enDate')
-    await endTime.click()
-    await endTime.sendkeys('20200505')
-    await sleep (3000)
-    */
+  this.Given(/^that I’ve entered dates for my booking$/, async function () {
+    await driver.findElement(By.id("startDate")).sendKeys("2020-06-05")
+    await driver.findElement(By.id("enDate")).sendKeys("2020-07-10")
+    await sleep(1000)
+
   });
 
 
   this.Then(/^I press the search button$/, async function () {
-    let nextBtn = await $('a.btn:nth-child(4)')
+    let nextBtn = await $('#carousel > div.search_box.w-25 > form > a')
+    await sleep(1000)
     await nextBtn.click()
+
   });
 
 
