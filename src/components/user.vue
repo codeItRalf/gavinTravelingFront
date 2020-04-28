@@ -129,13 +129,16 @@
            console.log('App mounted!');
          if (localStorage.getItem('user')) {
          this.user = JSON.parse(localStorage.getItem('user')); 
-          console.log(this.user)
          }
         },
-         
-        
-        
-    
+      computed: {
+        bookings () {
+            return this.$store.state.bookings.all
+            }
+        },
+       created (){
+           this.$store.dispatch("bookings/getAllBookingsByUser")
+       }
     }
 </script>
 
