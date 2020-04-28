@@ -3,14 +3,15 @@ import VueRouter from "vue-router";
 import store from "../store/index.js";
 
 import Home from "../views/Home.vue";
-
 import Nav from "../components/Nav.vue";
-
 import user from "../components/user.vue";
+import notfound from "../components/404.vue";
+
 
 Vue.use(VueRouter);
 
 const routes = [
+ 
   {
     path: "/",
     name: "Home",
@@ -21,6 +22,7 @@ const routes = [
     name: "Nav",
     component: Nav
   },
+  { path: '*', name: "404", component: notfound},
 
   {
     path: "/user",
@@ -68,7 +70,7 @@ const routes = [
     path: "/booking/:id",
     name: "Booking",
     component: () => import(/* */ "../views/Booking.vue")
-  },
+  },  
   {
     path: "/search/:inputCities/:sdates/:endates",
     name: "Search",
@@ -80,10 +82,13 @@ const routes = [
   }
 ];
 
+
+
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
+  
 });
 
 export default router;
