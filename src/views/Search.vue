@@ -176,11 +176,7 @@
                           <div class="row hotel_info">
                             <div class="omdome col-12">
                               <div class="icons">
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
+                                <i :class="starIcon" v-for="i in myHotel.stars" :key="i"></i>
                               </div>
                             </div>
                             <div class="col-12 centrum mt-3">
@@ -192,11 +188,18 @@
                               <span>{{myHotel.distanceToBeach}}</span>
                             </div>
                             <div class="col-12 extra">
-                              <span>
+                              <br>
+                              <span v-show="myHotel.restaurant">
                                 <i class="far fa-check-square"></i>Restaurang
                               </span>
-                              <span>
+                              <span v-show="myHotel.childrenClub">
                                 <i class="far fa-check-square"></i>Barnklubb
+                              </span>
+                              <span v-show="myHotel.nightEntertainment">
+                                <i class="far fa-check-square"></i>Kvällsunderhållning
+                              </span>
+                              <span v-show="myHotel.pool">
+                                <i class="far fa-check-square"></i>Restaurang
                               </span>
                             </div>
                           </div>
@@ -224,6 +227,7 @@ export default {
   props: ["booking", "search", "hotel"],
   data() {
     return {
+      starIcon: "far fa-star",
       startDate: this.$store.state.booking.globalStartDate,
       cityName: this.$store.state.search.globalCity,
       endDate: this.$store.state.booking.globalEndDate,
