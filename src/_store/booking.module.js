@@ -7,23 +7,23 @@ export const bookings = {
     },
     actions: {
         getAllBookingsByUser({ commit }) {
-            commit('getAllRequest');
+            commit('getAllBookingsByUserRequest');
 
             bookingService.getAllBookingsByUser()
                 .then(
-                    users => commit('getAllSuccess', users),
-                    error => commit('getAllFailure', error)
+                    bookings => commit('getAllBookingsByUserSuccess', bookings),
+                    error => commit('getAllBookingsByUserFailure', error)
                 );
         }
     },
     mutations: {
-        getAllRequest(state) {
+        getAllBookingsByUserRequest(state) {
             state.all = { loading: true };
         },
-        getAllSuccess(state, users) {
-            state.all = { items: users };
+        getAllBookingsByUserSuccess(state, bookings) {
+            state.all = { items: bookings };
         },
-        getAllFailure(state, error) {
+        getAllBookingsByUserFailure(state, error) {
             state.all = { error };
         }
     }

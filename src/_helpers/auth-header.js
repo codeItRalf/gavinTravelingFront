@@ -1,14 +1,25 @@
 export function authHeader() {
     // return authorization header with jwt token
-    let user = JSON.parse(localStorage.getItem('user'));
+    let user = getUser()
 
     if (user && user.tokenId) {
-        return { 'Authorization': 'Bearer ' + user.tokenId };
+        return { 'Authorization': 'Bearer ' + user.tokenId,
+        'Content-Type': 'application/json' };
     } else {
         return {};
     }
 }
 
 export function getTokenId(){
-   return JSON.parse(localStorage.getItem('user')).tokenId || {}
+    let user = getUser()
+    if (user && user.tokenId) {
+     return  { 'tokenId' : user.tokenId } 
+    } else {
+        return {}
+    }
+  
+}
+
+function getUser(){
+    return JSON.parse(localStorage.getItem('user'));
 }

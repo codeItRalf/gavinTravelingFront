@@ -1,5 +1,4 @@
-import {apiUrl} from '../_helpers/api-config' 
-import { handleResponse } from '../_helpers'
+import {apiUrl, handleResponse} from '../_helpers' 
 
 export const userService = {
     login,

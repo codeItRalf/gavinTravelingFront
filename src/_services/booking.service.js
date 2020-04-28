@@ -1,7 +1,4 @@
-import { authHeader } from '../_helpers'
-import { getTokenId } from '../_helpers'
-import {apiUrl} from '../_helpers/api-config' 
-import { handleResponse } from '../_helpers'
+import { authHeader, getTokenId, apiUrl, handleResponse } from '../_helpers'
 
 export const bookingService = {
     getAllBookingsByUser
@@ -10,8 +7,8 @@ export const bookingService = {
 function getAllBookingsByUser() {
     const requestOptions = {
         method: 'POST',
-        headers: authHeader(),
-        body : {"token" : getTokenId()} 
+        headers:  authHeader() ,
+        body : JSON.stringify( getTokenId() )
     };
 
     return fetch(`${apiUrl}/rest/booked-rooms/user`, requestOptions).then(handleResponse);
