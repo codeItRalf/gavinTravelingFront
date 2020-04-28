@@ -1,37 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-    <testsuite name="&quot;booking&quot;;&quot;booking&quot;" tests="14" failures="0" skipped="10">
+    <testsuite name="&quot;booking&quot;;&quot;booking&quot;" tests="14" failures="1" skipped="5">
         <properties>
             <property name="URI" value="C:/Users/insik/Documents/GitHub/gavinTravelingFront/tests/selenium/features/Boka.feature">
             </property>
         </properties>
-        <testcase name="Given that I am logged in" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.000712101">
+        <testcase name="Given that I am logged in" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.0006545">
         </testcase>
-        <testcase name="And that I am on the Gavin traveling search page" classname="&quot;booking&quot;;&quot;booking&quot;" time="5.2997491">
+        <testcase name="And that I am on the Gavin traveling search page" classname="&quot;booking&quot;;&quot;booking&quot;" time="6.181970199">
         </testcase>
-        <testcase name="And that I’ve entered dates for my booking" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.071727601">
+        <testcase name="And that I’ve entered dates for my booking" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.074824">
         </testcase>
-        <testcase name="When I press the search button" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.2244627">
+        <testcase name="When I press the search button" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.255584901">
         </testcase>
-        <testcase name="And I choose 1 room" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And I choose number of room" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.5630772">
         </testcase>
-        <testcase name="And I select 1 children" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And I select number of children" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.555362">
         </testcase>
-        <testcase name="And I select 1 small children" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And I select number of small children" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.540549799">
         </testcase>
-        <testcase name="And i select 2 adult" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And i select number of adults" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.5539267">
         </testcase>
-        <testcase name="And I click the booking button" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And I click the booking button" classname="&quot;booking&quot;;&quot;booking&quot;" time="10.0013485">
+            <failure message="function timed out after 10000 milliseconds">function timed out after 10000 milliseconds</failure>
         </testcase>
         <testcase name="And i choose number of rooms" classname="&quot;booking&quot;;&quot;booking&quot;">
             <skipped message="">

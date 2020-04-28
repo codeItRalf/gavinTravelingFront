@@ -8,10 +8,10 @@ Feature: "Booking"
       And that I am on the Gavin traveling search page
       And that I’ve entered dates for my booking
       When I press the search button
-      And I choose 1 room
-      And I select 1 children
-      And I select 1 small children
-      And i select 2 adult
+      And I choose number of room
+      And I select number of children
+      And I select number of small children
+      And i select number of adults
       And I click the booking button
       And i choose number of rooms
       When i click Gå till bokning
