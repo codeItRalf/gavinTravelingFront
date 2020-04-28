@@ -23,8 +23,7 @@ export default {
             username: '',
             password: '',
             submitted: false,
-            authenticated: this.$store.state.authenticated,
-            
+           
         }
     },
     
@@ -42,8 +41,7 @@ export default {
            
             
             if (username && password) {
-                this.authenticated = true,
-            this.$store.commit("setAuthentication", this.authenticated);   
+              
                 dispatch('authentication/login', { username, password })
             }
             

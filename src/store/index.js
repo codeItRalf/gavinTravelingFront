@@ -12,8 +12,7 @@ export default new Vuex.Store({
     bookings
    },
   plugins: [createPersistedState()],
-  state: {
-    authenticated: false,
+  state: {    
     rooms: [],
     roomsToBook: [],    
     search: {

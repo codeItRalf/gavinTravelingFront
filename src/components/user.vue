@@ -70,7 +70,7 @@
                     <div class="card">
                         <div class="card-header" id="headingFour">
                         <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseFour">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                             Bokning 1
                             </button>
                         </h5>
@@ -90,7 +90,7 @@
                             </button>
                         </h5>
                         </div>
-                        <div id="collapsefive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionFive">
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionTwo">
                         <div class="card-body">
                             <p>Information</p>
                         </div>
@@ -104,7 +104,7 @@
                             </button>
                         </h5>
                         </div>
-                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionSix">
+                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionTwo">
                         <div class="card-body">
                         <p>Information</p>
                         </div>
