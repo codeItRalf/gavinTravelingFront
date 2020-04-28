@@ -167,7 +167,7 @@
                         <div class="card-block px-2">
                           <div class="row">
                             <div class="col-8">
-                              <h4>{{myHotel.name}}</h4>
+                              <h4>{{myHotel.name | capitalize }}</h4>
                             </div>
                             <div class="col-4">
                               <h5>från {{myHotel.pensionHalfPrice}} Kr</h5>
