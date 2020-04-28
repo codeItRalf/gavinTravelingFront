@@ -160,7 +160,11 @@
             <div :class="hideShow">
               <img class="img-fluid" src="https://i.redd.it/zozo0uauf0v41.jpg" alt="Can't believe you've done this" srcset="">
             </div>
-            <h4 :class="showHide">Tack för din bokning!</h4>
+            <div :class="showHide">
+              <i class="fas fa-check-circle comfirmCheck"></i>
+              <h4>Tack för din bokning!</h4>
+              <h5>Bekräftelse skickat till: {{mail}}</h5>
+            </div>
           </div>
           <div class="modal-footer">
             <button v-if="!sentBooking" type="button" class="btn btn-primary" @click="confirmBooking">Bekräfta bokning</button>
@@ -185,6 +189,10 @@ export default {
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
   },
+  created() {
+    let getEMail = JSON.parse(localStorage.getItem('user'));
+    this.mail = getEMail.eEMail;
+  },
   data() {
       return {
         sentBooking: false,
@@ -192,6 +200,7 @@ export default {
         confirmationText: "Tack för din bokning",
         showHide: "d-none",
         hideShow: "d-block",
+        mail: "",
         extraBedAntal: [this.$store.state.booking.room.enkel.antal, this.$store.state.booking.room.dubbel.antal, this.$store.state.booking.room.familje.antal],
         createBooking: {
           personCount: this.$store.state.booking.party.adults,
@@ -209,7 +218,6 @@ export default {
     },
   methods: {
     makeBooking: function(){
-      
       let url = "http://localhost:9090/rest/createBooking"
       let user = JSON.parse(localStorage.getItem('user'));
       console.log(this.createBooking);
@@ -493,5 +501,9 @@ a {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.comfirmCheck {
+  font-size: 300%;
+  color: green;
 }
 </style>
