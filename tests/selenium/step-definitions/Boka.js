@@ -29,7 +29,6 @@ module.exports = function () {
   this.Then(/^I press the search button$/, async function () {
     await driver.findElement(By.tagName(".btn-primary")).click()
     await sleep(1000)
-
   });
 
   this.When(/^I choose number of room$/, async function () {
