@@ -306,7 +306,7 @@ export default {
             fExtraBed = fExtraBed-1;
         } else {
           addRoom.extraBed = 0;
-          addRoom.roomId = listDubbelRum[n].id
+          addRoom.roomId = listFamiljeRum[n].id
           listRum.push(addRoom);
         } 
       }
