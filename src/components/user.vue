@@ -22,7 +22,7 @@
                 <template v-if="filteredactiveBookings">
                  <div id="accordionOne" v-for="(booking, index) in filteredactiveBookings" :key="`booking-${index}`">
                     <div class="card">
-                        <div class="card-header text-left" :id="'heading'+booking.bookedRoomList[0].bookingId" data-toggle="collapse" :data-target="'#collapse'+booking.bookedRoomList[0].bookingId"  aria-expanded="true" :aria-controls="'collapse'+booking.bookedRoomList[0].bookingId">
+                        <div class="card-header text-left" :id="'heading'+booking.bookedRoomList[0].id.bookingId" data-toggle="collapse" :data-target="'#collapse'+booking.bookedRoomList[0].id.bookingId"  aria-expanded="true" :aria-controls="'collapse'+booking.bookedRoomList[0].id.bookingId">
                         <a class="card-title text-left">
                             {{booking.hotelName | capitalize}}
                             
@@ -30,7 +30,7 @@
                             <button class="btn btn-primary float-right ml-2" @click="doThis()">Omboka</button>
                             
                         </div>
-                        <div :id="'collapse'+booking.bookedRoomList[0].bookingId" class="collapse" :aria-labelledby="'heading'+booking.bookedRoomList[0].bookingId" data-parent="#accordionOne">
+                        <div :id="'collapse'+booking.bookedRoomList[0].id.bookingId" class="collapse" :aria-labelledby="'heading'+booking.bookedRoomList[0].id.bookingId" data-parent="#accordionOne">
                         <div class="card-body" style="width: 100%,"> 
                             <div class="col-12">                           
                                 <div class="row">
