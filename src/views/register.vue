@@ -3,7 +3,31 @@
     <div class="container">
       <br />
       <br />
-      <h2>Bli kund</h2>    
+      <h2>Bli kund</h2>   
+
+        <div v-if="showModal">
+    <transition name="modal">
+      <div class="modal-mask">
+        <div class="modal-wrapper">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">              
+              <div class="modal-body">
+                <p v-show="showThis">Nåt text.</p>
+                <p v-if="error">OBS!  E-postadress redan är registrerad</p>
+                <p v-if="succes">Du har skapat ett konto</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" v-show="showThat" @click="showModal = false">Stäng</button>
+                <button type="button" class="btn btn-secondary" v-show="showEnd"  @click="SendEnd()">Stäng</button>
+                <button type="button" @click="SendReg()" v-show="showThis" class="btn btn-primary">Registrera dig</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+  </div>
+ 
       
       <div>
        <div v-if="errors.length">
@@ -22,7 +46,7 @@
             type="text"
             id="RegisterFormFirstName"
             class="form-control"
-            placeholder="Förstnamn" 
+            placeholder="Förnamn" 
             v-bind:value="firstName"
   v-on:input="firstName = $event.target.value"
             required
@@ -62,6 +86,9 @@
       <!-- Sign up button -->
       <button class="btn btn-info my-4 btn-block" @click="checkForm" >Skapa ett konto</button>
 
+    
+      
+
       <hr />
     </div>
   </div>
@@ -70,6 +97,10 @@
 export default {
   data() {
     return {
+      showThis: true,
+      showThat: true,
+      showEnd: false,
+      showModal: false,
       firstName: "",
       lastName: "",
       phoneNumber: "",
@@ -77,6 +108,8 @@ export default {
       personNumber:"",
       password: "",
       valid: "false",
+      error: false,
+      succes: false,
       errors: []
       
     };
@@ -84,8 +117,9 @@ export default {
   methods: { 
     checkForm: function (e) {
       if (this.firstName && this.lastName && this.phoneNumber && this.eMail && this.personNumber && this.password ) {
-        alert('haloj'),
-        this.sendRegister();
+        
+       this.showModal = true;
+        //this.sendRegister();
         return true;
       }
 
@@ -116,8 +150,9 @@ export default {
         this.errors.push('Ange en giltig e-postadress.');
       }
 
-      if (!this.errors.length) {        
-        this.sendRegister();
+      if (!this.errors.length) { 
+        this.showModal = true;
+        //this.sendRegister();
         return true;
       }      
       e.preventDefault();
@@ -134,6 +169,12 @@ export default {
       var re = /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))-[0-9]{4}/;
       return re.test(personNumber);
     },    
+     SendEnd: function(){
+      this.$router.push('/');
+    },
+    SendReg: function(){
+      this.sendRegister();
+    },
     async sendRegister(){
 
 var myHeaders = new Headers();
@@ -159,22 +200,21 @@ var myHeaders = new Headers();
       fetch("http://localhost:9090/rest/customers/sign-up", requestOptions)
       .then(response => {    
     if (response.ok == false) {
-       alert('OBS!  E-postadress redan är registrerad')
+       this.error = true
+       this.showThis = false
        return response.json();                
     } else {
-      alert('du har skapat ett konto')
+      this.succes = true
+      this.showThis = false
+      this.showThat = false
+      this.showEnd= true
       console.log(response);
     }
   })
   .then(() => {
-   console.log("I dunno, something like fetchen completed ")
+   console.log("I dunno... ")
   })
-  .catch(() => { 
-  });
-      //.then(response => JSON.parse(response))
-      //.then(result => console.log(result))
-      //.catch(error => alert('OBs! E-postadressen redan finns!  :( error', error));
-      
+  
           
           },
   }
@@ -187,3 +227,23 @@ var myHeaders = new Headers();
     
   }
 </script>
+
+<style scoped>
+@import "../style.css";
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+</style>

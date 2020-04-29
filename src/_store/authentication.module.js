@@ -4,7 +4,7 @@ import  router  from '../router/index.js'
 const user = JSON.parse(localStorage.getItem('user'));
 const initialState = user
     ? { status: { loggedIn: true }, user }
-    : { status: {}, user: null };
+    : { status: {loggedIn: false}, user: null };
 
 export const authentication = {
     namespaced: true,
@@ -28,6 +28,7 @@ export const authentication = {
         logout({ commit }) {
             userService.logout();
             commit('logout');
+            router.push('/');
         }
     },
     mutations: {

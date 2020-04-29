@@ -1,19 +1,23 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import createPersistedState from 'vuex-persistedstate'
-import { authentication } from '../_store/authentication.module'
+import { authentication } from '../_store'
+import { bookings } from '../_store'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  modules: {
+    authentication,
+    bookings
+   },
   plugins: [createPersistedState()],
-  state: {
+  state: {    
     rooms: [],
-    roomsToBook: [],
-    authenticated: false,
+    roomsToBook: [],    
     search: {
       inputCities: [],
-      globalCity: String      
+      globalCity: ''      
     },
     availableRooms: [],
     hotel: [],
@@ -53,7 +57,7 @@ export default new Vuex.Store({
       allInclusive: 0,
     },
   },
-  mutations: {
+  mutations: {    
     setAuthentication(state, status) {
       state.authenticated = status;
     },
@@ -157,8 +161,5 @@ export default new Vuex.Store({
       const json = await result.json();
       commit("setAvailableRooms", json);
     },
-  },
-  modules: {
-    authentication
-   }
+  }
 });
