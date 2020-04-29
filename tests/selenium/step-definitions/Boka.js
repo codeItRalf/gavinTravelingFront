@@ -64,18 +64,45 @@ module.exports = function () {
 
   this.When(/^I click the booking button$/, async function () {
     await driver.findElement(By.linkText("Boka Nu")).click()
-    await sleep(10000)
+    await sleep(1000)
   });
 
   this.When(/^i choose number of rooms$/, async function () {
     // Write code here that turns the phrase above into concrete actions
-    await driver.findElement(By.id("app > div > div.card.mx - auto > div: nth - child(1)")).sendKeys("1")
+    await driver.findElement(By.className("w-75")).sendKeys("1")
+
+    await sleep(1000)
 
     //#app > div > div.card.mx - auto > div: nth - child(1) > div.col - md - 3.col - 12.mx - auto.my - auto > div: nth - child(2) > input
   });
 
+  this.When(/^i click Gå till bokning$/, async function () {
+    await driver.findElement(By.linkText("Gå till bokning")).click()
+    await sleep(1000)
+  });
+
+  this.When(/^i choose Vafan vill ni ha till$/, async function () {
+    await driver.findElement(By.className("w-25")).sendKeys("1")
+    await sleep(1000)
+  });
+
+  this.When(/^i press Boka nu för fan$/, async function () {
+    await driver.findElement(By.className("btn btn-primary")).click()
+    await sleep(1000)
+  });
+
+  this.When(/^i press Bekräfta bokning$/, async function () {
+    await driver.findElement(By.css("html body.modal-open div#app div div.container-fluid.bgimage div#confirm.modal.fade.show div.modal-dialog div.modal-content div.modal-footer button.btn.btn-primary")).click()
+    await sleep(1000)
+  });
+
+  this.Then(/^I receive the confirmation of my booking$/, async function () {
 
 
+
+
+
+  });
 
   // this.When(/^i selected a hotel i want$/, async function () {
   //   let withRestaurant = await $('div.form-check:nth-child(4) > input:nth-child(1)')

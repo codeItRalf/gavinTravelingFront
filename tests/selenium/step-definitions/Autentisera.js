@@ -23,7 +23,7 @@ module.exports = function () {
 
     this.When(/^i enter my email in the field for create account$/, async function () {
         let mailInputField = await $('#RegisterFormEmail')
-        await mailInputField.sendKeys('example@example.com')
+        await mailInputField.sendKeys('jsfjsfjf@goasfhgoaif.com')
     });
 
 
@@ -49,7 +49,7 @@ module.exports = function () {
 
     this.When(/^i enter in my security number into the security number field$/, async function () {
         let personNummerInput = await $('#RegisterFormPerson')
-        await personNummerInput.sendKeys('19920505-0505')
+        await personNummerInput.sendKeys('00000000-0505')
     });
 
 
@@ -67,7 +67,7 @@ module.exports = function () {
     });
 
     this.Then(/^i should’ve created an account$/, async function () {
-        //Troligtvis kommer vi till ett bekräftelsestadie snart.
+
     });
 
 
@@ -112,7 +112,8 @@ module.exports = function () {
         /* let loggedInConfrim = await $('#user > a:nth-child(3)')
          assert(loggedInConfrim, "Expected to find confrimation, found " + loggedInConfirm);
          await sleep(50) */ //login is unavailable atm
-        //#user > a
+        //#user > a #app > div > div > div:nth-child(4) > div > div > div > div > div.modal-body > p:nth-child(2)
+
     });
 }
 
