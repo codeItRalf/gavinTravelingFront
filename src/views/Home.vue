@@ -2,7 +2,7 @@
   <div class="home">
     <header>
       <div id="carousel" class="carousel slide" data-ride="carousel">
-        <div class="search_box w-25">
+        <div class="search_box">
           <form @submit="onSubmit">
             <div class="form-group">
               <label for="City">Stad</label>
@@ -182,8 +182,19 @@ export default {
   top: 150px;
   z-index: 500;
   padding: 2%;
+  width: 25% !important;
 }
-
+@media screen and (max-width: 768px){
+  .search_box {
+  background: white;
+  position: absolute;
+  left: 70px;
+  top: 50px;
+  z-index: 500;
+  padding: 2%;
+    width: 75% !important;
+  }
+}
 .search_box label {
   text-align: left;
   float: left;
