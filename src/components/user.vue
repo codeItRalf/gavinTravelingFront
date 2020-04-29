@@ -20,17 +20,17 @@
             <div class="activebooking">
                 <h2  class="text-left">Aktiva bokningar</h2>
                 <template v-if="filteredactiveBookings">
-                 <div id="accordionOne" v-for="booking in filteredactiveBookings" :key="booking.id.bookingId">
+                 <div id="accordionOne" v-for="(booking, index) in filteredactiveBookings" :key="`booking-${index}`">
                     <div class="card">
-                        <div class="card-header text-left" :id="'heading'+booking.id.bookingId" data-toggle="collapse" :data-target="'#collapse'+booking.id.bookingId"  aria-expanded="true" :aria-controls="'collapse'+booking.id.bookingId">
+                        <div class="card-header text-left" :id="'heading'+booking.bookedRoomList[0].bookingId" data-toggle="collapse" :data-target="'#collapse'+booking.bookedRoomList[0].bookingId"  aria-expanded="true" :aria-controls="'collapse'+booking.bookedRoomList[0].bookingId">
                         <a class="card-title text-left">
-                            {{booking.room.roomType.hotel.name | capitalize}}
+                            {{booking.hotelName | capitalize}}
                             
                         </a><button class="btn btn-danger float-right ml-2" @click="doThat()">Avboka</button>
                             <button class="btn btn-primary float-right ml-2" @click="doThis()">Omboka</button>
                             
                         </div>
-                        <div :id="'collapse'+booking.id.bookingId" class="collapse" :aria-labelledby="'heading'+booking.id.bookingId" data-parent="#accordionOne">
+                        <div :id="'collapse'+booking.bookedRoomList[0].bookingId" class="collapse" :aria-labelledby="'heading'+booking.bookedRoomList[0].bookingId" data-parent="#accordionOne">
                         <div class="card-body" style="width: 100%,"> 
                             <div class="col-12">                           
                                 <div class="row">
@@ -40,18 +40,12 @@
                                                 <div class="text-center">
                                                 <p>Från:</p>
                                                 <p>Till:</p>
-                                                <p>Antal Vuxna:</p>
-                                                <p>Antal Barn:</p>
-                                                <p>Antal Småbarn</p>
                                                 </div>
                                             </div> 
                                             <div class="col-md-6 col-6">
                                                 <div class=" text-center">
-                                                <p>{{booking.startDate | formatDate }}</p>
-                                                <p>{{booking.endDate | formatDate }}</p>
-                                                <p>{{booking.booking.personCount}}</p>
-                                                <p>{{booking.booking.childrenCount}}</p>
-                                                <p>{{booking.booking.smallChildrenCount}}</p>
+                                                <p>{{booking.bookedRoomList[0].startDate | formatDate }}</p>
+                                                <p>{{booking.bookedRoomList[0].endDate | formatDate }}</p>
                                                 </div>
                                             </div>                                         
                                         </div>
@@ -62,18 +56,12 @@
                                                 <div class="text-center">
                                                 <p>Antal Rum:</p>
                                                 <p>Extra Sängar:</p>
-                                                <p>Halv-pension:</p>
-                                                <p>Hel-pension:</p>
-                                                <p>All-inclusive:</p>
                                                 </div>
                                             </div> 
                                             <div class="col-md-6 col-6">
                                                 <div class="text-center">
                                                 <p>1</p>
-                                                <p>{{booking.extraBed}}</p>
-                                                <p>{{booking.booking.halfPension}}</p>
-                                                <p>{{booking.booking.fullPension}}</p>
-                                                <p>{{booking.booking.allInclusive}}</p>
+                                                <p>{{booking.extraBed}}</p> 
                                                 </div>
                                             </div> 
                                         </div>
@@ -262,12 +250,12 @@ import moment from 'moment';
             },*/
             filteredactiveBookings: function(){
                 return this.bookings.items.filter( booking => {
-                   return booking.booking.activeBooking == true
+                   return booking.active == true
                 })
             },
             filteredpastBookings: function(){
                 return this.bookings.items.filter( booking => {
-                   return booking.booking.activeBooking == false
+                   return booking.active == false
                 })
             }
       },      
