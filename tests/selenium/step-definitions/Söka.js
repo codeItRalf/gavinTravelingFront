@@ -1,14 +1,11 @@
 let { $, sleep } = require('./funcs');
-
 module.exports = function () {
 
   //http://localhost:8080/search/Port%20Jamesonstad/2020-04-24/2020-04-26 Trying out new url, saving the last one
 
-
   this.Given(/^that i am on the Gavin traveling search page$/, async function () {
     await helpers.loadPage('http://localhost:8080/search/Gagarin/2020-04-27/2020-04-30');
     await sleep(1000)
-
   });
 
   /////////////////////////////////////////////////////////////////////
@@ -25,17 +22,13 @@ module.exports = function () {
   this.When(/^i choose 1 adults$/, async function () {
     let dropDownBox = await $('#inputAdult > option:nth-child(2)');
     await dropDownBox.click();
-    await sleep(100)
-
+    await sleep(1000)
   });
 
   this.Then(/^the number of adults should should be set to 1$/, async function () {
-    //let dropDownOption = await driver.findElement(by.id('#inputAdult > option: nth - child(2)')).getText();
-    //assert('1', dropDownOption);
-
-
+    let dropDownOption = await driver.findElement(By.id("inputAdult")).getAttribute("value")
+    assert.equal(dropDownOption, '1', '== coerces values to strings');
   });
-
 
   /////////////////////////////////////////////////////////////////////
   // Add children
@@ -49,17 +42,14 @@ module.exports = function () {
   });
 
   this.When(/^i choose 1 children$/, async function () {
-    let dropDownBox = await $('#inputChild > option:nth-child(2)');
+    let dropDownBox = await $('#inputChild > option:nth-child(3)');
     await dropDownBox.click();
     await sleep(100)
-
   });
 
   this.Then(/^the number of children should should be set to 1$/, async function () {
-    //let dropDownOption = await driver.findElement(by.id('#inputChild > option: nth - child(2)')).getText();
-    //assert('1', dropDownOption);
-
-
+    let dropDownOption = await driver.findElement(By.id("inputChild")).getAttribute("value")
+    assert.equal(dropDownOption, '1', '== coerces values to strings');
   });
   /////////////////////////////////////////////////////////////////////
   // Add young children - #inputBaby
@@ -73,17 +63,14 @@ module.exports = function () {
   });
 
   this.When(/^i choose 1 young children$/, async function () {
-    let dropDownBox = await $('#inputBaby > option:nth-child(2)');
+    let dropDownBox = await $('#inputBaby > option:nth-child(3)');
     await dropDownBox.click();
-    await sleep(100)
-
+    await sleep(1000)
   });
 
   this.Then(/^the number of young children should should be set to 1$/, async function () {
-    //let dropDownOption = await driver.findElement(by.css('#inputBaby > option: nth - child(2)')).getText();
-    //assert('1', dropDownOption);
-
-
+    let dropDownOption = await driver.findElement(By.id("inputBaby")).getAttribute("value")
+    assert.equal(dropDownOption, '1', '== coerces values to strings');
   });
   /////////////////////////////////////////////////////////////////////
   // Search for activities - pool
