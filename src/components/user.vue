@@ -104,7 +104,7 @@
                                                 
                                             </div>
                                             <div class="col-6">
-                                                <button class="btn btn-primary" @click="omdome()"> Lämna ett omdöme</button>
+                                                <!-- <button class="btn btn-primary" @click="omdome()"> Lämna ett omdöme</button> !-->
                                             </div> 
                                         </div>
                                           
@@ -207,7 +207,7 @@
                                                 
                                             </div>
                                             <div class="col-6">
-                                                <button class="btn btn-primary" @click="omdome()"> Lämna ett omdöme</button>
+                                                <!-- <button class="btn btn-primary" @click="omdome()"> Lämna ett omdöme</button> !-->
                                             </div> 
                                         </div>
                                           
