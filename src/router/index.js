@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "../store/index.js";
+import moment from 'moment';
 
 import Home from "../views/Home.vue";
 import Nav from "../components/Nav.vue";
@@ -9,6 +10,7 @@ import notfound from "../components/404.vue";
 
 
 Vue.use(VueRouter);
+Vue.prototype.moment = moment
 
 const routes = [
  
