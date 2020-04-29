@@ -27,9 +27,8 @@ module.exports = function () {
 
 
   this.Then(/^I press the search button$/, async function () {
-    let nextBtn = await $('#carousel > div.search_box.w-25 > form > a')
+    await driver.findElement(By.tagName(".btn-primary")).click()
     await sleep(1000)
-    await nextBtn.click()
 
   });
 
@@ -58,9 +57,10 @@ module.exports = function () {
 
   this.When(/^i select number of adults$/, async function () {
     await driver.findElement(By.id("inputAdult")).click()
-    let dropDownBox = await $('#inputAdult > option:nth-child(3)')
+    let dropDownBox = await $('#inputAdult > option:nth-child(4)')
     await dropDownBox.click()
     await sleep(100)
+
   });
 
   this.When(/^I click the booking button$/, async function () {
@@ -70,7 +70,7 @@ module.exports = function () {
 
   this.When(/^i choose number of rooms$/, async function () {
     // Write code here that turns the phrase above into concrete actions
-    await driver.findElement(By.id("app > div > div.card.mx - auto > div: nth - child(1) > div.col - md - 3.col - 12.mx - auto.my - auto > div: nth - child(2) > input")).sendKeys("1")
+    await driver.findElement(By.id("input:nth-child(1)")).sendKeys("1")
     //#app > div > div.card.mx - auto > div: nth - child(1) > div.col - md - 3.col - 12.mx - auto.my - auto > div: nth - child(2) > input
   });
 
