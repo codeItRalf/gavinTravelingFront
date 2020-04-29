@@ -278,15 +278,15 @@ export default {
     },   
     submitAdult: function(){
       this.$store.commit("updateBookingPartyAdults", this.adult);      
-      this.info()  
+      
     },  
     submitChild: function(){
       this.$store.commit("updateBookingPartyChildren", this.child); 
-      this.info() 
+      
     },   
     submitBaby: function(){
       this.$store.commit("updateBookingPartySmallChildren", this.baby);  
-      this.info() 
+      
     },
     submitRoom: function(){
         this.$store.commit("updateRoomCount", this.roomCount); 
