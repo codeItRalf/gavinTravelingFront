@@ -11,6 +11,6 @@ function getAllBookingsByUser() {
         body : JSON.stringify( getTokenId() )
     };
 
-    return fetch(`${apiUrl}/rest/booked-rooms/user`, requestOptions).then(handleResponse);
+    return fetch(`${apiUrl}/rest/bookings/user`, requestOptions).then(handleResponse);
 }
 
