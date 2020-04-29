@@ -5,23 +5,23 @@
             <property name="URI" value="C:\Users\insik\Documents\GitHub\gavinTravelingFront\tests\selenium\features\Boka.feature">
             </property>
         </properties>
-        <testcase name="Given that I am logged in" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.0017111">
+        <testcase name="Given that I am logged in" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.001415601">
         </testcase>
-        <testcase name="And that I am on the Gavin traveling search page" classname="&quot;booking&quot;;&quot;booking&quot;" time="5.801077">
+        <testcase name="And that I am on the Gavin traveling search page" classname="&quot;booking&quot;;&quot;booking&quot;" time="6.3879094">
         </testcase>
-        <testcase name="And that I’ve entered dates for my booking" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.047700799">
+        <testcase name="And that I’ve entered dates for my booking" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.056944799">
         </testcase>
-        <testcase name="When I press the search button" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.233418101">
+        <testcase name="When I press the search button" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.2260073">
         </testcase>
-        <testcase name="And I choose number of room" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.6432052">
+        <testcase name="And I choose number of room" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.5481304">
         </testcase>
-        <testcase name="And I select number of children" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.5626387">
+        <testcase name="And I select number of children" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.5475323">
         </testcase>
-        <testcase name="And I select number of small children" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.547156301">
+        <testcase name="And I select number of small children" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.561629599">
         </testcase>
-        <testcase name="And i select number of adults" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.541277999">
+        <testcase name="And i select number of adults" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.557232201">
         </testcase>
-        <testcase name="And I click the booking button" classname="&quot;booking&quot;;&quot;booking&quot;" time="10.0032406">
+        <testcase name="And I click the booking button" classname="&quot;booking&quot;;&quot;booking&quot;" time="10.0002698">
             <failure message="function timed out after 10000 milliseconds">function timed out after 10000 milliseconds</failure>
         </testcase>
         <testcase name="And i choose number of rooms" classname="&quot;booking&quot;;&quot;booking&quot;">

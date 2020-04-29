@@ -69,7 +69,8 @@ module.exports = function () {
 
   this.When(/^i choose number of rooms$/, async function () {
     // Write code here that turns the phrase above into concrete actions
-    await driver.findElement(By.id("input:nth-child(1)")).sendKeys("1")
+    await driver.findElement(By.id("app > div > div.card.mx - auto > div: nth - child(1)")).sendKeys("1")
+
     //#app > div > div.card.mx - auto > div: nth - child(1) > div.col - md - 3.col - 12.mx - auto.my - auto > div: nth - child(2) > input
   });
 

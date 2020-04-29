@@ -56,6 +56,14 @@ module.exports = function () {
     this.When(/^i press create account$/, async function () {
         let createButton = await $('.btn')
         await createButton.click()
+        await sleep(1000)
+    });
+
+
+    this.When(/^i press registrera mig$/, async function () {
+        await driver.findElement(By.css("#app > div > div > div:nth-child(4) > div > div > div > div > div.modal-footer > button.btn.btn-primary")).click()
+        await sleep(1000)
+
     });
 
     this.Then(/^i should’ve created an account$/, async function () {
@@ -69,6 +77,7 @@ module.exports = function () {
     this.Given(/^that there is a login button$/, async function () {
         let loginButton = await $('.nav > li:nth-child(2)')
         assert(loginButton)
+        await sleep(500)
     });
 
 
@@ -78,26 +87,30 @@ module.exports = function () {
     });
 
     this.When(/^i enter my username in login$/, async function () {
-        let username = await $('#login > div:nth-child(1) > input:nth-child(2)')
-        await username.sendKeys('test@mail.com')
-        assert(username)
+        await driver.findElement(By.id("InputEmail")).sendKeys("test@mail.com")
+        // let username = await $('#login > div:nth-child(1) > input:nth-child(2)')
+        // await username.sendKeys('test@mail.com')
+        // assert(username)
+        await sleep(1000)
     });
 
 
     this.When(/^i enter my password in the inputfield$/, async function () {
-        let passwordInput = await $('#login > div:nth-child(1) > input:nth-child(3)')
-        await passwordInput.sendKeys('user')
+        await driver.findElement(By.id("InputPassword")).sendKeys("user")
     });
 
 
     this.When(/^i press the login button2$/, async function () {
         let loginButton = await $('#login > div:nth-child(1) > button:nth-child(4)')
         await loginButton.click()
+        await sleep(1000)
+
     });
 
     this.When(/^i should be logged in$/, async function () {
+
         /* let loggedInConfrim = await $('#user > a:nth-child(3)')
-         assert(loggedInConfrim, "Expected to find confrimation, found " + loggedInConfrim);
+         assert(loggedInConfrim, "Expected to find confrimation, found " + loggedInConfirm);
          await sleep(50) */ //login is unavailable atm
         //#user > a
     });
