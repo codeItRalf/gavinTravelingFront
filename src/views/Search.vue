@@ -170,7 +170,7 @@
                               <h4>{{myHotel.name | capitalize }}</h4>
                             </div>
                             <div class="col-4">
-                              <h5>från {{myHotel.pensionHalfPrice}} Kr</h5>
+                              <h5>från {{myHotel.bestPrice}} Kr</h5>
                             </div>
                           </div>
                           <div class="row hotel_info">
