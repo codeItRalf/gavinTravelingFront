@@ -1,48 +1,213 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-    <testsuite name="&quot;booking&quot;;&quot;booking&quot;" tests="14" failures="1" skipped="5">
+    <testsuite name="&quot;search-page&quot;;add-number-of-adults-to-the-search" tests="5" failures="0" skipped="0">
         <properties>
-            <property name="URI" value="C:\Users\insik\Documents\GitHub\gavinTravelingFront\tests\selenium\features\Boka.feature">
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
             </property>
         </properties>
-        <testcase name="Given that I am logged in" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.001415601">
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;add-number-of-adults-to-the-search" time="6.8780384">
         </testcase>
-        <testcase name="And that I am on the Gavin traveling search page" classname="&quot;booking&quot;;&quot;booking&quot;" time="6.3879094">
+        <testcase name="Given that there is a add adult button" classname="&quot;search-page&quot;;add-number-of-adults-to-the-search" time="0.0054443">
         </testcase>
-        <testcase name="And that I’ve entered dates for my booking" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.056944799">
+        <testcase name="When i click the add adult button" classname="&quot;search-page&quot;;add-number-of-adults-to-the-search" time="0.2323382">
         </testcase>
-        <testcase name="When I press the search button" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.2260073">
+        <testcase name="And i choose 1 adults" classname="&quot;search-page&quot;;add-number-of-adults-to-the-search" time="0.232658699">
         </testcase>
-        <testcase name="And I choose number of room" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.5481304">
+        <testcase name="Then the number of adults should should be set to 1" classname="&quot;search-page&quot;;add-number-of-adults-to-the-search" time="0.0156408">
         </testcase>
-        <testcase name="And I select number of children" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.5475323">
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;add-number-of-children-to-the-search" tests="5" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;add-number-of-children-to-the-search" time="6.2290841">
         </testcase>
-        <testcase name="And I select number of small children" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.561629599">
+        <testcase name="Given that there is a add adult button" classname="&quot;search-page&quot;;add-number-of-children-to-the-search" time="0.0049193">
         </testcase>
-        <testcase name="And i select number of adults" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.557232201">
+        <testcase name="When i click the add children button" classname="&quot;search-page&quot;;add-number-of-children-to-the-search" time="0.2325265">
         </testcase>
-        <testcase name="And I click the booking button" classname="&quot;booking&quot;;&quot;booking&quot;" time="10.0002698">
-            <failure message="function timed out after 10000 milliseconds">function timed out after 10000 milliseconds</failure>
+        <testcase name="And i choose 1 children" classname="&quot;search-page&quot;;add-number-of-children-to-the-search" time="0.223050001">
         </testcase>
-        <testcase name="And i choose number of rooms" classname="&quot;booking&quot;;&quot;booking&quot;">
+        <testcase name="Then the number of children should should be set to 1" classname="&quot;search-page&quot;;add-number-of-children-to-the-search" time="0.0145506">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;add-number-of-young-children-to-the-search" tests="5" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;add-number-of-young-children-to-the-search" time="6.2572564">
+        </testcase>
+        <testcase name="Given that there is a add young children button" classname="&quot;search-page&quot;;add-number-of-young-children-to-the-search" time="0.0053282">
+        </testcase>
+        <testcase name="When i click the add young children button" classname="&quot;search-page&quot;;add-number-of-young-children-to-the-search" time="0.2333594">
+        </testcase>
+        <testcase name="And i choose 1 young children" classname="&quot;search-page&quot;;add-number-of-young-children-to-the-search" time="0.2235466">
+        </testcase>
+        <testcase name="Then the number of young children should should be set to 1" classname="&quot;search-page&quot;;add-number-of-young-children-to-the-search" time="0.0136197">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-pool&quot;" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-pool&quot;" time="6.2757144">
+        </testcase>
+        <testcase name="Given that there are checkbox for pool" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-pool&quot;" time="0.0049299">
+        </testcase>
+        <testcase name="When i click the box for pool" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-pool&quot;" time="0.2327282">
+        </testcase>
+        <testcase name="Then the search result should be hotels with pool" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-pool&quot;" time="0.000087601">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-restaurant&quot;" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-restaurant&quot;" time="6.2670883">
+        </testcase>
+        <testcase name="Given that there are checkbox for restaurant" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-restaurant&quot;" time="0.005003301">
+        </testcase>
+        <testcase name="When i click the box for restaurant" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-restaurant&quot;" time="0.3369768">
+        </testcase>
+        <testcase name="Then the search result should be hotels with restaurant" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-restaurant&quot;" time="0.000089301">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-children-club&quot;" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-children-club&quot;" time="6.2511184">
+        </testcase>
+        <testcase name="Given that there are checkbox for children club" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-children-club&quot;" time="0.004598501">
+        </testcase>
+        <testcase name="When i click the box for children club" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-children-club&quot;" time="0.2364061">
+        </testcase>
+        <testcase name="Then the search result should be hotels with children club" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-children-club&quot;" time="0.000085099">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-evening-entertainment&quot;" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-evening-entertainment&quot;" time="5.7822629">
+        </testcase>
+        <testcase name="Given that there are checkbox for evening entertainment" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-evening-entertainment&quot;" time="0.004671499">
+        </testcase>
+        <testcase name="When i click the box for evening entertainment" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-evening-entertainment&quot;" time="0.232475701">
+        </testcase>
+        <testcase name="Then the search result should be hotels with evening entertainment" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-evening-entertainment&quot;" time="0.0000816">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;search-based-on-city" tests="5" failures="1" skipped="3">
+        <properties>
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;search-based-on-city" time="6.2469057">
+        </testcase>
+        <testcase name="Given that there are a dropdown for city" classname="&quot;search-page&quot;;search-based-on-city" time="0.0062992">
+            <failure message="NoSuchElementError: Unable to locate element: *[id=&quot;\#City&quot;]">NoSuchElementError: Unable to locate element: *[id=&quot;\#City&quot;]
+    at Object.throwDecodedError (C:\Users\Max\Desktop\gavinTravelingFront\node_modules\selenium-webdriver\lib\error.js:497:15)
+    at parseHttpResponse (C:\Users\Max\Desktop\gavinTravelingFront\node_modules\selenium-webdriver\lib\http.js:519:13)
+    at C:\Users\Max\Desktop\gavinTravelingFront\node_modules\selenium-webdriver\lib\http.js:441:30
+    at processTicksAndRejections (internal/process/task_queues.js:94:5)
+From: Task: WebDriver.findElement(By(css selector, *[id=&quot;\#City&quot;]))
+    at thenableWebDriverProxy.schedule (C:\Users\Max\Desktop\gavinTravelingFront\node_modules\selenium-webdriver\lib\webdriver.js:807:17)
+    at thenableWebDriverProxy.findElement (C:\Users\Max\Desktop\gavinTravelingFront\node_modules\selenium-webdriver\lib\webdriver.js:1014:17)
+    at createWorld.&lt;anonymous&gt; (C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\step-definitions\Söka.js:143:18)
+    at processTicksAndRejections (internal/process/task_queues.js:76:11)</failure>
+        </testcase>
+        <testcase name="When i chose &quot;Tubel&quot; in the drop down menu" classname="&quot;search-page&quot;;search-based-on-city">
             <skipped message="">
             </skipped>
         </testcase>
-        <testcase name="When i click Gå till bokning" classname="&quot;booking&quot;;&quot;booking&quot;">
+        <testcase name="And i press the search button" classname="&quot;search-page&quot;;search-based-on-city">
             <skipped message="">
             </skipped>
         </testcase>
-        <testcase name="When i choose Vafan vill ni ha till" classname="&quot;booking&quot;;&quot;booking&quot;">
+        <testcase name="Then i should get a result with &quot;Tubel&quot;" classname="&quot;search-page&quot;;search-based-on-city">
             <skipped message="">
             </skipped>
         </testcase>
-        <testcase name="And i press Boka nu för fan" classname="&quot;booking&quot;;&quot;booking&quot;">
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;search-based-on-city" tests="5" failures="1" skipped="3">
+        <properties>
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;search-based-on-city" time="6.262570599">
+        </testcase>
+        <testcase name="Given that there are a dropdown for city" classname="&quot;search-page&quot;;search-based-on-city" time="0.0053544">
+            <failure message="NoSuchElementError: Unable to locate element: *[id=&quot;\#City&quot;]">NoSuchElementError: Unable to locate element: *[id=&quot;\#City&quot;]
+    at Object.throwDecodedError (C:\Users\Max\Desktop\gavinTravelingFront\node_modules\selenium-webdriver\lib\error.js:497:15)
+    at parseHttpResponse (C:\Users\Max\Desktop\gavinTravelingFront\node_modules\selenium-webdriver\lib\http.js:519:13)
+    at C:\Users\Max\Desktop\gavinTravelingFront\node_modules\selenium-webdriver\lib\http.js:441:30
+    at processTicksAndRejections (internal/process/task_queues.js:94:5)
+From: Task: WebDriver.findElement(By(css selector, *[id=&quot;\#City&quot;]))
+    at thenableWebDriverProxy.schedule (C:\Users\Max\Desktop\gavinTravelingFront\node_modules\selenium-webdriver\lib\webdriver.js:807:17)
+    at thenableWebDriverProxy.findElement (C:\Users\Max\Desktop\gavinTravelingFront\node_modules\selenium-webdriver\lib\webdriver.js:1014:17)
+    at createWorld.&lt;anonymous&gt; (C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\step-definitions\Söka.js:143:18)
+    at processTicksAndRejections (internal/process/task_queues.js:76:11)</failure>
+        </testcase>
+        <testcase name="When i chose &quot;Dallas&quot; in the drop down menu" classname="&quot;search-page&quot;;search-based-on-city">
             <skipped message="">
             </skipped>
         </testcase>
-        <testcase name="Then I receive the confirmation of my booking" classname="&quot;booking&quot;;&quot;booking&quot;">
+        <testcase name="And i press the search button" classname="&quot;search-page&quot;;search-based-on-city">
             <skipped message="">
             </skipped>
+        </testcase>
+        <testcase name="Then i should get a result with &quot;Dallas&quot;" classname="&quot;search-page&quot;;search-based-on-city">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="6.2371858">
+        </testcase>
+        <testcase name="When i enter in &quot;2020-04-30&quot; and &quot;2020-05-07&quot;" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.594555">
+        </testcase>
+        <testcase name="And press search" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.000080899">
+        </testcase>
+        <testcase name="Then i should get the result of all available rooms during those dates" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.0000755">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="6.542927899">
+        </testcase>
+        <testcase name="When i enter in &quot;2020-05-30&quot; and &quot;2020-06-07&quot;" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.5911535">
+        </testcase>
+        <testcase name="And press search" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.0000785">
+        </testcase>
+        <testcase name="Then i should get the result of all available rooms during those dates" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.0000377">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:\Users\Max\Desktop\gavinTravelingFront\tests\selenium\features\söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="6.3574185">
+        </testcase>
+        <testcase name="When i enter in &quot;2020-05-25&quot; and &quot;2020-06-10&quot;" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.5891808">
+        </testcase>
+        <testcase name="And press search" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.0000607">
+        </testcase>
+        <testcase name="Then i should get the result of all available rooms during those dates" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.000069801">
         </testcase>
     </testsuite>
 </testsuites>
