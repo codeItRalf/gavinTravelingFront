@@ -170,7 +170,7 @@
                               <h4>{{myHotel.name | capitalize }}</h4>
                             </div>
                             <div class="col-4">
-                              <h5>från {{myHotel.pensionHalfPrice}} Kr</h5>
+                              <h5>från {{myHotel.bestPrice}} Kr</h5>
                             </div>
                           </div>
                           <div class="row hotel_info">
@@ -278,15 +278,15 @@ export default {
     },   
     submitAdult: function(){
       this.$store.commit("updateBookingPartyAdults", this.adult);      
-      this.info()  
+      
     },  
     submitChild: function(){
       this.$store.commit("updateBookingPartyChildren", this.child); 
-      this.info() 
+      
     },   
     submitBaby: function(){
       this.$store.commit("updateBookingPartySmallChildren", this.baby);  
-      this.info() 
+      
     },
     submitRoom: function(){
         this.$store.commit("updateRoomCount", this.roomCount); 
