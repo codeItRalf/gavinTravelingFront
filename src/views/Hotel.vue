@@ -154,7 +154,7 @@ export default {
       await this.$store.dispatch('getHotel', this.$route.params.id);
       this.hotelInfo.push(this.$store.state.booking.globalStartDate)
       this.hotelInfo.push(this.$store.state.booking.globalEndDate)
-      this.hotelInfo.push(this.$store.state.hotel.id)
+      this.hotelInfo.push(this.$route.params.id)
       await this.$store.dispatch('getRooms', this.$route.params.id);
       await this.$store.dispatch('getAvailableRooms', this.hotelInfo)
       this.$store.state.booking;
