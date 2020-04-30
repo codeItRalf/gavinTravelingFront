@@ -125,19 +125,19 @@
           <div class="form-row col-12">
             <div class="form-group col-md-6">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" @click="submitPool" unchecked-value="true" v-model="havePool">
+                <input class="form-check-input" disabled type="checkbox" id="inlineCheckbox1" @click="submitPool" unchecked-value="true" v-model="havePool">
                 <label class="form-check-label" for="inlineCheckbox1" >Pool</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" @click="submitEnter" unchecked-value="true"  v-model="haveNightEntertain">
+                <input class="form-check-input" disabled type="checkbox" id="inlineCheckbox2" @click="submitEnter" unchecked-value="true"  v-model="haveNightEntertain">
                 <label class="form-check-label" for="inlineCheckbox2">Kvällsunderhållning</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3"  @click="submitClub" unchecked-value="true"  v-model="haveChildrenClub">
+                <input class="form-check-input" disabled type="checkbox" id="inlineCheckbox3"  @click="submitClub" unchecked-value="true"  v-model="haveChildrenClub">
                 <label class="form-check-label" for="inlineCheckbox3">Barnklubb</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" @click="submitRes" v-model="haveRestaurant" unchecked-value="true">
+                <input class="form-check-input" diabled type="checkbox" id="inlineCheckbox4" @click="submitRes" v-model="haveRestaurant" unchecked-value="true">
                 <label class="form-check-label" for="inlineCheckbox4">Restaurang</label>
               </div> 
               </div>  
@@ -401,8 +401,6 @@ export default {
       }
     },
     orderedHotels: function () {
-
-    
      
       if (this.priceIncreasing == true){
 

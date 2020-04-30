@@ -26,8 +26,8 @@
                         <a class="card-title text-left">
                             {{booking.hotelName | capitalize}}
                             
-                        </a><button class="btn btn-danger float-right ml-2" @click="doThat()">Avboka</button>
-                            <button class="btn btn-primary float-right ml-2" @click="doThis()">Omboka</button>
+                        </a><button class="btn btn-danger float-right ml-2" disabled @click="doThat()">Avboka</button>
+                            <button class="btn btn-primary float-right ml-2" disabled @click="doThis()">Omboka</button>
                             
                         </div>
                         <div :id="'collapse'+booking.bookedRoomList[0].id.bookingId" class="collapse" :aria-labelledby="'heading'+booking.bookedRoomList[0].id.bookingId" data-parent="#accordionOne">
@@ -60,8 +60,8 @@
                                             </div> 
                                             <div class="col-md-6 col-6">
                                                 <div class="text-center">
-                                                <p>1</p>
-                                                <p>{{booking.extraBed}}</p> 
+                                                <p>{{booking.bookedRoomList.length}}</p>
+                                                <p>{{booking.bookedRoomList[0].extraBed}}</p> 
                                                 </div>
                                             </div> 
                                         </div>
@@ -78,7 +78,7 @@
                                                 <p class="text-center">Pris:</p>
                                             </div>
                                             <div class="col-6">
-                                                <p class="text-center">1.526 Kr</p>
+                                                <p class="text-center">000 Kr</p>
                                             </div> 
                                         </div>       
                                     </div>
@@ -111,17 +111,17 @@
             <div class="booking">
                 <h2 class="text-left">Tidigare bokningar</h2>
                 <template v-if="filteredpastBookings">
-                 <div id="accordionTwo" v-for="booking in filteredpastBookings" :key="booking.id.bookingId">
+                 <div id="accordionOne" v-for="(booking, index) in filteredpastBookings" :key="`booking-${index}`">
                     <div class="card">
-                        <div class="card-header text-left" :id="'heading'+booking.id.bookingId" data-toggle="collapse" :data-target="'#collapse'+booking.id.bookingId"  aria-expanded="true" :aria-controls="'collapse'+booking.id.bookingId">
+                        <div class="card-header text-left" :id="'heading'+booking.bookedRoomList[0].id.bookingId" data-toggle="collapse" :data-target="'#collapse'+booking.bookedRoomList[0].id.bookingId"  aria-expanded="true" :aria-controls="'collapse'+booking.bookedRoomList[0].id.bookingId">
                         <a class="card-title text-left">
-                            {{booking.room.roomType.hotel.name | capitalize}}
+                            {{booking.hotelName | capitalize}}
                             
-                        </a><button class="btn btn-danger float-right ml-2" @click="doThat()">Avboka</button>
-                            <button class="btn btn-primary float-right ml-2" @click="doThis()">Omboka</button>
+                        </a><button class="btn btn-danger float-right ml-2" disabled @click="doThat()">Avboka</button>
+                            <button class="btn btn-primary float-right ml-2" disabled @click="doThis()">Omboka</button>
                             
                         </div>
-                        <div :id="'collapse'+booking.id.bookingId" class="collapse" :aria-labelledby="'heading'+booking.id.bookingId" data-parent="#accordionTwo">
+                        <div :id="'collapse'+booking.bookedRoomList[0].id.bookingId" class="collapse" :aria-labelledby="'heading'+booking.bookedRoomList[0].id.bookingId" data-parent="#accordionTwo">
                         <div class="card-body" style="width: 100%,"> 
                             <div class="col-12">                           
                                 <div class="row">
@@ -131,18 +131,12 @@
                                                 <div class="text-center">
                                                 <p>Från:</p>
                                                 <p>Till:</p>
-                                                <p>Antal Vuxna:</p>
-                                                <p>Antal Barn:</p>
-                                                <p>Antal Småbarn</p>
                                                 </div>
                                             </div> 
                                             <div class="col-md-6 col-6">
                                                 <div class=" text-center">
-                                                <p>{{booking.startDate | formatDate }}</p>
-                                                <p>{{booking.endDate | formatDate }}</p>
-                                                <p>{{booking.booking.personCount}}</p>
-                                                <p>{{booking.booking.childrenCount}}</p>
-                                                <p>{{booking.booking.smallChildrenCount}}</p>
+                                                <p>{{booking.bookedRoomList[0].startDate | formatDate }}</p>
+                                                <p>{{booking.bookedRoomList[0].endDate | formatDate }}</p>
                                                 </div>
                                             </div>                                         
                                         </div>
@@ -153,18 +147,12 @@
                                                 <div class="text-center">
                                                 <p>Antal Rum:</p>
                                                 <p>Extra Sängar:</p>
-                                                <p>Halv-pension:</p>
-                                                <p>Hel-pension:</p>
-                                                <p>All-inclusive:</p>
                                                 </div>
                                             </div> 
                                             <div class="col-md-6 col-6">
                                                 <div class="text-center">
-                                                <p>1</p>
-                                                <p>{{booking.extraBed}}</p>
-                                                <p>{{booking.booking.halfPension}}</p>
-                                                <p>{{booking.booking.fullPension}}</p>
-                                                <p>{{booking.booking.allInclusive}}</p>
+                                                <p>{{booking.bookedRoomList.length}}</p>
+                                                <p>{{booking.bookedRoomList[0].extraBed}}</p> 
                                                 </div>
                                             </div> 
                                         </div>
@@ -181,7 +169,7 @@
                                                 <p class="text-center">Pris:</p>
                                             </div>
                                             <div class="col-6">
-                                                <p class="text-center">1.526 Kr</p>
+                                                <p class="text-center">OOO Kr</p>
                                             </div> 
                                         </div>       
                                     </div>
@@ -200,7 +188,7 @@
                                         </div>
                                           
                                     </div>
-                                </div>  
+                               </div> 
                             </div>  
 
                         </div>
