@@ -142,18 +142,17 @@
               </div> 
               </div>  
               <div class="form-group col-md-6">        
-                  <select id="inputState" class="form-control">
-                    <option selected>Välj...</option>
-                    <option>Pris: Stigande</option>
-                    <option>Pris: Fallande</option>
-                    <option>Omdöme: Stigande </option>
-                    <option>Omdöme: Fallande</option>            
+                  <select id="inputState" class="form-control"  >
+                    <option selected @click="prIn()" :v-model="inputprIn">Pris: Stigande</option>
+                    <option @click="prDe()" :v-model="inputprDe"> Pris: Fallande</option>
+                    <option @click="rwIn()" :v-model="inputrwIn">Omdöme: Stigande </option>
+                    <option @click="rwDe()" :v-model="inputrwDe">Omdöme: Fallande</option>            
                   </select>
               </div>   
               </div>
         </div>
-              <template class="search_results" v-if="myHotels.length">
-                <div id="result" class="result mt-2" v-for="myHotel in myHotels" :key="myHotel.id">
+              <template class="search_results" v-if="orderedHotels.length">
+                <div id="result" class="result mt-2" v-for="myHotel in orderedHotels" :key="myHotel.id">
                   <div class="card">
                     <div class="row no-gutters">
                       <div class="col-auto">
@@ -222,8 +221,10 @@
   </div>
 </template>
 <script>
-
+//import VueLodash from 'vue-lodash'
+import lodash from 'lodash'
 export default {
+  
   props: ["booking", "search", "hotel"],
   data() {
     return {
@@ -241,6 +242,10 @@ export default {
       haveNightEntertain: false,
       haveChildrenClub: false,
       haveRestaurant: false,
+      priceIncreasing: true,
+      priceDecreasing: false,
+      reviewIncreasing: false,
+      reviewDecreasing: false,
       myHotels: [ ]
  
       
@@ -293,24 +298,44 @@ export default {
         this.info() 
     },
      submitCenter: function(){
-        
     },
-    submitBeach: function(){        
-       
+    submitBeach: function(){  
     },
-    submitPool: function(){        
-               
+    submitPool: function(){  
     },
-     submitEnter: function(){        
-              
+     submitEnter: function(){  
     },
-    submitClub: function(){        
-        
+    submitClub: function(){  
     },
-    submitRes: function(){        
-        
-        
+    submitRes: function(){   
     },
+    prIn: function(){
+      this.priceIncreasing = true,
+      this.priceDecreasing = false,
+      this.reviewDecreasing = false,
+      this.reviewIncreasing = false
+    },
+    prDe: function(){
+      this.priceIncreasing = false,
+      this.priceDecreasing = true,
+      this.reviewDecreasing = false,
+      this.reviewIncreasing = false
+    },
+    rwIn: function(){
+      this.priceIncreasing = false,
+      this.priceDecreasing = false,
+      this.reviewDecreasing = false,
+      this.reviewIncreasing = true
+    },
+    rwDe: function(){
+      this.priceIncreasing = false,
+      this.priceDecreasing = false,
+      this.reviewDecreasing = true,
+      this.reviewIncreasing = false
+            
+    },
+    
+
 
     async info() {
       var myHeaders = new Headers();
@@ -342,6 +367,57 @@ export default {
   },
 
   computed: {
+
+    inputprIn:{
+      get(){        
+        return this.priceIncreasing;
+      },
+      set(value) {
+        this.priceIncreasing = value;
+      }
+    },
+    inputprDe:{
+      get(){        
+        return this.priceDecreasing;
+      },
+      set(value) {
+        this.priceDecreasing = value;
+      }
+    },
+    inputrwIn:{
+      get(){        
+        return this.reviewIncreasing;
+      },
+      set(value) {
+        this.reviewIncreasing = value;
+      }
+    },
+    inputrwDe:{
+      get(){        
+        return this.reviewDecreasing;
+      },
+      set(value) {
+        this.reviewDecreasing = value;
+      }
+    },
+    orderedHotels: function () {
+
+    
+     
+      if (this.priceIncreasing == true){
+
+        return lodash.orderBy(this.myHotels, ['bestPrice'], ['asc'])
+
+      } else if ( this.priceDecreasing == true){
+        return lodash.orderBy(this.myHotels, ['bestPrice'], ['desc'])
+
+      } else if (this.reviewIncreasing == true){
+        return lodash.orderBy(this.myHotels, ['stars'], ['asc'])
+      } else {
+        return lodash.orderBy(this.myHotels, ['stars'], ['desc'])
+      }
+    
+    },
     totalBeach: function(){
       return this.distBeach
     },

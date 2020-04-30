@@ -3,6 +3,10 @@ import Vuex from "vuex";
 import createPersistedState from 'vuex-persistedstate'
 import { authentication } from '../_store'
 import { bookings } from '../_store'
+import VueLodash from 'vue-lodash'
+import lodash from 'lodash'
+
+Vue.use(VueLodash, { name: 'custom' , lodash: lodash })
 
 Vue.use(Vuex);
 
