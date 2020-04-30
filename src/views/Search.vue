@@ -115,11 +115,11 @@
             <div class="form-group col-md-6">
               <label for="Centrum">Avstånd till Centrum</label>
               
-              <input type="range" class="custom-range" id="Centrum" step="1" max="200" min="0" @input="submitCenter" v-model="inputCenter"><span v-text="totalCenter"></span>
+              <input type="range" class="custom-range" id="Centrum" step="1" max="30" min="0" @input="submitCenter" v-model="inputCenter"><span v-text="totalCenter"></span>
             </div>
             <div class="form-group col-md-6">
               <label for="Strand">Avstånd till Strand</label> 
-              <input type="range" class="custom-range" id="Strand" step="1" max="200" min="0" @input="submitBeach" v-model="inputBeach" ><span v-text="totalBeach"></span>
+              <input type="range" class="custom-range" id="Strand" step="1" max="30" min="0" @input="submitBeach" v-model="inputBeach" ><span v-text="totalBeach"></span>
             </div>
           </div>
           <div class="form-row col-12">
@@ -180,11 +180,11 @@
                             </div>
                             <div class="col-12 centrum mt-3">
                               <span>Centrum:</span>
-                              <span>{{myHotel.distanceToCenter}}</span>
+                              <span>{{myHotel.distanceToCenter}} Km</span>
                             </div>
                             <div class="col-12 strand">
                               <span>Strand:</span>
-                              <span>{{myHotel.distanceToBeach}}</span>
+                              <span>{{myHotel.distanceToBeach}} Km</span>
                             </div>
                             <div class="col-12 extra">
                               <br>
@@ -233,8 +233,8 @@ export default {
       cityName: this.$store.state.search.globalCity,
       endDate: this.$store.state.booking.globalEndDate,
       roomCount:  this.$store.state.roomCount,
-      distCenter: 100,
-      distBeach: 100,
+      distCenter: 30,
+      distBeach: 30,
       adult: this.$store.state.booking.party.adults,
       child: this.$store.state.booking.party.children,
       baby: this.$store.state.booking.party.small_children,
@@ -298,8 +298,10 @@ export default {
         this.info() 
     },
      submitCenter: function(){
+       this.info()
     },
     submitBeach: function(){  
+      this.info()
     },
     submitPool: function(){  
     },
