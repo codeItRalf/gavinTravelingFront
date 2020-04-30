@@ -137,7 +137,7 @@
                 <label class="form-check-label" for="inlineCheckbox3">Barnklubb</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" diabled type="checkbox" id="inlineCheckbox4" @click="submitRes" v-model="haveRestaurant" unchecked-value="true">
+                <input class="form-check-input" disabled type="checkbox" id="inlineCheckbox4" @click="submitRes" v-model="haveRestaurant" unchecked-value="true">
                 <label class="form-check-label" for="inlineCheckbox4">Restaurang</label>
               </div> 
               </div>  
