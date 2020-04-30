@@ -10,12 +10,18 @@ module.exports = function () {
 
 
 
-  this.Given(/^that I am logged in$/, async function () {
-    // Write code here that turns the phrase above into concrete actions
-    //We're gonna need backend for this
+  this.Given(/^that i am logged in$/, async function () {
+    let loginButton = await $('.nav > li:nth-child(2)')
+    await loginButton.click()
+    await driver.findElement(By.id("InputEmail")).sendKeys("test@mail.com")
+    await driver.findElement(By.id("InputPassword")).sendKeys("user")
+    let loginButton1 = await $('#login > div:nth-child(1) > button:nth-child(4)')
+    await loginButton1.click()
+    let home = await $('#navbarTogglerDemo01 > ul.navbar-nav.mr-auto.mt-2.mt-lg-0 > li > a')
+    await home.click()
+    await sleep(1000)
   });
 
-  // startdate selector searchpage #startDate startpage #startDate
 
 
   this.Given(/^that I’ve entered dates for my booking$/, async function () {
@@ -97,49 +103,10 @@ module.exports = function () {
   });
 
   this.Then(/^I receive the confirmation of my booking$/, async function () {
-
-
-
-
+    let button = await $('#confirm > div > div > div.modal-footer > a > button')
+    assert(button, 'Expected to prove confirmation')
 
   });
-
-  // this.When(/^i selected a hotel i want$/, async function () {
-  //   let withRestaurant = await $('div.form-check:nth-child(4) > input:nth-child(1)')
-  //   await withRestaurant.click()
-  //   let withChildsClub = await $('div.form-check:nth-child(3) > input:nth-child(1)')
-  //   await withChildsClub.click()
-  //   let withNightEntertainment = await $('#inlineCheckbox2')
-  //   await withNightEntertainment.click() // need to uncheck the boxes in order to see available hotels
-
-  // });
-
-  // this.When(/^i choose the number of <room>$/, async function () {
-  //   let firstSelector = await $('#inputRoom')
-  //   await firstSelector.click()
-  //   let secondSelector = await $('#inputRoom > option:nth-child(3)')
-  //   await secondSelector.click() //i want 2 rooms
-  // });
-
-
-  // this.When(/^i select information about my baby$/, async function () {
-  //   let inputBaby = await $('#inputBaby')
-  //   await inputBaby.click()
-  //   let inputBabyAmmount = await $('#inputBaby > option:nth-child(3)')
-  //   await inputBabyAmmount.click() //i have babies
-  // });
-
-
-  // this.When(/^i click the booking button$/, async function () {
-  //   //  let bokaNu = await $('.btn')
-  //   //  await bokaNu.click() //this is boka nu, it's not available atm, we got no data.
-  // });
-
-  // this.Then(/^i receive the confirmation of my booking$/, async function () {
-  //   let controllIfWereOnNextPage = await $('div.col-md-6:nth-child(1) > img:nth-child(1)')
-  //   assert(controllIfWereOnNextPage)
-
-  //});
 
 }
 
