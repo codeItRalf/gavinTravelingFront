@@ -111,7 +111,7 @@
             <div class="booking">
                 <h2 class="text-left">Tidigare bokningar</h2>
                 <template v-if="filteredpastBookings">
-                 <div id="accordionOne" v-for="(booking, index) in filteredpastBookings" :key="`booking-${index}`">
+                 <div id="accordionTwo" v-for="(booking, index) in filteredpastBookings" :key="`booking-${index}`">
                     <div class="card">
                         <div class="card-header text-left" :id="'heading'+booking.bookedRoomList[0].id.bookingId" data-toggle="collapse" :data-target="'#collapse'+booking.bookedRoomList[0].id.bookingId"  aria-expanded="true" :aria-controls="'collapse'+booking.bookedRoomList[0].id.bookingId">
                         <a class="card-title text-left">
