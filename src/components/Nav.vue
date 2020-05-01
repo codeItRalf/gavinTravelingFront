@@ -71,7 +71,8 @@ export default {
       this.updateUser();
       return this.$store.dispatch('authentication/logout');  
     },
-     authenticated: function(){
+    authenticated: function(){
+      this.updateUser();
       return this.$store.state.authentication.status.loggedIn;
     },
     UserWatcher: function(){      

@@ -70,8 +70,15 @@ const routes = [
   },
   {
     path: "/booking/:id",
-    name: "Booking",
-    component: () => import(/* */ "../views/Booking.vue")
+    name: "Booking",component: () => import(/* */ "../views/Booking.vue"),
+    beforeEnter: (to, from, next) => {      
+      if (store.state.authentication.status.loggedIn == false) {               
+        next(false);
+      } else {        
+        next();
+      }
+    }
+    
   },  
   {
     path: "/search/:inputCities/:sdates/:endates",
