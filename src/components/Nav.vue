@@ -56,12 +56,13 @@ export default {
     }
   }, 
   methods:{
-    logout: function(){           
-      this.$store.dispatch('authentication/logout');  
-    },
+    
 
   },
   computed: {
+    logout: function(){           
+      return this.$store.dispatch('authentication/logout');  
+    },
      authenticated: function(){
       return this.$store.state.authentication.status.loggedIn;
     },
