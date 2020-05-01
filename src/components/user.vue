@@ -242,7 +242,6 @@ import moment from 'moment';
             },
             filteredpastBookings: function(){
                 return this.bookings.items.filter( booking => {
-                    console.log(booking)
                    return booking.active == false
                 })
             }
