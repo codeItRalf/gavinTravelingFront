@@ -73,7 +73,7 @@ const routes = [
     name: "Booking",component: () => import(/* */ "../views/Booking.vue"),
     beforeEnter: (to, from, next) => {      
       if (store.state.authentication.status.loggedIn == false) {               
-        next(false);
+        next('/login');
       } else {        
         next();
       }
