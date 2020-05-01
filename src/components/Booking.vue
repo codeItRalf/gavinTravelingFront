@@ -196,7 +196,6 @@ export default {
   data() {
       return {
         sentBooking: false,
-        totalPris: 0,
         confirmationText: "Tack för din bokning",
         showHide: "d-none",
         hideShow: "d-block",

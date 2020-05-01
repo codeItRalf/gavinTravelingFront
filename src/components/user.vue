@@ -78,7 +78,7 @@
                                                 <p class="text-center">Pris:</p>
                                             </div>
                                             <div class="col-6">
-                                                <p class="text-center"> {{booking.totalPrice }} Kr</p>
+                                                <p class="text-center"> {{booking.totalPrice}} Kr</p>
                                             </div> 
                                         </div>       
                                     </div>
@@ -204,11 +204,12 @@
 
 <script>
 import moment from 'moment';
+import {authHeader, getTokenId} from '../_helpers';
     export default {
         data(){
             return{            
              user: {},
-             bookings: this.$store.state.bookings.all           
+             bookings: {}           
             }    
         },
         filters: {
@@ -229,28 +230,40 @@ import moment from 'moment';
                 if (localStorage.getItem('user')) {
                     this.user = JSON.parse(localStorage.getItem('user')); 
                 }
-            }
+            },
+            async getBookingsList() {
+                let url = "http://localhost:9090/rest/bookings/user"
+                let response = await fetch(url, {
+                    method: 'POST',
+                    headers:  authHeader() ,
+                    body : JSON.stringify( getTokenId() )
+                })
+                return await response.json();
+    },
         },    
       computed: {
          /*bookings() {
             return this.$store.state.bookings.all
             },*/
             filteredactiveBookings: function(){
-                this.getUser();
-                return this.bookings.items.filter( booking => {
+                return this.bookings/* .filter( booking => {
                    return booking.active == true
-                })
+                }) */
             },
             filteredpastBookings: function(){
-                this.getUser();
-                return this.bookings.items.filter( booking => {
+                return this.bookings/* .filter( booking => {
                    return booking.active == false
-                })
+                }) */
             }
       },      
         
        async created (){
-           await this.$store.dispatch("bookings/getAllBookingsByUser")
+           this.getUser();
+           this.bookings = await this.getBookingsList();
+           this.bookings.forEach(s => { console.log(s.totalPrice)});
+           
+           
+           //await this.$store.dispatch("bookings/getAllBookingsByUser")
        }
       
   }
