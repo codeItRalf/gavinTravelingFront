@@ -78,7 +78,7 @@
                                                 <p class="text-center">Pris:</p>
                                             </div>
                                             <div class="col-6">
-                                                <p class="text-center">000 Kr</p>
+                                                <p class="text-center"> {{booking.totalPrice }} Kr</p>
                                             </div> 
                                         </div>       
                                     </div>
