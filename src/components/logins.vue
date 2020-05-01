@@ -27,7 +27,7 @@ export default {
         }
     },
     
-    created () {
+    mounted () {
         console.log('App mounted!');
          if (localStorage.getItem('user')) {
          this.user = JSON.parse(localStorage.getItem('user')); 
@@ -35,12 +35,7 @@ export default {
          
     },
     methods: {
-        updateUser: function(){
-      if (localStorage.getItem('user')) {
-         this.user = JSON.parse(localStorage.getItem('user')); 
-          console.log(this.user)
-         }
-        },
+        
         login () {
             this.submitted = true;    
                     
@@ -49,8 +44,6 @@ export default {
            
             
             if (username && password) {
-                this.updateUser(),
-              
                 dispatch('authentication/login', { username, password })
             }
             

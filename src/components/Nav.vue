@@ -54,10 +54,7 @@ export default {
       value = value.toString();
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
-  }, 
-  created(){
-    this.updateUser();
-  },
+  },   
   methods:{
     updateUser: function(){
       if (localStorage.getItem('user')) {
@@ -65,12 +62,11 @@ export default {
           console.log(this.user)
          }
         }
-  }, 
-  computed: {
-    logout: function(){           
-      this.updateUser();
-      return this.$store.dispatch('authentication/logout');  
     },
+   logout: function(){     
+       this.$store.dispatch('authentication/logout')  
+    },
+  computed: {    
     authenticated: function(){
       this.updateUser();
       return this.$store.state.authentication.status.loggedIn;
@@ -78,7 +74,14 @@ export default {
     UserWatcher: function(){      
       return this.user.firstName && this.user.lastName
     }
-  }
+  },
+  mounted () {
+        console.log('App mounted!');
+         if (localStorage.getItem('user')) {
+         this.user = JSON.parse(localStorage.getItem('user')); 
+         }         
+         
+    },
 }
   
 
