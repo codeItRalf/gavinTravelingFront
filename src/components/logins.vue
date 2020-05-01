@@ -1,33 +1,45 @@
 <template>
-    <div>
+    <div class="container w-25 mt-5">
         
         <h1>Login</h1>
-        <input type="text" name="username" v-model="input.username" placeholder="Username" />
-        <input type="password" name="password" v-model="input.password" placeholder="Password" />
-        <button type="button" v-on:click="login()">Login</button>
+        <div class="form-group">
+            <label for="InputEmail">E-postadress</label>
+            <input type="email" class="form-control" id="InputEmail" name="email" v-model="username"  aria-describedby="emailHelp" placeholder="Ange din e-postadress">    
+        </div>
+       <div class="form-group">
+        <label for="InputPassword">Lösenord</label>
+        <input type="password" class="form-control" id="InputPassword" name="password" v-model="password" placeholder="Ange ditt lösenord">
+        </div>
+        
+        <button type="button" class="btn btn-primary" v-on:click="login()">Login</button>
     </div>
 </template>
 
+
 <script>
-    export default {
-        name: 'logins',
-        data() {
-            return {
-                input: {
-                    username: "",
-                    password: ""
-                }
-            }
-        },
-        methods: {
-            login() {
-        if(this.input.username == "admin" && this.input.password == "pass") {
-            this.$store.commit("setAuthentication", true);
-            this.$router.replace({ name: "user" });
-        } else {
-            console.log("The username and / or password is incorrect");
+export default {
+    data () {
+        return {
+            username: '',
+            password: '',
+            submitted: false,
+           
         }
+    },
+    
+    methods: {
+        
+        login () {
+            this.submitted = true;    
+        
+            const { username, password } = this;
+            const { dispatch } = this.$store;
+           
+            if (username && password) {
+                dispatch('authentication/login', { username, password })
             }
-        }
+            
+        },        
     }
+}
 </script>

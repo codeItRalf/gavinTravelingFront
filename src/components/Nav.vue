@@ -12,48 +12,76 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">Gavins Travelling</a>
+      <a class="navbar-brand">Gavins Travelling</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-          <a class="nav-link" href="#">
-            <router-link to="/">Home</router-link>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <router-link to="/search">Search</router-link>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <router-link to="/hotel/1">Hotel</router-link>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <router-link to="/booking/1">Booking</router-link>
-          </a>
-        </li>
+          <router-link class="nav-link" to="/">Home</router-link>
+        </li>  
       </ul>
 
-      <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+      <ul v-if="authenticated" class="nav navbar-nav flex-row justify-content-between ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <router-link to="/register">Bli Kund</router-link>
-          </a>
+          <router-link class="nav-link" v-model="UserWatcher" to="/user">{{user.firstName | capitalize}} {{user.lastName | capitalize}}</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <router-link to="/login">Login</router-link>
-          </a>
+          <button  class="nav-link btn"  @click="logout()"><i class="fas fa-sign-out-alt"></i></button>
         </li>
-      </ul>
+      </ul> 
+      <ul v-else class="nav navbar-nav flex-row justify-content-between ml-auto">
+        <li class="nav-item">
+          <router-link class="nav-link" to="/register">Bli Kund</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/login">Login</router-link>
+        </li>
+      </ul> 
     </div>
   </nav>
 </template>
 
 <script>
+
 export default {
-  name: "Nav"
-};
+  name: "Nav",
+  data() {
+    return {       
+      user: {}
+    }
+  },    
+  filters: {
+    capitalize: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },   
+  methods:{
+    updateUser: function(){
+      if (localStorage.getItem('user')) {
+         this.user = JSON.parse(localStorage.getItem('user')); 
+          console.log("updateUser(NAV): "+this.user)
+         }
+        }
+    },
+   
+  computed: {  
+    logout: function(){ 
+       return this.$store.dispatch('authentication/logout')  
+    },  
+    authenticated: function(){
+      this.updateUser();
+      return this.$store.state.authentication.status.loggedIn;
+    },
+    UserWatcher: function(){      
+      return this.user.firstName && this.user.lastName
+    }
+  },
+  mounted () {
+        console.log('App mounted!');
+         this.updateUser();         
+         
+    },
+}
+  
+
 </script>

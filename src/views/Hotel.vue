@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid bgimage">
     <div class="row justify-content-center">
       <div class="col-md-6 col-12 mt-1">
         <img class="img-fluid" src="https://via.placeholder.com/500x300" alt="Hotel Image"/>
@@ -8,10 +8,10 @@
         <h5 class="d-block text-center">Välkommen till Hotell {{ hotel.name | capitalize}}</h5>
         <h6><i :class="starIcon" v-for="i in hotel.stars" :key="i"></i></h6>
         <ul class="nav nav-tabs">
-          <li class="active border rounded-top mr-2"><a data-toggle="tab" href="#home">Home</a></li>
-          <li class="border rounded-top"><a data-toggle="tab" href="#adress">Kontakta oss</a></li>
+          <li class="active border rounded-top mr-2 bg-info"><a class="text-body" data-toggle="tab" href="#home">Home</a></li>
+          <li class="border rounded-top bg-info"><a class="text-body" data-toggle="tab" href="#adress">Kontakta oss</a></li>
         </ul>
-        <div class="tab-content">
+        <div class="tab-content bg-info">
           <div id="home" class="tab-pane in active">
             <span v-if="hotel.pool == '1' || 
               hotel.childrenClub == '1' || 
@@ -45,7 +45,7 @@
       </div>
     </div>
     
-    <div class="card w-75 mx-auto">
+    <div class="card mx-auto">
       <div class="card-body row">
         <div class="col-md-3 mx-auto">
           <img
@@ -55,7 +55,8 @@
         </div>
         <div class="col-md-6 col-12">
           <h6 class="card-title text-left">{{ rooms[1].roomType | capitalize }}</h6>
-          <p class="card-text text-left">Pris: från {{ rooms[1].price }} kr per natt</p>
+          <p class="card-text text-left my-2">Pris: {{ rooms[1].price }} kr per natt</p>
+          <p class="card-text text-left">Lediga rum av denna typ: {{maxEnkelRum}}</p>
         </div>
         <div class="col-md-3 col-12 mx-auto my-auto">
           <div class="col-12">
@@ -67,7 +68,7 @@
               type="number"
               v-model="antalEnkelrum"
               min="0"
-              max="30"
+              :max="maxEnkelRum"
               step="1"
             />
           </div>
@@ -82,7 +83,8 @@
         </div>
         <div class="col-md-6 col-12">
           <h6 class="card-title text-left">{{ rooms[0].roomType | capitalize }}</h6>
-          <p class="card-text text-left">Pris: från {{ rooms[0].price }} kr per natt</p>
+          <p class="card-text text-left my-2">Pris: {{ rooms[0].price }} kr per natt</p>
+          <p class="card-text text-left">Lediga rum av denna typ: {{maxDubbelRum}}</p>
         </div>
         <div class="col-md-3 col-12 mx-auto my-auto">
           <div class="col-12">
@@ -94,7 +96,7 @@
               type="number"
               v-model="antalDubbelrum"
               min="0"
-              max="30"
+              :max="maxDubbelRum"
               step="1"
               
             />
@@ -110,7 +112,8 @@
         </div>
         <div class="col-md-6 col-12">
           <h6 class="card-title text-left">{{ rooms[2].roomType | capitalize }}</h6>
-          <p class="card-text text-left">Pris: från {{ rooms[2].price }} kr per natt</p>
+          <p class="card-text text-left my-2">Pris: {{ rooms[2].price }} kr per natt</p>
+          <p class="card-text text-left">Lediga rum av denna typ: {{maxFamiljeRum}}</p>
         </div>
         <div class="col-md-3 col-12 mx-auto my-auto">
           <div class="col-12">
@@ -122,7 +125,7 @@
               type="number"
               v-model="antalFamiljerum"
               min="0"
-              max="30"
+              :max="maxFamiljeRum"
               step="1"
             />
           </div>
@@ -143,23 +146,28 @@ export default {
     data() {
       return {
         starIcon: "far fa-star",
-        check: "fas fa-check"
+        check: "fas fa-check",
+        hotelInfo: []
       };
     },
     async created() {
-      //CHANGE this when hotel is saved on searchpage...
       await this.$store.dispatch('getHotel', this.$route.params.id);
+      this.hotelInfo.push(this.$store.state.booking.globalStartDate)
+      this.hotelInfo.push(this.$store.state.booking.globalEndDate)
+      this.hotelInfo.push(this.$route.params.id)
       await this.$store.dispatch('getRooms', this.$route.params.id);
+      await this.$store.dispatch('getAvailableRooms', this.hotelInfo)
       this.$store.state.booking;
     },
   methods: {
     goToBooking: function(){
       this.$store.commit("updateBookingRoomPrice", this.rooms)
-      this.$store.commit("updateBookingHotel", this.hotel);
-      //this.$store.commit("updateBookingParty", this.party);
-    },
-    changeAntalEnkel(e){
-      this.$store.commit("antalEnkel", e.target.value);
+      this.$store.commit("setExtraBedEnkel", 0);
+      this.$store.commit("setExtraBedDubbel", 0);
+      this.$store.commit("setExtraBedFamilje", 0);
+      this.$store.commit("setHalfPension", 0);
+      this.$store.commit("setFullPension", 0);
+      this.$store.commit("setAllInclusive", 0);
     },
   },
   filters: {
@@ -201,15 +209,65 @@ export default {
     },
     rooms: {
       get(){
-        return this.$store.state.roomTypesByHotelId;
+        return this.$store.state.rooms;
       },
     },
-  },
+    maxFamiljeRum:{
+      get(){
+        let maxAntal = 0;
+        for(let i = 0; i < this.$store.state.availableRooms.length; i++) {
+          if(this.$store.state.availableRooms[i].roomType.roomType == 'familjerum'){
+            maxAntal = maxAntal + 1; 
+          }
+        }
+        return maxAntal;
+      }
+    },
+    maxEnkelRum:{
+      get(){
+        let maxAntal = 0;
+        for(let i = 0; i < this.$store.state.availableRooms.length; i++) {
+          if(this.$store.state.availableRooms[i].roomType.roomType == 'enkelrum'){
+            maxAntal = maxAntal + 1; 
+          }
+        }
+        return maxAntal;
+      }
+    },
+    maxDubbelRum:{
+      get(){
+        let maxAntal = 0;
+        for(let i = 0; i < this.$store.state.availableRooms.length; i++) {
+          if(this.$store.state.availableRooms[i].roomType.roomType == 'dubbelrum'){
+            maxAntal = maxAntal + 1; 
+          }
+        }
+        return maxAntal;
+      }
+    }
+  }
 };
 </script>
 
-<style src="@/style.css">
-.carousel-inner img {
-  margin: auto;
+<style scoped>
+.bgimage {
+  /* The image used */
+  background-image: url("https://img.guidebook-sweden.com/helsingborgs-kommun/kaernan.jpg");
+
+  /* Half height */
+  height: 50%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.card {
+  width: 75% !important;
+}
+@media screen and (min-width: 992px){
+  .card {
+    width: 50% !important;
+  }    
 }
 </style>
