@@ -227,8 +227,7 @@ import moment from 'moment';
         mounted(){
            console.log('App mounted!');
          if (localStorage.getItem('user')) {
-         this.user = JSON.parse(localStorage.getItem('user')); 
-         
+         this.user = JSON.parse(localStorage.getItem('user'));          
          
          }
         },

@@ -55,12 +55,20 @@ export default {
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
   }, 
-  methods:{
-    
-
+  created(){
+    this.updateUser();
   },
+  methods:{
+    updateUser: function(){
+      if (localStorage.getItem('user')) {
+         this.user = JSON.parse(localStorage.getItem('user')); 
+          console.log(this.user)
+         }
+        }
+  }, 
   computed: {
     logout: function(){           
+      this.updateUser();
       return this.$store.dispatch('authentication/logout');  
     },
      authenticated: function(){
@@ -69,16 +77,8 @@ export default {
     UserWatcher: function(){      
       return this.user.firstName && this.user.lastName
     }
-  },
+  }
+}
   
- 
-  mounted(){
-  
-          console.log('App mounted!');
-         if (localStorage.getItem('user')) {
-         this.user = JSON.parse(localStorage.getItem('user')); 
-          console.log(this.user)
-         }
-        }
-};
+
 </script>

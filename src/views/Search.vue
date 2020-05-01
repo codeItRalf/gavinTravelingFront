@@ -336,9 +336,6 @@ export default {
       this.reviewIncreasing = false
             
     },
-    
-
-
     async info() {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", "Basic dGVzdEBtYWlsLmNvbTp1c2Vy");
