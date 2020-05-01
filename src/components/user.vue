@@ -209,7 +209,7 @@ import {authHeader, getTokenId} from '../_helpers';
         data(){
             return{            
              user: {},
-             bookings: {}           
+             bookings: []     
             }    
         },
         filters: {
@@ -239,29 +239,27 @@ import {authHeader, getTokenId} from '../_helpers';
                     body : JSON.stringify( getTokenId() )
                 })
                 return await response.json();
-    },
+            },
         },    
       computed: {
          /*bookings() {
             return this.$store.state.bookings.all
             },*/
             filteredactiveBookings: function(){
-                return this.bookings/* .filter( booking => {
+                return this.bookings.filter( booking => {
                    return booking.active == true
-                }) */
+                })
             },
             filteredpastBookings: function(){
-                return this.bookings/* .filter( booking => {
+                return this.bookings.filter( booking => {
                    return booking.active == false
-                }) */
+                })
             }
       },      
         
        async created (){
            this.getUser();
            this.bookings = await this.getBookingsList();
-           this.bookings.forEach(s => { console.log(s.totalPrice)});
-           
            
            //await this.$store.dispatch("bookings/getAllBookingsByUser")
        }

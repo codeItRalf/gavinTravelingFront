@@ -211,7 +211,7 @@ export default {
           tokenId: "",
           startDate: this.$store.state.booking.globalStartDate,
           endDate: this.$store.state.booking.globalEndDate,
-          totalPrice: 0,
+          totalPrice: "",
           roomsToBook: [],
         }
       }
