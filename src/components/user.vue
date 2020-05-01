@@ -223,25 +223,34 @@ import moment from 'moment';
              }
             }
             
-        },        
+        },
+        methods: {
+            getUser: function(){
+                if (localStorage.getItem('user')) {
+                    this.user = JSON.parse(localStorage.getItem('user')); 
+                }
+            }
+        },    
       computed: {
          /*bookings() {
             return this.$store.state.bookings.all
             },*/
             filteredactiveBookings: function(){
+                this.getUser();
                 return this.bookings.items.filter( booking => {
                    return booking.active == true
                 })
             },
             filteredpastBookings: function(){
+                this.getUser();
                 return this.bookings.items.filter( booking => {
                    return booking.active == false
                 })
             }
       },      
         
-       created (){
-           this.$store.dispatch("bookings/getAllBookingsByUser")
+       async created (){
+           await this.$store.dispatch("bookings/getAllBookingsByUser")
        }
       
   }

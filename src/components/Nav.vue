@@ -59,14 +59,15 @@ export default {
     updateUser: function(){
       if (localStorage.getItem('user')) {
          this.user = JSON.parse(localStorage.getItem('user')); 
-          console.log(this.user)
+          console.log("updateUser(NAV): "+this.user)
          }
         }
     },
-   logout: function(){     
-       this.$store.dispatch('authentication/logout')  
-    },
-  computed: {    
+   
+  computed: {  
+    logout: function(){ 
+       return this.$store.dispatch('authentication/logout')  
+    },  
     authenticated: function(){
       this.updateUser();
       return this.$store.state.authentication.status.loggedIn;
@@ -77,9 +78,7 @@ export default {
   },
   mounted () {
         console.log('App mounted!');
-         if (localStorage.getItem('user')) {
-         this.user = JSON.parse(localStorage.getItem('user')); 
-         }         
+         this.updateUser();         
          
     },
 }

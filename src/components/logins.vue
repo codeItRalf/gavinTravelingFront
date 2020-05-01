@@ -27,22 +27,14 @@ export default {
         }
     },
     
-    mounted () {
-        console.log('App mounted!');
-         if (localStorage.getItem('user')) {
-         this.user = JSON.parse(localStorage.getItem('user')); 
-         }         
-         
-    },
     methods: {
         
         login () {
             this.submitted = true;    
-                    
+        
             const { username, password } = this;
             const { dispatch } = this.$store;
            
-            
             if (username && password) {
                 dispatch('authentication/login', { username, password })
             }

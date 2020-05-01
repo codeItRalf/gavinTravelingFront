@@ -45,7 +45,7 @@ export const authentication = {
             state.user = null;
         },
         logout(state) {
-            state.status = {};
+            state.status = { loggedIn: false};
             state.user = null;
         }
     }

@@ -5,6 +5,7 @@ export const bookingService = {
 };
 
 function getAllBookingsByUser() {
+    
     const requestOptions = {
         method: 'POST',
         headers:  authHeader() ,
@@ -13,4 +14,3 @@ function getAllBookingsByUser() {
 
     return fetch(`${apiUrl}/rest/bookings/user`, requestOptions).then(handleResponse);
 }
-

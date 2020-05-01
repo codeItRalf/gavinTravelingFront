@@ -27,6 +27,7 @@ function login(eMail, password) {
 
 function logout() {
     localStorage.removeItem('user');
+    sessionStorage.clear();
     console.log("Logout called and user removed")
 }
 

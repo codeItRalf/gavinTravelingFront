@@ -18,12 +18,15 @@ export const bookings = {
     },
     mutations: {
         getAllBookingsByUserRequest(state) {
+            console.log("getAllBookingsByUserRequest:booking.module"); 
             state.all = { loading: true };
         },
         getAllBookingsByUserSuccess(state, bookings) {
+            console.log("getAllBookingsByUserSuccess:booking.module");
             state.all = { items: bookings };
         },
         getAllBookingsByUserFailure(state, error) {
+            console.log("getAllBookingsByUserFailure:booking.module");
             state.all = { error };
         }
     }
