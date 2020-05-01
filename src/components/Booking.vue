@@ -127,7 +127,7 @@
           </li>
           <li class="list-group-item w-75 text-left">
             <h6 class="my-1">Moms (25%): {{calculateTotal * 0.25}}kr</h6>
-            <h5 class="my-1">Total pris: {{calculateTotal}}kr</h5>
+            <h5 class="my-1">Totalpris: {{calculateTotal}}kr</h5>
           </li>
           <li class="list-group-item w-75">
             <h6 class="text-danger" v-if="(halvPension + fullPension + allInclusive) < ($store.state.booking.party.adults + $store.state.booking.party.children + $store.state.booking.party.small_children)">
@@ -212,6 +212,7 @@ export default {
           tokenId: "",
           startDate: this.$store.state.booking.globalStartDate,
           endDate: this.$store.state.booking.globalEndDate,
+          totalPrice: 0,
           roomsToBook: [],
         }
       }
@@ -237,6 +238,7 @@ export default {
       this.sentBooking = true;
       let user = JSON.parse(localStorage.getItem('user'));      
       this.createBooking.tokenId = user.tokenId;
+      this.createBooking.totalPrice = this.calculateTotal;      
       this.createBooking.roomsToBook = this.getRoomsToBook();
       this.makeBooking();
     },
