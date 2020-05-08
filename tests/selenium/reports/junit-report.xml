@@ -1,44 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-    <testsuite name="&quot;booking&quot;;&quot;booking&quot;" tests="15" failures="1" skipped="14">
+    <testsuite name="&quot;authenticate&quot;;&quot;create-account&quot;" tests="11" failures="0" skipped="0">
         <properties>
-            <property name="URI" value="C:\Users\insik\Documents\GitHub\gavinTravelingFront\tests\selenium\features\Boka.feature">
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Autentisera.feature">
             </property>
         </properties>
-        <testcase name="Given that I am on the Gavin traveling search page" classname="&quot;booking&quot;;&quot;booking&quot;" time="10.0041929">
-            <failure message="function timed out after 10000 milliseconds">function timed out after 10000 milliseconds</failure>
+        <testcase name="Given that i am at the Gavin traveling homepage" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="9.789640901">
         </testcase>
-        <testcase name="And that i am logged in" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And that there is a register button" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.063149401">
         </testcase>
-        <testcase name="And that I’ve entered dates for my booking" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="When i press the register button" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.2317589">
         </testcase>
-        <testcase name="When I press the search button" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And i enter my email in the field for create account" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.0512373">
         </testcase>
-        <testcase name="And I choose number of room" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And i enter my password in the field password" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.0289682">
         </testcase>
-        <testcase name="And I select number of children" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And i enter in my phone number in the phone number field" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.0640389">
         </testcase>
-        <testcase name="And I select number of small children" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And i enter my name in the name fields" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.047517101">
         </testcase>
-        <testcase name="And i select number of adults" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And i enter in my security number into the security number field" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.036485699">
         </testcase>
-        <testcase name="And I click the booking button" classname="&quot;booking&quot;;&quot;booking&quot;">
-            <skipped message="">
-            </skipped>
+        <testcase name="And i press create account" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="1.2289204">
+        </testcase>
+        <testcase name="And i press registrera mig" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="1.237418101">
+        </testcase>
+        <testcase name="Then i should’ve created an account" classname="&quot;authenticate&quot;;&quot;create-account&quot;" time="0.0002365">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;authenticate&quot;;&quot;login-to-account&quot;" tests="7" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Autentisera.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am at the Gavin traveling homepage" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;" time="6.569700801">
+        </testcase>
+        <testcase name="And that there is a login button" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;" time="0.5131228">
+        </testcase>
+        <testcase name="When i press the login button from start" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;" time="0.240092399">
+        </testcase>
+        <testcase name="And i enter my username in login" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;" time="1.042184">
+        </testcase>
+        <testcase name="And i enter my password in the inputfield" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;" time="0.038358">
+        </testcase>
+        <testcase name="And i press the login button2" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;" time="1.230626">
+        </testcase>
+        <testcase name="Then i should be logged in" classname="&quot;authenticate&quot;;&quot;login-to-account&quot;" time="0.000225599">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;booking&quot;;&quot;booking&quot;" tests="15" failures="1" skipped="6">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Boka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I am on the Gavin traveling search page" classname="&quot;booking&quot;;&quot;booking&quot;" time="7.076459301">
+        </testcase>
+        <testcase name="And that i am logged in" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.8029488">
+        </testcase>
+        <testcase name="And that I’ve entered dates for my booking" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.055412599">
+        </testcase>
+        <testcase name="When I press the search button" classname="&quot;booking&quot;;&quot;booking&quot;" time="1.290791399">
+        </testcase>
+        <testcase name="And I choose number of room" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.591494399">
+        </testcase>
+        <testcase name="And I select number of children" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.561561701">
+        </testcase>
+        <testcase name="And I select number of small children" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.5576902">
+        </testcase>
+        <testcase name="And i select number of adults" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.5687079">
+        </testcase>
+        <testcase name="And I click the booking button" classname="&quot;booking&quot;;&quot;booking&quot;" time="0.0447777">
+            <failure message="NoSuchElementError: Unable to locate element: Boka Nu">NoSuchElementError: Unable to locate element: Boka Nu
+    at Object.throwDecodedError (D:\dev\gavinTravelingFront-Thomas_test\node_modules\selenium-webdriver\lib\error.js:497:15)
+    at parseHttpResponse (D:\dev\gavinTravelingFront-Thomas_test\node_modules\selenium-webdriver\lib\http.js:519:13)
+    at D:\dev\gavinTravelingFront-Thomas_test\node_modules\selenium-webdriver\lib\http.js:441:30
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+From: Task: WebDriver.findElement(By(link text, Boka Nu))
+    at thenableWebDriverProxy.schedule (D:\dev\gavinTravelingFront-Thomas_test\node_modules\selenium-webdriver\lib\webdriver.js:807:17)
+    at thenableWebDriverProxy.findElement (D:\dev\gavinTravelingFront-Thomas_test\node_modules\selenium-webdriver\lib\webdriver.js:1014:17)
+    at createWorld.&lt;anonymous&gt; (D:\dev\gavinTravelingFront-Thomas_test\tests\selenium\step-definitions\Boka.js:72:18)
+    at processTicksAndRejections (internal/process/task_queues.js:79:11)
+From: Task: WebElement.click()
+    at thenableWebDriverProxy.schedule (D:\dev\gavinTravelingFront-Thomas_test\node_modules\selenium-webdriver\lib\webdriver.js:807:17)
+    at WebElementPromise.schedule_ (D:\dev\gavinTravelingFront-Thomas_test\node_modules\selenium-webdriver\lib\webdriver.js:2015:25)
+    at WebElementPromise.click (D:\dev\gavinTravelingFront-Thomas_test\node_modules\selenium-webdriver\lib\webdriver.js:2096:17)
+    at createWorld.&lt;anonymous&gt; (D:\dev\gavinTravelingFront-Thomas_test\tests\selenium\step-definitions\Boka.js:72:54)
+    at processTicksAndRejections (internal/process/task_queues.js:79:11)</failure>
         </testcase>
         <testcase name="And i choose number of rooms" classname="&quot;booking&quot;;&quot;booking&quot;">
             <skipped message="">
@@ -61,6 +108,586 @@
             </skipped>
         </testcase>
         <testcase name="Then I receive the confirmation of my booking" classname="&quot;booking&quot;;&quot;booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;edit-bookings&quot;;&quot;show-my-bookings&quot;" tests="5" failures="0" skipped="5">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/EditRoom.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I am on the Gavin traveling website" classname="&quot;edit-bookings&quot;;&quot;show-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I have an account and that I am logged in" classname="&quot;edit-bookings&quot;;&quot;show-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I can see my bookings" classname="&quot;edit-bookings&quot;;&quot;show-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When I’m in my bookings" classname="&quot;edit-bookings&quot;;&quot;show-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then I should be able to see a summary of my bookings" classname="&quot;edit-bookings&quot;;&quot;show-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;edit-bookings&quot;;&quot;change-booked-rooms&quot;" tests="9" failures="0" skipped="9">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/EditRoom.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I am on the Gavin traveling website" classname="&quot;edit-bookings&quot;;&quot;change-booked-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I have an account and that I am logged in" classname="&quot;edit-bookings&quot;;&quot;change-booked-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I can see my bookings" classname="&quot;edit-bookings&quot;;&quot;change-booked-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When I’m in my bookings" classname="&quot;edit-bookings&quot;;&quot;change-booked-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I want to edit the amount of rooms in my booking" classname="&quot;edit-bookings&quot;;&quot;change-booked-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I press edit" classname="&quot;edit-bookings&quot;;&quot;change-booked-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I change the amount of rooms booked" classname="&quot;edit-bookings&quot;;&quot;change-booked-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And the price should change accordingly" classname="&quot;edit-bookings&quot;;&quot;change-booked-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then I press save" classname="&quot;edit-bookings&quot;;&quot;change-booked-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;edit-bookings&quot;;&quot;see-price-change-when-changing-number-of-rooms&quot;" tests="8" failures="0" skipped="8">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/EditRoom.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I am on the Gavin traveling website" classname="&quot;edit-bookings&quot;;&quot;see-price-change-when-changing-number-of-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I have an account and that I am logged in" classname="&quot;edit-bookings&quot;;&quot;see-price-change-when-changing-number-of-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I can see my bookings" classname="&quot;edit-bookings&quot;;&quot;see-price-change-when-changing-number-of-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When I’m in my bookings" classname="&quot;edit-bookings&quot;;&quot;see-price-change-when-changing-number-of-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I press edit" classname="&quot;edit-bookings&quot;;&quot;see-price-change-when-changing-number-of-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I change the number of rooms in my booking" classname="&quot;edit-bookings&quot;;&quot;see-price-change-when-changing-number-of-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And the price should change accordingly" classname="&quot;edit-bookings&quot;;&quot;see-price-change-when-changing-number-of-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then I press save" classname="&quot;edit-bookings&quot;;&quot;see-price-change-when-changing-number-of-rooms&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;edit-bookings&quot;;&quot;edit-the-amount-of-people-in-my-bookings&quot;" tests="8" failures="0" skipped="8">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/EditRoom.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I am on the Gavin traveling website" classname="&quot;edit-bookings&quot;;&quot;edit-the-amount-of-people-in-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I have an account and that I am logged in" classname="&quot;edit-bookings&quot;;&quot;edit-the-amount-of-people-in-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I can see my bookings" classname="&quot;edit-bookings&quot;;&quot;edit-the-amount-of-people-in-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When I’m in my bookings" classname="&quot;edit-bookings&quot;;&quot;edit-the-amount-of-people-in-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I press edit" classname="&quot;edit-bookings&quot;;&quot;edit-the-amount-of-people-in-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I change the amount of people in my booking" classname="&quot;edit-bookings&quot;;&quot;edit-the-amount-of-people-in-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And the price should change accordingly" classname="&quot;edit-bookings&quot;;&quot;edit-the-amount-of-people-in-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then I press save" classname="&quot;edit-bookings&quot;;&quot;edit-the-amount-of-people-in-my-bookings&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;edit-bookings&quot;;&quot;add-or-remove-extras&quot;" tests="8" failures="0" skipped="8">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/EditRoom.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I am on the Gavin traveling website" classname="&quot;edit-bookings&quot;;&quot;add-or-remove-extras&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I have an account and that I am logged in" classname="&quot;edit-bookings&quot;;&quot;add-or-remove-extras&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I can see my bookings" classname="&quot;edit-bookings&quot;;&quot;add-or-remove-extras&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When I’m in my bookings" classname="&quot;edit-bookings&quot;;&quot;add-or-remove-extras&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I press edit" classname="&quot;edit-bookings&quot;;&quot;add-or-remove-extras&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I change the amount in &lt;extra säng&gt;, &lt;header1&gt;, &lt;header2&gt;, and &lt;header3&gt; ." classname="&quot;edit-bookings&quot;;&quot;add-or-remove-extras&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And the price should change accordingly" classname="&quot;edit-bookings&quot;;&quot;add-or-remove-extras&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then I press save" classname="&quot;edit-bookings&quot;;&quot;add-or-remove-extras&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;edit-bookings&quot;;&quot;change-dates-for-a-booking&quot;" tests="8" failures="0" skipped="8">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/EditRoom.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I am on the Gavin traveling website" classname="&quot;edit-bookings&quot;;&quot;change-dates-for-a-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I have an account and that I am logged in" classname="&quot;edit-bookings&quot;;&quot;change-dates-for-a-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I can see my bookings" classname="&quot;edit-bookings&quot;;&quot;change-dates-for-a-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When I’m in my bookings" classname="&quot;edit-bookings&quot;;&quot;change-dates-for-a-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I press edit" classname="&quot;edit-bookings&quot;;&quot;change-dates-for-a-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I change the &lt;startDate&gt; and &lt;endDate&gt; in my booking" classname="&quot;edit-bookings&quot;;&quot;change-dates-for-a-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And the price should change accordingly" classname="&quot;edit-bookings&quot;;&quot;change-dates-for-a-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then I press save" classname="&quot;edit-bookings&quot;;&quot;change-dates-for-a-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;edit-bookings&quot;;&quot;as-a-user-i-want-to-be-able-to-cancel-my-booking&quot;" tests="9" failures="0" skipped="9">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/EditRoom.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I am on the Gavin traveling website" classname="&quot;edit-bookings&quot;;&quot;as-a-user-i-want-to-be-able-to-cancel-my-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I have an account and that I am logged in" classname="&quot;edit-bookings&quot;;&quot;as-a-user-i-want-to-be-able-to-cancel-my-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I can see my bookings" classname="&quot;edit-bookings&quot;;&quot;as-a-user-i-want-to-be-able-to-cancel-my-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And there is a cancel button for my booking" classname="&quot;edit-bookings&quot;;&quot;as-a-user-i-want-to-be-able-to-cancel-my-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When i press the cancel button for my booking" classname="&quot;edit-bookings&quot;;&quot;as-a-user-i-want-to-be-able-to-cancel-my-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And i get a confirmation to cancel my booking with yes/no" classname="&quot;edit-bookings&quot;;&quot;as-a-user-i-want-to-be-able-to-cancel-my-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And i press yes" classname="&quot;edit-bookings&quot;;&quot;as-a-user-i-want-to-be-able-to-cancel-my-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And receive a message confirming that i’ve cancelled my booking" classname="&quot;edit-bookings&quot;;&quot;as-a-user-i-want-to-be-able-to-cancel-my-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then my booking should be cancelled" classname="&quot;edit-bookings&quot;;&quot;as-a-user-i-want-to-be-able-to-cancel-my-booking&quot;">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;sorting-search-results&quot;;as-a-user-i-want-to-sort-my-search-with-ascending-and-descending-prices" tests="6" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Sortering.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-sort-my-search-with-ascending-and-descending-prices" time="6.285371201">
+        </testcase>
+        <testcase name="And i&apos;ve entered start and end date" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-sort-my-search-with-ascending-and-descending-prices" time="4.016756299">
+        </testcase>
+        <testcase name="And pressed the search button" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-sort-my-search-with-ascending-and-descending-prices" time="0.0002366">
+        </testcase>
+        <testcase name="Given that there is a sorting button for ascending and descending prices" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-sort-my-search-with-ascending-and-descending-prices" time="0.0099068">
+        </testcase>
+        <testcase name="When i press  the sorting button" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-sort-my-search-with-ascending-and-descending-prices" time="0.0055637">
+        </testcase>
+        <testcase name="Then the result should change from ascending to descending prices" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-sort-my-search-with-ascending-and-descending-prices" time="0.000147399">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;sorting-search-results&quot;;as-a-user-i-want-to-be-able-to-filter-my-searches-with-rating" tests="7" failures="0" skipped="2">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Sortering.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-be-able-to-filter-my-searches-with-rating" time="5.826717299">
+        </testcase>
+        <testcase name="And i&apos;ve entered start and end date" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-be-able-to-filter-my-searches-with-rating" time="4.0104556">
+        </testcase>
+        <testcase name="And pressed the search button" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-be-able-to-filter-my-searches-with-rating" time="0.000090099">
+        </testcase>
+        <testcase name="Given that there is a filter for rating" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-be-able-to-filter-my-searches-with-rating" time="0.248111401">
+        </testcase>
+        <testcase name="When i select highest rating" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-be-able-to-filter-my-searches-with-rating" time="0.220488801">
+        </testcase>
+        <testcase name="And press search" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-be-able-to-filter-my-searches-with-rating">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then i want to get a result based on selected rating" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-be-able-to-filter-my-searches-with-rating">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" tests="6" failures="0" skipped="3">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Sortering.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" time="6.289339701">
+        </testcase>
+        <testcase name="And i&apos;ve entered start and end date" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" time="4.000530501">
+        </testcase>
+        <testcase name="And pressed the search button" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" time="0.0000541">
+        </testcase>
+        <testcase name="Given that there is a field for distance to beach" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When i enter a &quot;1&quot; in the field" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then the result should only be hotels within the &quot;1&quot;" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" tests="6" failures="0" skipped="3">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Sortering.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" time="5.820567701">
+        </testcase>
+        <testcase name="And i&apos;ve entered start and end date" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" time="4.0106171">
+        </testcase>
+        <testcase name="And pressed the search button" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" time="0.0000921">
+        </testcase>
+        <testcase name="Given that there is a field for distance to beach" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When i enter a &quot;99&quot; in the field" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then the result should only be hotels within the &quot;99&quot;" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" tests="6" failures="0" skipped="3">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Sortering.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" time="6.7267455">
+        </testcase>
+        <testcase name="And i&apos;ve entered start and end date" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" time="4.012670301">
+        </testcase>
+        <testcase name="And pressed the search button" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach" time="0.0000446">
+        </testcase>
+        <testcase name="Given that there is a field for distance to beach" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When i enter a &quot;200&quot; in the field" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then the result should only be hotels within the &quot;200&quot;" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-the-beach">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-downtown" tests="6" failures="0" skipped="3">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Sortering.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-downtown" time="6.296290601">
+        </testcase>
+        <testcase name="And i&apos;ve entered start and end date" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-downtown" time="3.9910734">
+        </testcase>
+        <testcase name="And pressed the search button" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-downtown" time="0.000101601">
+        </testcase>
+        <testcase name="Given that there is a field for distance to downtown" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-downtown">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When i enter a &lt;distance&gt; in the field" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-downtown">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then the result should only be hotels within the &lt;distance&gt;" classname="&quot;sorting-search-results&quot;;as-a-user-i-want-to-search-for-hotels-based-on-distance-to-downtown">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;add-number-of-adults-to-the-search" tests="5" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;add-number-of-adults-to-the-search" time="6.2918228">
+        </testcase>
+        <testcase name="Given that there is a add adult button" classname="&quot;search-page&quot;;add-number-of-adults-to-the-search" time="0.0091213">
+        </testcase>
+        <testcase name="When i click the add adult button" classname="&quot;search-page&quot;;add-number-of-adults-to-the-search" time="0.2485008">
+        </testcase>
+        <testcase name="And i choose 1 adults" classname="&quot;search-page&quot;;add-number-of-adults-to-the-search" time="0.225016699">
+        </testcase>
+        <testcase name="Then the number of adults should should be set to 1" classname="&quot;search-page&quot;;add-number-of-adults-to-the-search" time="0.0174783">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;add-number-of-children-to-the-search" tests="5" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;add-number-of-children-to-the-search" time="5.786653999">
+        </testcase>
+        <testcase name="Given that there is a add adult button" classname="&quot;search-page&quot;;add-number-of-children-to-the-search" time="0.0057543">
+        </testcase>
+        <testcase name="When i click the add children button" classname="&quot;search-page&quot;;add-number-of-children-to-the-search" time="0.239219501">
+        </testcase>
+        <testcase name="And i choose 1 children" classname="&quot;search-page&quot;;add-number-of-children-to-the-search" time="0.2283639">
+        </testcase>
+        <testcase name="Then the number of children should should be set to 1" classname="&quot;search-page&quot;;add-number-of-children-to-the-search" time="0.015394299">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;add-number-of-young-children-to-the-search" tests="5" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;add-number-of-young-children-to-the-search" time="6.2892811">
+        </testcase>
+        <testcase name="Given that there is a add young children button" classname="&quot;search-page&quot;;add-number-of-young-children-to-the-search" time="0.0109039">
+        </testcase>
+        <testcase name="When i click the add young children button" classname="&quot;search-page&quot;;add-number-of-young-children-to-the-search" time="0.240019099">
+        </testcase>
+        <testcase name="And i choose 1 young children" classname="&quot;search-page&quot;;add-number-of-young-children-to-the-search" time="0.230760001">
+        </testcase>
+        <testcase name="Then the number of young children should should be set to 1" classname="&quot;search-page&quot;;add-number-of-young-children-to-the-search" time="0.015808">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-pool&quot;" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-pool&quot;" time="5.799247301">
+        </testcase>
+        <testcase name="Given that there are checkbox for pool" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-pool&quot;" time="0.0054166">
+        </testcase>
+        <testcase name="When i click the box for pool" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-pool&quot;" time="0.23833">
+        </testcase>
+        <testcase name="Then the search result should be hotels with pool" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-pool&quot;" time="0.000187101">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-restaurant&quot;" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-restaurant&quot;" time="6.3459436">
+        </testcase>
+        <testcase name="Given that there are checkbox for restaurant" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-restaurant&quot;" time="0.0056735">
+        </testcase>
+        <testcase name="When i click the box for restaurant" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-restaurant&quot;" time="0.348729599">
+        </testcase>
+        <testcase name="Then the search result should be hotels with restaurant" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-restaurant&quot;" time="0.000193901">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-children-club&quot;" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-children-club&quot;" time="6.2985581">
+        </testcase>
+        <testcase name="Given that there are checkbox for children club" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-children-club&quot;" time="0.0106147">
+        </testcase>
+        <testcase name="When i click the box for children club" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-children-club&quot;" time="0.243137399">
+        </testcase>
+        <testcase name="Then the search result should be hotels with children club" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-children-club&quot;" time="0.0002057">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-evening-entertainment&quot;" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-evening-entertainment&quot;" time="6.2584164">
+        </testcase>
+        <testcase name="Given that there are checkbox for evening entertainment" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-evening-entertainment&quot;" time="0.0114684">
+        </testcase>
+        <testcase name="When i click the box for evening entertainment" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-evening-entertainment&quot;" time="0.240909">
+        </testcase>
+        <testcase name="Then the search result should be hotels with evening entertainment" classname="&quot;search-page&quot;;&quot;as-a-user-i-want-to-select-evening-entertainment&quot;" time="0.0001949">
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;search-based-on-city" tests="4" failures="1" skipped="1">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;search-based-on-city" time="6.2497753">
+        </testcase>
+        <testcase name="Given that there are a dropdown for city" classname="&quot;search-page&quot;;search-based-on-city" time="0.0093635">
+        </testcase>
+        <testcase name="When i chose &quot;Tubel&quot; in the drop down menu" classname="&quot;search-page&quot;;search-based-on-city" time="0.000232401">
+            <failure message="function has 0 arguments, should have 1 (if synchronous or returning a promise) or 2 (if accepting a callback)">function has 0 arguments, should have 1 (if synchronous or returning a promise) or 2 (if accepting a callback)</failure>
+        </testcase>
+        <testcase name="Then i should get a result with &quot;Tubel&quot;" classname="&quot;search-page&quot;;search-based-on-city">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;search-based-on-city" tests="4" failures="1" skipped="1">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;search-based-on-city" time="6.302547399">
+        </testcase>
+        <testcase name="Given that there are a dropdown for city" classname="&quot;search-page&quot;;search-based-on-city" time="0.008871099">
+        </testcase>
+        <testcase name="When i chose &quot;Dallas&quot; in the drop down menu" classname="&quot;search-page&quot;;search-based-on-city" time="0.000037401">
+            <failure message="function has 0 arguments, should have 1 (if synchronous or returning a promise) or 2 (if accepting a callback)">function has 0 arguments, should have 1 (if synchronous or returning a promise) or 2 (if accepting a callback)</failure>
+        </testcase>
+        <testcase name="Then i should get a result with &quot;Dallas&quot;" classname="&quot;search-page&quot;;search-based-on-city">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" tests="3" failures="0" skipped="1">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="6.276269201">
+        </testcase>
+        <testcase name="When i enter in &quot;2020-04-30&quot; and &quot;2020-05-07&quot;" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.611801901">
+        </testcase>
+        <testcase name="Then i should get the result of all available rooms during &quot;2020-04-30&quot;  and &quot;2020-05-07&quot;" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" tests="3" failures="0" skipped="1">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="5.7764886">
+        </testcase>
+        <testcase name="When i enter in &quot;2020-05-30&quot; and &quot;2020-06-07&quot;" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.6191354">
+        </testcase>
+        <testcase name="Then i should get the result of all available rooms during &quot;2020-05-30&quot;  and &quot;2020-06-07&quot;" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" tests="3" failures="0" skipped="1">
+        <properties>
+            <property name="URI" value="D:/dev/gavinTravelingFront-Thomas_test/tests/selenium/features/Söka.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Gavin traveling search page" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="5.8263291">
+        </testcase>
+        <testcase name="When i enter in &quot;2020-05-25&quot; and &quot;2020-06-10&quot;" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates" time="0.6080806">
+        </testcase>
+        <testcase name="Then i should get the result of all available rooms during &quot;2020-05-25&quot;  and &quot;2020-06-10&quot;" classname="&quot;search-page&quot;;filter-the-available-rooms-during-certain-dates">
             <skipped message="">
             </skipped>
         </testcase>
