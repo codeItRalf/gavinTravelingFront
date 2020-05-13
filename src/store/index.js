@@ -134,6 +134,9 @@ export default new Vuex.Store({
     },
     setAvailableRooms(state, value){
       state.availableRooms = value;
+    },
+    SetBooking(state, value) {
+      state.booking = value;
     }
   },
   actions: {

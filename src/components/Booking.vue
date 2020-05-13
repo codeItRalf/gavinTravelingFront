@@ -398,10 +398,12 @@ export default {
           (this.$store.state.booking.room.enkel.antal * this.rooms[1].price) +
           (this.$store.state.booking.room.dubbel.antal * this.rooms[0].price) +
           (this.$store.state.booking.room.familje.antal * this.rooms[2].price) +
+          
           (this.$store.state.booking.room.enkel.extraBed * 250) +
           (this.$store.state.booking.room.dubbel.extraBed * 250) +
           (this.$store.state.booking.room.familje.extraBed * 250) +
-          (this.$store.state.booking.halfPension *
+         
+         (this.$store.state.booking.halfPension *
             this.$store.state.hotel.pensionHalfPrice) +
           (this.$store.state.booking.fullPension *
             this.$store.state.hotel.pensionFullPrice) +
