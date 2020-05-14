@@ -15,10 +15,10 @@
       </div>
       <div class="col-md-8 mx-auto card borderless bg-transparent">
         <ul>
-          <li  class="list-group-item w-75 text-left">
+          <li class="list-group-item w-75 text-left">
             <h5 class="text-left">Rum</h5>
             <div class="row border-bottom" v-if="enkelRum > 0">
-              <div class="col-md-6" >
+              <div class="col-md-6">
                 <p>Antal {{rooms[1].roomType | capitalize}}: {{enkelRum}}</p>
                 <p>Pris: {{enkelRumPris}}kr</p>
               </div>
@@ -130,10 +130,16 @@
             <h5 class="my-1">Total pris: {{calculateTotal}}kr</h5>
           </li>
           <li class="list-group-item w-75">
-            <h6 class="text-danger" v-if="(halvPension + fullPension + allInclusive) < ($store.state.booking.party.adults + $store.state.booking.party.children + $store.state.booking.party.small_children)">
-              OBS! Antal tillval är mindre än antal personer i sällskapet
-            </h6>
-            <button class="btn btn-primary" data-toggle="modal" @click="getRoomsToBook" data-target="#confirm">Boka nu för fan!</button>
+            <h6
+              class="text-danger"
+              v-if="(halvPension + fullPension + allInclusive) < ($store.state.booking.party.adults + $store.state.booking.party.children + $store.state.booking.party.small_children)"
+            >OBS! Antal tillval är mindre än antal personer i sällskapet</h6>
+            <button
+              class="btn btn-primary"
+              data-toggle="modal"
+              @click="getRoomsToBook"
+              data-target="#confirm"
+            >Boka nu för fan!</button>
           </li>
         </ul>
       </div>
@@ -158,7 +164,12 @@
           </div>
           <div class="modal-body">
             <div :class="hideShow">
-              <img class="img-fluid" src="https://i.redd.it/zozo0uauf0v41.jpg" alt="Can't believe you've done this" srcset="">
+              <img
+                class="img-fluid"
+                src="https://i.redd.it/zozo0uauf0v41.jpg"
+                alt="Can't believe you've done this"
+                srcset
+              />
             </div>
             <div :class="showHide">
               <i class="fas fa-check-circle comfirmCheck"></i>
@@ -167,8 +178,18 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button v-if="!sentBooking" type="button" class="btn btn-primary" @click="confirmBooking">Bekräfta bokning</button>
-            <button v-if="!sentBooking" type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
+            <button
+              v-if="!sentBooking"
+              type="button"
+              class="btn btn-primary"
+              @click="confirmBooking"
+            >Bekräfta bokning</button>
+            <button
+              v-if="!sentBooking"
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >Avbryt</button>
             <router-link v-if="sentBooking" to="/">
               <button class="btn btn-primary" data-dismiss="modal">Gå till startsidan</button>
             </router-link>
@@ -189,53 +210,61 @@ export default {
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
   },
+  /*
   created() {
-    let getEMail = JSON.parse(localStorage.getItem('user'));
+    let getEMail = JSON.parse(localStorage.getItem("user"));
     this.mail = getEMail.eEMail;
   },
   data() {
-      return {
-        sentBooking: false,
-        totalPris: 0,
-        confirmationText: "Tack för din bokning",
-        showHide: "d-none",
-        hideShow: "d-block",
-        mail: "",
-        extraBedAntal: [this.$store.state.booking.room.enkel.antal, this.$store.state.booking.room.dubbel.antal, this.$store.state.booking.room.familje.antal],
-        createBooking: {
-          personCount: this.$store.state.booking.party.adults,
-          childrenCount: this.$store.state.booking.party.children,
-          smallChildrenCount: this.$store.state.booking.party.small_children,
-          halfPension: this.$store.state.booking.halfPension,
-          fullPension: this.$store.state.booking.fullPension,
-          allInclusive: this.$store.state.booking.allInclusive,
-          tokenId: "",
-          startDate: this.$store.state.booking.globalStartDate,
-          endDate: this.$store.state.booking.globalEndDate,
-          roomsToBook: [],
-        }
+    return {
+      sentBooking: false,
+      totalPris: 0,
+      confirmationText: "Tack för din bokning",
+      showHide: "d-none",
+      hideShow: "d-block",
+      mail: "",
+      extraBedAntal: [
+        this.$store.state.booking.room.enkel.antal,
+        this.$store.state.booking.room.dubbel.antal,
+        this.$store.state.booking.room.familje.antal
+      ],
+      createBooking: {
+        personCount: this.$store.state.booking.party.adults,
+        childrenCount: this.$store.state.booking.party.children,
+        smallChildrenCount: this.$store.state.booking.party.small_children,
+        halfPension: this.$store.state.booking.halfPension,
+        fullPension: this.$store.state.booking.fullPension,
+        allInclusive: this.$store.state.booking.allInclusive,
+        tokenId: "",
+        startDate: this.$store.state.booking.globalStartDate,
+        endDate: this.$store.state.booking.globalEndDate,
+        roomsToBook: []
       }
-    },
+    };
+  },
+  
   methods: {
-    makeBooking: function(){
-      let url = "http://localhost:9090/rest/createBooking"
-      let user = JSON.parse(localStorage.getItem('user'));
+    makeBooking: function() {
+      let url = "http://localhost:9090/rest/createBooking";
+      let user = JSON.parse(localStorage.getItem("user"));
       console.log(this.createBooking);
 
       fetch(url, {
-        method: 'POST',
-        headers: { 'Authorization': 'Bearer ' + user.tokenId, 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + user.tokenId,
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(this.createBooking)
-      })
-      .then(booking => {
+      }).then(booking => {
         console.log(booking);
-      })
+      });
     },
-    confirmBooking: function(){
+    confirmBooking: function() {
       this.showHide = "d-block";
       this.hideShow = "d-none";
       this.sentBooking = true;
-      let user = JSON.parse(localStorage.getItem('user'));      
+      let user = JSON.parse(localStorage.getItem("user"));
       this.createBooking.tokenId = user.tokenId;
       this.createBooking.roomsToBook = this.getRoomsToBook();
       this.makeBooking();
@@ -245,74 +274,79 @@ export default {
       let listEnkelRum = [];
       let listDubbelRum = [];
       let listFamiljeRum = [];
-      for(let i = 0; i < this.$store.state.availableRooms.length; i++ ){
-          if(this.$store.state.availableRooms[i].roomType.roomType === "enkelrum"){
-            var eRum = this.$store.state.availableRooms[i];
-            listEnkelRum.push(eRum);
-          } else if(this.$store.state.availableRooms[i].roomType.roomType === "dubbelrum"){
-            var dRum = this.$store.state.availableRooms[i];
-            listDubbelRum.push(dRum);
-          } else{
-            var fRum = this.$store.state.availableRooms[i];
-            listFamiljeRum.push(fRum);
-          }
+      for (let i = 0; i < this.$store.state.availableRooms.length; i++) {
+        if (
+          this.$store.state.availableRooms[i].roomType.roomType === "enkelrum"
+        ) {
+          var eRum = this.$store.state.availableRooms[i];
+          listEnkelRum.push(eRum);
+        } else if (
+          this.$store.state.availableRooms[i].roomType.roomType === "dubbelrum"
+        ) {
+          var dRum = this.$store.state.availableRooms[i];
+          listDubbelRum.push(dRum);
+        } else {
+          var fRum = this.$store.state.availableRooms[i];
+          listFamiljeRum.push(fRum);
+        }
       }
       let eExtraBed = this.$store.state.booking.room.enkel.extraBed;
-      for(let j = 0; j < this.$store.state.booking.room.enkel.antal; j++){
+      for (let j = 0; j < this.$store.state.booking.room.enkel.antal; j++) {
         let addRoom = {
           extraBed: 0,
           roomId: 0
-        }
-        if(eExtraBed > 0){
-            addRoom.extraBed = 1
-            addRoom.roomId = listEnkelRum[j].id;
-            listRum.push(addRoom);
-            eExtraBed = eExtraBed - 1;
+        };
+        if (eExtraBed > 0) {
+          addRoom.extraBed = 1;
+          addRoom.roomId = listEnkelRum[j].id;
+          listRum.push(addRoom);
+          eExtraBed = eExtraBed - 1;
         } else {
           addRoom.extraBed = 0;
-          addRoom.roomId = listEnkelRum[j].id
+          addRoom.roomId = listEnkelRum[j].id;
           listRum.push(addRoom);
-        } 
+        }
       }
 
       let dExtraBed = this.$store.state.booking.room.dubbel.extraBed;
-      for(let l = 0; l < this.$store.state.booking.room.dubbel.antal; l++){
+      for (let l = 0; l < this.$store.state.booking.room.dubbel.antal; l++) {
         let addRoom = {
           extraBed: 0,
           roomId: 0
-        }
-        if(dExtraBed > 0){
-            addRoom.extraBed = 1;
-            addRoom.roomId = listDubbelRum[l].id;
-            listRum.push(addRoom);
-            dExtraBed = dExtraBed - 1;
+        };
+        if (dExtraBed > 0) {
+          addRoom.extraBed = 1;
+          addRoom.roomId = listDubbelRum[l].id;
+          listRum.push(addRoom);
+          dExtraBed = dExtraBed - 1;
         } else {
           addRoom.extraBed = 0;
-          addRoom.roomId = listDubbelRum[l].id
+          addRoom.roomId = listDubbelRum[l].id;
           listRum.push(addRoom);
-        } 
+        }
       }
 
       let fExtraBed = this.$store.state.booking.room.familje.extraBed;
-      for(let n = 0; n < this.$store.state.booking.room.familje.antal; n++){
+      for (let n = 0; n < this.$store.state.booking.room.familje.antal; n++) {
         let addRoom = {
           extraBed: 0,
           roomId: 0
-        }
-        if(fExtraBed > 0){
-            addRoom.extraBed = 1
-            addRoom.roomId = listFamiljeRum[n].id;
-            listRum.push(addRoom);
-            fExtraBed = fExtraBed-1;
+        };
+        if (fExtraBed > 0) {
+          addRoom.extraBed = 1;
+          addRoom.roomId = listFamiljeRum[n].id;
+          listRum.push(addRoom);
+          fExtraBed = fExtraBed - 1;
         } else {
           addRoom.extraBed = 0;
-          addRoom.roomId = listFamiljeRum[n].id
+          addRoom.roomId = listFamiljeRum[n].id;
           listRum.push(addRoom);
-        } 
+        }
       }
       return listRum;
     }
   },
+  */
   computed: {
     enkelRum: {
       get() {
@@ -360,20 +394,25 @@ export default {
     },
     enkelRumPris: {
       get() {
-        return this.$store.state.booking.room.enkel.antal * this.rooms[1].price;
+        return (
+          this.$store.state.booking.room.enkel.antal *
+          this.$store.state.booking.room.enkel.pricePerRoomPerNight
+        );
       }
     },
     dubbelRumPris: {
       get() {
         return (
-          this.$store.state.booking.room.dubbel.antal * this.rooms[0].price
+          this.$store.state.booking.room.dubbel.antal *
+          this.$store.state.booking.room.dubbel.pricePerRoomPerNight
         );
       }
     },
     familjeRumPris: {
       get() {
         return (
-          this.$store.state.booking.room.familje.antal * this.rooms[2].price
+          this.$store.state.booking.room.familje.antal *
+          this.$store.state.booking.room.familje.pricePerRoomPerNight
         );
       }
     },
@@ -389,26 +428,49 @@ export default {
     },
     hotel: {
       get() {
-        return this.$store.state.hotel;
+        return {
+          id: 1,
+          name: "roberts-heller",
+          stars: 1,
+          picture: "",
+          phone: "647 946 9787",
+          eMail: "gglendinning0@dagondesign.com",
+          address: "4th",
+          postalCode: "26653",
+          pool: true,
+          nightEntertainment: true,
+          restaurant: true,
+          childrenClub: false,
+          distanceToBeach: 2.0,
+          distanceToCenter: 20.0,
+          pensionHalfPrice: 100.0,
+          pensionFullPrice: 200.0,
+          allInclusive: 300.0,
+          extraBed: 0.0,
+          city: {
+            id: 1,
+            name: "gagarin"
+          }
+        };
       }
     },
     calculateTotal: {
       get() {
         return (
-          (this.$store.state.booking.room.enkel.antal * this.rooms[1].price) +
-          (this.$store.state.booking.room.dubbel.antal * this.rooms[0].price) +
-          (this.$store.state.booking.room.familje.antal * this.rooms[2].price) +
-          (this.$store.state.booking.room.enkel.extraBed * 250) +
-          (this.$store.state.booking.room.dubbel.extraBed * 250) +
-          (this.$store.state.booking.room.familje.extraBed * 250) +
-          (this.$store.state.booking.halfPension *
-            this.$store.state.hotel.pensionHalfPrice) +
-          (this.$store.state.booking.fullPension *
-            this.$store.state.hotel.pensionFullPrice) +
-          (this.$store.state.booking.allInclusive *
-            this.$store.state.hotel.allInclusive)
+          this.enkelRumPris +
+          this.dubbelRumPris +
+          this.familjeRumPris +
+          this.$store.state.booking.room.enkel.extraBed * 250 +
+          this.$store.state.booking.room.dubbel.extraBed * 250 +
+          this.$store.state.booking.room.familje.extraBed * 250 +
+          this.$store.state.booking.halfPension *
+            this.$store.state.hotel.pensionHalfPrice +
+          this.$store.state.booking.fullPension *
+            this.$store.state.hotel.pensionFullPrice +
+          this.$store.state.booking.allInclusive *
+            this.$store.state.hotel.allInclusive
         );
-      },
+      }
     },
     halvPension: {
       get() {
@@ -436,11 +498,13 @@ export default {
     },
     maxTillvalHalvPension: {
       get() {
-        return (this.$store.state.booking.party.adults +
+        return (
+          this.$store.state.booking.party.adults +
           this.$store.state.booking.party.children +
           this.$store.state.booking.party.small_children -
           this.$store.state.booking.fullPension -
-          this.$store.state.booking.allInclusive);
+          this.$store.state.booking.allInclusive
+        );
       }
     },
     maxTillvalFullPension: {
@@ -464,7 +528,7 @@ export default {
           this.$store.state.booking.halfPension
         );
       }
-    },
+    }
   }
 };
 </script>

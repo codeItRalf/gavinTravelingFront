@@ -10,14 +10,14 @@ export default new Vuex.Store({
   modules: {
     authentication,
     bookings
-   },
+  },
   plugins: [createPersistedState()],
-  state: {    
+  state: {
     rooms: [],
-    roomsToBook: [],    
+    roomsToBook: [],
     search: {
       inputCities: [],
-      globalCity: ''      
+      globalCity: ''
     },
     availableRooms: [],
     hotel: [],
@@ -57,7 +57,7 @@ export default new Vuex.Store({
       allInclusive: 0,
     },
   },
-  mutations: {    
+  mutations: {
     setAuthentication(state, status) {
       state.authenticated = status;
     },
@@ -130,33 +130,36 @@ export default new Vuex.Store({
       state.booking.fullPension = parseInt(value);
     },
     setAllInclusive(state, value) {
-      state.booking.allInclusive = parseInt(value); 
+      state.booking.allInclusive = parseInt(value);
     },
-    setAvailableRooms(state, value){
+    setAvailableRooms(state, value) {
       state.availableRooms = value;
+    },
+    SetBooking(state, value) {
+      state.booking = value;
     }
   },
   actions: {
-    getHotel: async function({ commit }, id) {
+    getHotel: async function ({ commit }, id) {
       let url = "http://localhost:9090/rest/hotels/";
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setHotel", json);
     },
-    getRooms: async function({ commit }, id) {
+    getRooms: async function ({ commit }, id) {
       let url = "http://localhost:9090/rest/room-types/by-hotel/types/";
       const result = await fetch(url + id);
       const json = await result.json();
       commit("setRooms", json);
     },
-    getCities: async function({ commit }) {
+    getCities: async function ({ commit }) {
       let url = "http://localhost:9090/rest/cities";
       const result = await fetch(url);
       const json = await result.json();
       commit("setCities", json);
     },
-    getAvailableRooms: async function({ commit }, value) {
-      let url = "http://localhost:9090/rest/rooms/" + value[0] + "/" + value[1] + "/" + value[2];      
+    getAvailableRooms: async function ({ commit }, value) {
+      let url = "http://localhost:9090/rest/rooms/" + value[0] + "/" + value[1] + "/" + value[2];
       const result = await fetch(url);
       const json = await result.json();
       commit("setAvailableRooms", json);
