@@ -11,7 +11,7 @@
     </div>
     <div class="row">
       <div class="col-md-8 mx-auto">
-        <h2>Hotell {{ hotel.name | capitalize}}</h2>
+        <h2 id="bokingS">Hotell {{ hotel.name | capitalize}}</h2>
       </div>
       <div class="col-md-8 mx-auto card borderless bg-transparent">
         <ul>
@@ -30,6 +30,7 @@
                   class="w-75"
                   min="0"
                   :max="enkelRum"
+                  id="extraEnkel"
                 />
               </div>
             </div>
@@ -46,6 +47,7 @@
                   class="w-75"
                   min="0"
                   :max="dubbelRum"
+                  id="extraDubbel"
                 />
               </div>
             </div>
@@ -62,6 +64,7 @@
                   class="w-75"
                   min="0"
                   :max="familjeRum"
+                  id="extraFamilje"
                 />
               </div>
             </div>
@@ -82,6 +85,7 @@
                 min="0"
                 v-model="halvPension"
                 :max="maxTillvalHalvPension"
+                id="halvPen"
               />
               {{hotel.pensionHalfPrice}}kr per person
             </p>
@@ -94,6 +98,7 @@
                 min="0"
                 v-model="fullPension"
                 :max="maxTillvalFullPension"
+                id="helPen"
               />
               {{hotel.pensionFullPrice}}kr per person
             </p>
@@ -106,6 +111,7 @@
                 min="0"
                 v-model="allInclusive"
                 :max="maxTillvalAllInclusive"
+                id="allPen"
               />
               {{hotel.allInclusive}}kr per person
             </p>
@@ -139,6 +145,7 @@
               data-toggle="modal"
               @click="getRoomsToBook"
               data-target="#confirm"
+              id="bokaffs"
             >Boka nu för fan!</button>
           </li>
         </ul>
@@ -157,7 +164,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Bokningsbekräftelse</h5>
+            <h5 id="Bokningsbekräftelse" class="modal-title">Bokningsbekräftelse</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -183,6 +190,7 @@
               type="button"
               class="btn btn-primary"
               @click="confirmBooking"
+              id="confirmYourBooking"
             >Bekräfta bokning</button>
             <button
               v-if="!sentBooking"
@@ -457,18 +465,13 @@ export default {
     calculateTotal: {
       get() {
         return (
-          this.enkelRumPris +
-          this.dubbelRumPris +
-          this.familjeRumPris +
+          this.enkelRumPris + this.dubbelRumPris + this.familjeRumPris +
           this.$store.state.booking.room.enkel.extraBed * 250 +
           this.$store.state.booking.room.dubbel.extraBed * 250 +
           this.$store.state.booking.room.familje.extraBed * 250 +
-          this.$store.state.booking.halfPension *
-            this.$store.state.hotel.pensionHalfPrice +
-          this.$store.state.booking.fullPension *
-            this.$store.state.hotel.pensionFullPrice +
-          this.$store.state.booking.allInclusive *
-            this.$store.state.hotel.allInclusive
+          this.$store.state.booking.halfPension * this.$store.state.hotel.pensionHalfPrice +
+          this.$store.state.booking.fullPension * this.$store.state.hotel.pensionFullPrice +
+          this.$store.state.booking.allInclusive *this.$store.state.hotel.allInclusive
         );
       }
     },

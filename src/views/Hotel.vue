@@ -34,6 +34,7 @@
           <div id="adress" class="tab-pane fade text-left">
             <h6 class="text-center">Kontaktinformation</h6>
               <ul>
+                <ol id ="hotelID" class="my-1" value="1">hotel: {{hotel.id | capitalize}}</ol>
                 <ol class="my-1">Stad: {{hotel.city.name | capitalize}}</ol>
                 <ol class="my-1">Postnummer: {{hotel.postalCode}}</ol>
                 <ol class="my-1">Adress: {{hotel.address}}</ol>
@@ -70,6 +71,7 @@
               min="0"
               :max="maxEnkelRum"
               step="1"
+              id="antalEnkelrum"
             />
           </div>
         </div>
@@ -98,7 +100,7 @@
               min="0"
               :max="maxDubbelRum"
               step="1"
-              
+              id="antalDubbelrum"
             />
           </div>
         </div>
@@ -127,6 +129,7 @@
               min="0"
               :max="maxFamiljeRum"
               step="1"
+              id="antalFamiljerum"
             />
           </div>
         </div>

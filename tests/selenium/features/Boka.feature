@@ -16,13 +16,7 @@ Feature: "Booking"
       And i choose number of rooms
       When i click Gå till bokning
 
-
-
-
-
-
    Scenario: "Booking"
       When i choose Vafan vill ni ha till
       And i press Boka nu för fan
-      And i press Bekräfta bokning
       Then I receive the confirmation of my booking

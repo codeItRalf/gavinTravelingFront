@@ -36,7 +36,7 @@
                 class="form-control"
               />
             </div>            
-            <router-link :to="searchUrl" class="btn btn-primary">Sök</router-link>
+            <router-link :to="searchUrl" class="btn btn-primary" id="sök">Sök</router-link>
           </form>
         </div>
         <ol class="carousel-indicators">

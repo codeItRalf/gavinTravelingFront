@@ -1,5 +1,5 @@
 <template>
-  <div class="search">
+  <div id="searchPage" class="search">
     <div class="container">
       <div class="fixed_search_box">
         <div class="s_box jumbotron">
@@ -48,66 +48,66 @@
               <label for="inputAdult">Vuxna</label>
                   <select id="inputAdult" class="form-control" v-model="inputAdult"  >
                     <option selected>Välj...</option>
-                    <option value="1" @click="submitAdult">1</option>
-                    <option value="2" @click="submitAdult">2</option>
-                    <option value="3" @click="submitAdult">3</option>
-                    <option value="4" @click="submitAdult">4</option>
-                    <option value="5" @click="submitAdult">5</option>
-                    <option value="6" @click="submitAdult">6</option>
-                    <option value="7" @click="submitAdult">7</option>
-                    <option value="8" @click="submitAdult">8</option>
-                    <option value="9" @click="submitAdult">9</option>
-                    <option value="10" @click="submitAdult">10</option>
+                    <option id="inputAdult1" value="1" @click="submitAdult">1</option>
+                    <option id="inputAdult2" value="2" @click="submitAdult">2</option>
+                    <option id="inputAdult3" value="3" @click="submitAdult">3</option>
+                    <option id="inputAdult4" value="4" @click="submitAdult">4</option>
+                    <option id="inputAdult5" value="5" @click="submitAdult">5</option>
+                    <option id="inputAdult6" value="6" @click="submitAdult">6</option>
+                    <option id="inputAdult7" value="7" @click="submitAdult">7</option>
+                    <option id="inputAdult8" value="8" @click="submitAdult">8</option>
+                    <option id="inputAdult9" value="9" @click="submitAdult">9</option>
+                    <option id="inputAdult10" value="10" @click="submitAdult">10</option>
                   </select>
             </div>
             <div class="form-group col-md-3">
               <label for="inputChild">Barn</label>
                   <select id="inputChild" class="form-control" v-model="inputChild">
                     <option selected>Välj...</option>
-                    <option value="0" @click="submitBaby">0</option>
-                    <option value="1" @click="submitChild">1</option>
-                    <option value="2" @click="submitChild">2</option>
-                    <option value="3" @click="submitChild">3</option>
-                    <option value="4" @click="submitChild">4</option>
-                    <option value="5" @click="submitChild">5</option>
-                    <option value="6" @click="submitChild">6</option>
-                    <option value="7" @click="submitChild">7</option>
-                    <option value="8" @click="submitChild">8</option>
-                    <option value="9" @click="submitChild">9</option>
-                    <option value="10" @click="submitChild">10</option>
+                    <option id="inputChild0" value="0" @click="submitBaby">0</option>
+                    <option id="inputChild1" value="1" @click="submitChild">1</option>
+                    <option id="inputChild2" value="2" @click="submitChild">2</option>
+                    <option id="inputChild3" value="3" @click="submitChild">3</option>
+                    <option id="inputChild4" value="4" @click="submitChild">4</option>
+                    <option id="inputChild5" value="5" @click="submitChild">5</option>
+                    <option id="inputChild6" value="6" @click="submitChild">6</option>
+                    <option id="inputChild7" value="7" @click="submitChild">7</option>
+                    <option id="inputChild8" value="8" @click="submitChild">8</option>
+                    <option id="inputChild9" value="9" @click="submitChild">9</option>
+                    <option id="inputChild10" value="10" @click="submitChild">10</option>
                   </select>
             </div>
             <div class="form-group col-md-3">
               <label for="inputBaby">Små Barn</label>
                   <select id="inputBaby" class="form-control" v-model="inputBaby">
                     <option selected>Välj...</option>
-                    <option value="0" @click="submitBaby">0</option>
-                    <option value="1" @click="submitBaby">1</option>
-                    <option value="2" @click="submitBaby">2</option>
-                    <option value="3" @click="submitBaby">3</option>
-                    <option value="4" @click="submitBaby">4</option>
-                    <option value="5" @click="submitBaby">5</option>
-                    <option value="6" @click="submitBaby">6</option>
-                    <option value="7" @click="submitBaby">7</option>
-                    <option value="8" @click="submitBaby">8</option>
-                    <option value="9" @click="submitBaby">9</option>
-                    <option value="10" @click="submitBaby">10</option>
+                    <option id="inputBaby0" value="0" @click="submitBaby">0</option>
+                    <option id="inputBaby1" value="1" @click="submitBaby">1</option>
+                    <option id="inputBaby2" value="2" @click="submitBaby">2</option>
+                    <option id="inputBaby3" value="3" @click="submitBaby">3</option>
+                    <option id="inputBaby4" value="4" @click="submitBaby">4</option>
+                    <option id="inputBaby5" value="5" @click="submitBaby">5</option>
+                    <option id="inputBaby6" value="6" @click="submitBaby">6</option>
+                    <option id="inputBaby7" value="7" @click="submitBaby">7</option>
+                    <option id="inputBaby8" value="8" @click="submitBaby">8</option>
+                    <option id="inputBaby9" value="9" @click="submitBaby">9</option>
+                    <option id="inputBaby10" value="10" @click="submitBaby">10</option>
                   </select>
             </div>
             <div class="form-group col-md-3">
               <label for="inputRoom">Rum</label>
                   <select id="inputRoom" class="form-control" v-model="inputRoom">
                     <option selected>Välj...</option>
-                    <option value="1" @click="submitRoom">1</option>
-                    <option value="2" @click="submitRoom">2</option>
-                    <option value="3" @click="submitRoom">3</option>
-                    <option value="4" @click="submitRoom">4</option>
-                    <option value="5" @click="submitRoom">5</option>
-                    <option value="6" @click="submitRoom">6</option>
-                    <option value="7" @click="submitRoom">7</option>
-                    <option value="8" @click="submitRoom">8</option>
-                    <option value="9" @click="submitRoom">9</option>
-                    <option value="10" @click="submitRoom">10</option>
+                    <option id="inputRoom1" value="1" @click="submitRoom">1</option>
+                    <option id="inputRoom2"  value="2" @click="submitRoom">2</option>
+                    <option id="inputRoom3" value="3" @click="submitRoom">3</option>
+                    <option id="inputRoom4" value="4" @click="submitRoom">4</option>
+                    <option id="inputRoom5" value="5" @click="submitRoom">5</option>
+                    <option id="inputRoom6" value="6" @click="submitRoom">6</option>
+                    <option id="inputRoom7" value="7" @click="submitRoom">7</option>
+                    <option id="inputRoom8" value="8" @click="submitRoom">8</option>
+                    <option id="inputRoom9" value="9" @click="submitRoom">9</option>
+                    <option id="inputRoom10" value="10" @click="submitRoom">10</option>
                   </select>
             </div>
           </div>

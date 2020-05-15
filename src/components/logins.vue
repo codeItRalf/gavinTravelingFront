@@ -4,14 +4,14 @@
         <h1>Login</h1>
         <div class="form-group">
             <label for="InputEmail">E-postadress</label>
-            <input type="email" class="form-control" id="InputEmail" name="email" v-model="username"  aria-describedby="emailHelp" placeholder="Ange din e-postadress">    
+            <input type="email" class="form-control" id="InputEmail1" name="email" v-model="username"  aria-describedby="emailHelp" placeholder="Ange din e-postadress">    
         </div>
        <div class="form-group">
         <label for="InputPassword">Lösenord</label>
         <input type="password" class="form-control" id="InputPassword" name="password" v-model="password" placeholder="Ange ditt lösenord">
         </div>
         
-        <button type="button" class="btn btn-primary" v-on:click="login()">Login</button>
+        <button id="loginAcc" type="button" class="btn btn-primary" v-on:click="login()">Login</button>
     </div>
 </template>
 

@@ -15,7 +15,7 @@
       <a class="navbar-brand">Gavins Travelling</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-          <router-link class="nav-link" to="/">Home</router-link>
+          <router-link id ="home" class="nav-link" to="/">Home</router-link>
         </li>  
       </ul>
 
@@ -24,7 +24,7 @@
           <router-link class="nav-link" v-model="UserWatcher" to="/user">{{user.firstName | capitalize}} {{user.lastName | capitalize}}</router-link>
         </li>
         <li class="nav-item">
-          <button  class="nav-link btn"  @click="logout()"><i class="fas fa-sign-out-alt"></i></button>
+          <button  id="logout" class="nav-link btn"  @click="logout()"><i class="fas fa-sign-out-alt"></i></button>
         </li>
       </ul> 
       <ul v-else class="nav navbar-nav flex-row justify-content-between ml-auto">
@@ -32,7 +32,7 @@
           <router-link class="nav-link" to="/register">Bli Kund</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/login">Login</router-link>
+          <router-link id ="login" class="nav-link" to="/login">Login</router-link>
         </li>
       </ul> 
     </div>
