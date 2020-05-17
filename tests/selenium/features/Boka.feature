@@ -3,7 +3,7 @@ Feature: "Booking"
    Feature Description
 
 
-   Background: "test"
+   Background: "booking background"
       Given that I am on the Gavin traveling search page
       And that i am logged in
       And that I’ve entered dates for my booking
