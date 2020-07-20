@@ -17,7 +17,7 @@
     "core-js": "^3.6.4",
     "jquery": "^3.4.1",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "vue": "^2.6.11",
     "vue-lodash": "^2.1.2",
